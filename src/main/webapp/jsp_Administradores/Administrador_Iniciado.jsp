@@ -15,7 +15,7 @@
     </head>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <body onload="solicitarDatos2('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores/getPorID', buscarDatoPorId, llenarDatos)">
+    <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, llenarDatos)">
 
         <div id="particles-js"></div>
 
@@ -31,7 +31,7 @@
                                         <label for="file-input">
                                             <i class="far fa-image"></i>
                                         </label>                               
-                                        <input id="file-input" name="imagen" type="file" accept="image/*" onchange="solicitarDatos2('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores/getPorID', buscarDatoPorId, cambiarFoto)"/>                                     
+                                        <input id="file-input" name="imagen" type="file" accept="image/*" onchange="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, cambiarFoto)"/>                                     
                                     </div>
                                 </form>
                             </button>                        
@@ -59,7 +59,7 @@
         <div class="modal">
             <div class="modal_container">
                 <div id="formulario_Editar_Administrador" class="formulario_Editar_Administrador">
-                    <form class="formulario" id="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores/getPorID', buscarDatoPorId, editarAdministrador, event)">
+                    <form class="formulario" id="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, editarAdministrador, event)">
                         <h2 class="crear_cuenta">Editar Cuenta</h2>           
                         <input id="nombre_Editar" type="text" placeholder="Nombre" required>
                         <input id="apellido_Editar" type="text" placeholder="Apellido" required>

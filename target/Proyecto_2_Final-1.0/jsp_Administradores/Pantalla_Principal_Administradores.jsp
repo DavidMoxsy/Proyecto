@@ -18,7 +18,7 @@
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
-    <body onload="solicitarDatos2('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores/getPorID', buscarDatoPorId, administradorIniciado)">
+    <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, administradorIniciado)">
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
 
         <div id="particles-js"></div>

@@ -25,7 +25,7 @@
                     <button class="btn_iniciar_Sesion">Iniciar Sesion</button>
                 </div>
             </div>
-            <form id="formulario" class="formulario" onsubmit="crearMedico('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos', event)">
+            <form id="formulario" class="formulario" onsubmit="crearMedico('http://localhost:8080/Proyecto/resources/restfulMedicos', event)">
                 <h2 class="crear_cuenta">Crear una cuenta</h2>           
                 <input name="nombre" id="nombre" type="text" placeholder="Nombre" required>
                 <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
@@ -37,7 +37,7 @@
             </form>
         </div>
         <div class="container-form sign-in">
-            <form id="iniciar" class="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos/getPorID', buscarDatoPorId, iniciarSesion, event)">
+            <form id="iniciar" class="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, iniciarSesion, event)">
                 <h2 class="crear_cuenta">Iniciar Sesion</h2>
                 <p class="cuenta_gratis">Ingrese su usuario y contraseña</p>
                 <input type="number" placeholder="Cedula" id="cedula" required autocomplete="off">

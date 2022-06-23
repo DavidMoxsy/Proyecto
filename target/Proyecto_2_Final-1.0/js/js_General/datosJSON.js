@@ -1,13 +1,13 @@
 function incializarREST() {
-    fetch('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulPacientes')
+    fetch('http://localhost:8080/Proyecto/resources/restfulPacientes')
             .then(resultados => resultados.json())
-    fetch('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos')
+    fetch('http://localhost:8080/Proyecto/resources/restfulMedicos')
             .then(resultados => resultados.json())
-    fetch('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores')
+    fetch('http://localhost:8080/Proyecto/resources/restfulAdministradores')
             .then(resultados => resultados.json())
-    fetch('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulLocalidades')
+    fetch('http://localhost:8080/Proyecto/resources/restfulLocalidades')
             .then(resultados => resultados.json())
-    fetch('http://localhost:8080/Proyecto_2_Version_Final/resources/resfulEspecialidades')
+    fetch('http://localhost:8080/Proyecto/resources/resfulEspecialidades')
             .then(resultados => resultados.json())
 }
 

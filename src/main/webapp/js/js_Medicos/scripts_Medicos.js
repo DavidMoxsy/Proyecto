@@ -1,5 +1,5 @@
 function init() {
-    solicitarDatos("http://localhost:8080/Proyecto_2_Version_Final/resources/rest", "tabla1", cargarDatos, cargarTabla);
+    solicitarDatos("http://localhost:8080/Proyecto/resources/rest", "tabla1", cargarDatos, cargarTabla);
     console.log("Aplicación inicializada..");
 }
 
@@ -81,7 +81,7 @@ function crearMedico(url, evt) {
 
 function mustraPacientes(){
     //pacientes es el metodo que recibe los datos JSON
-    cargarDatos(pacientes, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos')
+    cargarDatos(pacientes, 'http://localhost:8080/Proyecto/resources/restfulMedicos')
 
 }
 
@@ -201,7 +201,7 @@ function cambiarEstado( ini ,datosJSON){
 
         datosJSON.citas[ini].disponibilidad = "Completada";
         console.log(datosJSON);
-        editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulPacientes');
+        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
     }
 
 
@@ -242,7 +242,7 @@ function cambiarFoto(datosJSON) {
 
         datosJSON.foto = base64Converted;
 
-        editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos');
+        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
@@ -262,7 +262,7 @@ function editarMedico(datosJSON) {
         datosJSON.email = document.getElementById("email_Editar").value;
         datosJSON.costoConsulta = document.getElementById("costoConsulta_Editar").value;
         datosJSON.resena = document.getElementById("descripcion_Editar").value;
-        cargarDatos(modificarEspecialidades, 'http://localhost:8080/Proyecto_2_Version_Final/resources/resfulEspecialidades');
+        cargarDatos(modificarEspecialidades, 'http://localhost:8080/Proyecto/resources/resfulEspecialidades');
 
         function modificarEspecialidades(datosJSON2) {
 
@@ -274,10 +274,10 @@ function editarMedico(datosJSON) {
                     datosJSON.especialidades.push(datos[i].nombre);
                 }
             }
-            editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos');
+            editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
         }
 
-        cargarDatos(modificarLocalidades, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulLocalidades');
+        cargarDatos(modificarLocalidades, 'http://localhost:8080/Proyecto/resources/restfulLocalidades');
 
         function modificarLocalidades(datosJSON2) {
 
@@ -327,7 +327,7 @@ function editarMedico(datosJSON) {
                     let localidad = {"id": i, "ubicacion": datos[i].ubicacion, "horarioSemanal": horas};
                     datosJSON.localidades.push(localidad);
                     console.log(JSON.stringify(datosJSON.localidades));
-                    editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos');
+                    editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
                 }
             }
         }
@@ -376,7 +376,7 @@ function llenarDatos(datosJSON) {
 
     var especialidades = document.getElementById("Especialidades");
     var localidades = document.getElementById("Localidades");
-    cargarDatos(arrayEspecialidades, 'http://localhost:8080/Proyecto_2_Version_Final/resources/resfulEspecialidades');
+    cargarDatos(arrayEspecialidades, 'http://localhost:8080/Proyecto/resources/resfulEspecialidades');
     function arrayEspecialidades(datosJSON) {
 
         let datos = datosJSON['lista-especialidades']['especialidad'];
@@ -402,7 +402,7 @@ function llenarDatos(datosJSON) {
         }
     }
 
-    cargarDatos(arrayLocalidades, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulLocalidades');
+    cargarDatos(arrayLocalidades, 'http://localhost:8080/Proyecto/resources/restfulLocalidades');
     function arrayLocalidades(datosJSON) {
 
         let datos = datosJSON['lista-localidades']['localidad'];
