@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <link href="../css/css_Administradores/Pantalla_Principal_Administrador.css" rel="stylesheet" type="text/css"/>
-        <script src="../js/js_Administradores/scripts_Administradores.js" type="text/javascript"></script>
+        <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
     </head>

@@ -214,7 +214,7 @@ function conseguirMedicos(datosJSON) {
         btnEditar.innerHTML = "Editar Medico";
         btnEditar.setAttribute('style', "border: solid 1px; margin-left: 10px;");
 
-        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto_2_Version_Final/resources/restfulMedicos', Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value)")
+        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/restfulMedicos', Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value)")
         btnBorrar.setAttribute('id', "btn");
         btnBorrar.setAttribute('class', "btn");
         btnBorrar.innerHTML = "Borrar Medico";
@@ -231,5 +231,5 @@ function conseguirMedicos(datosJSON) {
         trMedico.appendChild(btnBorrar);
         table.appendChild(trMedico);
     }
-    console.log(Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value)
+    console.log(Object.getOwnPropertyDescriptors(medicosList))
 }
