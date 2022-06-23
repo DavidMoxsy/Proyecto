@@ -1,4 +1,4 @@
-
+//hola
 function init() {
     solicitarDatos("http://localhost:8080/Proyecto_2_Version_Final/resources/rest", "tabla1", cargarDatos, cargarTabla);
     console.log("Aplicación inicializada..");
