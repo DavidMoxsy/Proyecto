@@ -12,7 +12,7 @@
         <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
-        <script src="../js/js_Administradores/scripts_Administradores.js" type="text/javascript"></script>
+        <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Menu Administradores</title>
     </head>
