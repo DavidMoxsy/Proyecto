@@ -1,0 +1,258 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    background-size: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    height: -110px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#B873FF, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: 67%;
+    right: -40px;
+    z-index: 10;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+    bottom: -3px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+    color:white;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: rgb(153, 117, 212);
+    border-radius: 15px;
+    width: 100%;
+    color: white;
+    margin-top: -100px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+    text-align:center;
+    z-index: 2;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio ul{
+    margin: 0 auto;
+    display:inline;
+    padding-left:3px;
+    padding-right:3px;
+}
+
+.checkbox {
+    display: none;
+}
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.header-container {
+    transition-duration: 1s;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(153, 117, 212);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+header .header-container p{
+    color: white;
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+.btn-label {
+    width: 2rem;
+    height: 1.4rem;
+}
+
+.header-button {
+    width: 2rem;
+    height: 0.2rem;
+    background: white;
+    position: absolute;
+    top: 1.9rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin-top: 10px;
+    right: calc(100% - 60px);
+}
+
+.header-button:hover{
+    background-color: #6464f8;
+}
+
+.header-button::before,
+.header-button::after {
+    content: "";
+    width: 2rem;
+    height: 0.2rem;
+    background: white;
+    position: absolute;
+    top: -0.6rem;
+    transition: all 0.2s;
+}
+
+.header-button::after {
+    top: 0.6rem;
+}
+
+.menu {
+    background: #d1d1d1;
+    width: 100%;
+    height: 10rem;
+    position: fixed;
+    z-index: 9;
+    top: -12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding-top: 2rem;
+    transition: all 1s;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    margin: 0.5rem;
+}
+.menu a {
+    margin: 0 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(230, 155, 220);
+}
+
+.checkbox:checked ~ .menu {
+    transition-duration: 1s;
+    background: rgb(153, 117, 212);
+    top: 0rem;
+    color: white;
+}
+.checkbox:checked + header .header-container label .header-button {
+    background: none;
+}
+.checkbox:checked + header .header-container label .header-button::before {
+    transform: rotate(35deg);
+    top: 0;
+}
+.checkbox:checked + header .header-container label .header-button::after {
+    transform: rotate(-35deg);
+    top: 0;
+}
+
+.checkbox:checked + header .header-container {
+    transition-duration: 1s;
+    background: none;
+    height: 1px;
+}
+
+.checkbox:checked + header .header-container p{
+    display: none;
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: rgb(162, 161, 241);
+    z-index: 2;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}

@@ -1,0 +1,19 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 13 jun. 2022, 23:14:01
+    Author     : Alfredo
+*/
+
+#div_tabla {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+     
+    
+}

@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', 'Sans serif';
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(150deg, rgb(162, 161, 241), rgb(225, 156, 223));
+    background-size: 400% 300%;
+    animation: degradado 5s ease infinite;
+}
+
+.container-form {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: space-around;
+    transition:  all .5s ease-out;
+    position: absolute;
+    bottom: 200px;
+}
+
+.bienvenido {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.mensaje {
+    padding: 1rem;
+}
+
+.mensaje h2 {
+    font-size: 1.7rem;
+    padding: 1rem 0;
+}
+
+.mensaje button {
+    padding: 1rem;
+    font-weight: 400;
+    background-color: white;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+    color: black;
+}
+
+.mensaje button:hover {
+    background-color: #6464f8;
+}
+
+.formulario {
+    width: 400px;
+    height: 520px;
+    background: rgb(187, 159, 233);
+    text-align: center;
+    box-shadow: 7px 13px 37px #000;
+    border-radius: 8px;
+}
+
+.formulario:nth-child(1){
+    height: 400px;
+    margin-top: 5%;
+}
+
+.formulario:nth-child(2) h2{
+    margin-top: -20px;
+}
+
+.crear_cuenta {
+    padding: 2.7rem 0;
+    font-size: 1.7rem;
+}
+
+.cuenta_gratis {
+    padding: 2rem 0;
+    margin-top: -40px;
+    margin-bottom: 20px;
+}
+
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+}
+
+.formulario input::placeholder{
+    color: #3a3737;
+}
+
+.formulario input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.formulario input[type=number]::-webkit-inner-spin-button,
+.formulario input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.formulario input[type="submit"]:hover {
+    background: rgb(230, 155, 220);
+    color: white;
+}
+
+.sign-up {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sign-in.active {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sign-up.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: white;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+/* burbujas */
+
+.burbuja{
+    z-index: -3;
+    border-radius: 50%;
+    background: #fff;
+    opacity: -3;
+    position: absolute;
+    margin-top: -10%;
+    animation: burbujas 3s linear infinite;
+}
+
+.burbuja:nth-child(1){
+    width: 80px;
+    height: 80px;
+    left: 5%;
+    animation-duration: 3s;
+}
+
+.burbuja:nth-child(2){
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 3s;
+}
+
+.burbuja:nth-child(3){
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    animation-duration: 1.5s;
+    animation-delay: 7s;
+}
+
+.burbuja:nth-child(4){
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    animation-duration: 6s;
+}
+
+.burbuja:nth-child(5){
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 3s;
+}
+
+.burbuja:nth-child(6){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+}
+
+.burbuja:nth-child(7){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+}
+
+.burbuja:nth-child(8){
+    width: 100;
+    height: 100px;
+    left: 52%;
+    animation-duration: 5s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(9){
+    width: 65px;
+    height: 65px;
+    left: 51%;
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+
+.burbuja:nth-child(10){
+    width: 40px;
+    height: 40px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+@keyframes burbujas{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    30%{
+        transform: translateX(30px);
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes degradado{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
