@@ -1,6 +1,6 @@
 
 function init() {
-    solicitarDatos("http://localhost:8080/Proyecto_2_Version_Final/resources/rest", "tabla1", cargarDatos, cargarTabla);
+    solicitarDatos("http://localhost:8080/Proyecto/resources/rest", "tabla1", cargarDatos, cargarTabla);
     console.log("Aplicación inicializada..");
 }
 
@@ -15,6 +15,10 @@ function solicitarDatos2(url, fn, callback) {
 function solicitarDatos3(url, fn, callback, evt) {
     evt.preventDefault();
     fn(document.getElementById("cedula").value, callback, url, fn);
+}
+
+function solicitarDatos4(url, fn, callback, id) {
+    fn(id, callback, url);
 }
 
 function iniciarSesion(datosJSON) {
@@ -89,7 +93,7 @@ function cambiarFoto(datosJSON) {
 
         datosJSON.foto = base64Converted;
 
-        editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores');
+        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulAdministradores');
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
@@ -108,7 +112,7 @@ function editarAdministrador(datosJSON) {
         datosJSON.clave = document.getElementById("password_Editar").value;
         datosJSON.email = document.getElementById("email_Editar").value;
         datosJSON.resena = document.getElementById("descripcion_Editar").value;
-        editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulAdministradores');
+        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulAdministradores');
     } else {
         swal('Clave incorrecta', 'Verifique que escribiera correctamente su clave 2 veces', 'error');
         var confirmar_Password_Editar = document.getElementById("confirmar_Password_Editar");
@@ -151,10 +155,32 @@ function llenarDatos(datosJSON) {
     }
 }
 
+function cargarFoto(datosJSON) {
+    var foto = datosJSON.foto;
+    if (foto !== undefined) {
+        const byteCharacters = atob(foto);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: 'image/*'});
+        const imagenPrevisualizacion = document.querySelector("#foto");
+        imagenPrevisualizacion.src = URL.createObjectURL(blob);
+    }
+}
+
+function cambiarEstado(datosJSON) {
+    datosJSON.estado = "Aceptado";
+    console.log(datosJSON.estado)
+    editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
+}
+
 function conseguirMedicos(datosJSON) {
 
     let medicosList = datosJSON['lista-medicos']['medico'];
-    let table = document.getElementById('Table_Medicos');
+    let thead = document.getElementById('thead');
+    let tbody = document.getElementById('tbody');
     let tr = document.createElement("tr");
     tr.setAttribute('id', 'Encabezado');
 
@@ -166,13 +192,17 @@ function conseguirMedicos(datosJSON) {
     let acciones = document.createElement("th");
 
     nombre.innerHTML = "Nombre";
+    nombre.setAttribute("class", "column1");
     apellido.innerHTML = "Apellido";
+    apellido.setAttribute("class", "column2");
     cedula.innerHTML = "Cedula";
+    cedula.setAttribute("class", "column3");
     email.innerHTML = "Email";
+    email.setAttribute("class", "column4");
     estado.innerHTML = "Estado";
+    estado.setAttribute("class", "column5");
     acciones.innerHTML = "Acciones";
-    
-    acciones.setAttribute('colspan', 3);
+    acciones.setAttribute("class", "column6");
 
     tr.appendChild(nombre);
     tr.appendChild(apellido);
@@ -181,7 +211,7 @@ function conseguirMedicos(datosJSON) {
     tr.appendChild(estado);
     tr.appendChild(acciones);
 
-    table.appendChild(tr);
+    thead.appendChild(tr);
 
 
     for (var i = 0; i < medicosList.length; i++) {
@@ -192,34 +222,32 @@ function conseguirMedicos(datosJSON) {
         let tdEmail = document.createElement("td");
         let tdEstado = document.createElement("td");
         let btnAceptar = document.createElement("a");
-        let btnEditar = document.createElement("a");
         let btnBorrar = document.createElement("a");
 
         tdNombre.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).nombre.value;
+        tdNombre.setAttribute("class", "column1");
         tdApellido.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).apellido.value;
+        tdApellido.setAttribute("class", "column2");
         tdCedula.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value;
+        tdCedula.setAttribute("class", "column3");
         tdEmail.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).email.value;
+        tdEmail.setAttribute("class", "column4");
         tdEstado.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).estado.value;
+        tdEstado.setAttribute("class", "column5");
+
 
         btnAceptar.setAttribute('href', "#");
         btnAceptar.setAttribute('id', "btn");
         btnAceptar.setAttribute('class', "btn");
+        btnAceptar.setAttribute('onclick', "solicitarDatos4('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cambiarEstado," + Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value + ")");
         btnAceptar.innerHTML = "Aceptar Medico";
-        btnAceptar.setAttribute('style', "border: solid 1px; margin-left: 10px;");
+        btnAceptar.setAttribute("class", "column6");
 
-
-        btnEditar.setAttribute('href', "#");
-        btnEditar.setAttribute('id', "btn");
-        btnEditar.setAttribute('class', "btn");
-        btnEditar.innerHTML = "Editar Medico";
-        btnEditar.setAttribute('style', "border: solid 1px; margin-left: 10px;");
-
-        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/restfulMedicos', Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value)")
+        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/restfulMedicos/delete', " + Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value + ")")
         btnBorrar.setAttribute('id', "btn");
         btnBorrar.setAttribute('class', "btn");
         btnBorrar.innerHTML = "Borrar Medico";
-        btnBorrar.setAttribute('style', "border: solid 1px; margin-left: 10px;");
-
+        btnBorrar.setAttribute("class", "column6");
 
         trMedico.appendChild(tdNombre);
         trMedico.appendChild(tdApellido);
@@ -227,9 +255,12 @@ function conseguirMedicos(datosJSON) {
         trMedico.appendChild(tdEmail);
         trMedico.appendChild(tdEstado);
         trMedico.appendChild(btnAceptar);
-        trMedico.appendChild(btnEditar);
         trMedico.appendChild(btnBorrar);
-        table.appendChild(trMedico);
+        tr.setAttribute("class", "table100-head");
+        tbody.appendChild(trMedico);
+
     }
-    console.log(Object.getOwnPropertyDescriptors(medicosList))
+
+    //console.log(medicosList[0].estado)
+
 }

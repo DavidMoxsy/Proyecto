@@ -4,9 +4,9 @@ function init() {
 }
 
 
-        function solicitarDatos(url, tabla, fn, callback) {
-            fn(callback, url, tabla);
-        }
+function solicitarDatos(url, tabla, fn, callback) {
+    fn(callback, url, tabla);
+}
 
 function solicitarDatos2(url, fn, callback) {
     fn(document.getElementById("cedula").value, callback, url, fn);
@@ -19,9 +19,18 @@ function solicitarDatos3(url, fn, callback, evt) {
 
 function iniciarSesion(datosJSON) {
 
+
     if (datosJSON.cedula === parseInt(document.getElementById("cedula").value)) {
         if (datosJSON.clave === document.getElementById("clave").value) {
-            window.location.href = "Pantalla_Principal_Medicos.jsp?cedula=" + document.getElementById("cedula").value;
+            if (datosJSON.estado === "Aceptado") {
+                window.location.href = "Pantalla_Principal_Medicos.jsp?cedula=" + document.getElementById("cedula").value;
+            } else {
+                swal('Usuario en espera', 'El usuario no ha sido aceptado por un administrador, por favor espere a ser aceptado para iniciar sesion', 'warning');
+                var cedula = document.getElementById("cedula");
+                cedula.value = "";
+                var clave = document.getElementById("clave");
+                clave.value = "";
+            }
         } else {
             swal('Clave incorrecta', 'La clave ingresada no es correcta', 'error');
             var clave = document.getElementById("clave");
@@ -79,39 +88,39 @@ function crearMedico(url, evt) {
 }
 
 
-function mustraPacientes(){
+function mustraPacientes() {
     //pacientes es el metodo que recibe los datos JSON
     cargarDatos(pacientes, 'http://localhost:8080/Proyecto/resources/restfulMedicos')
 
 }
 
-function pacientes(datosJSON){
+function pacientes(datosJSON) {
 
     let medicosList = datosJSON['lista-medicos']['medico'];
-    var medicoId=  parseInt(document.getElementById("cedula").value);
+    var medicoId = parseInt(document.getElementById("cedula").value);
 
 
     var pacienteList = [];
 
     for (var i = 0; i < medicosList.length; i++) {
-        if( medicoId === medicosList[i].cedula){
-            var citasList =  medicosList[i].citas;
+        if (medicoId === medicosList[i].cedula) {
+            var citasList = medicosList[i].citas;
 
         }
     }
-    for (var j = 0; j < citasList.length; j++){
+    for (var j = 0; j < citasList.length; j++) {
 
         pacienteList.push(citasList[j].cedulaPaciente);
     }
 
-    var lista =  document.getElementById("pacientes");
+    var lista = document.getElementById("pacientes");
     for (var k = 0; k < pacienteList.length; k++) {
         cldiv = document.createElement("div");
         cldiv.className = "cldiv";
 
         clp = document.createElement("li");
         clp2 = document.createElement("a");
-        clp2.href = "Medico_Paciente_Citas.jsp?cedula="+pacienteList[k]+"&cedulaMedico=" +medicoId;
+        clp2.href = "Medico_Paciente_Citas.jsp?cedula=" + pacienteList[k] + "&cedulaMedico=" + medicoId;
         //muestraDatosPacientes(pacienteList[k]);
         clp2.className = "cita-paciente";
 
@@ -123,23 +132,23 @@ function pacientes(datosJSON){
 
 
 
-function muestraDatosPacientes(datosJSON){
+function muestraDatosPacientes(datosJSON) {
 
     var citasList = datosJSON.citas;
     //datosJSON.forEach( p => { 
     var div = document.getElementById("div_tabla");
 
-    var tabla =  document.createElement("table");
-    var trHea0 =  document.createElement("tr");
-    var trHea =  document.createElement("tr");
+    var tabla = document.createElement("table");
+    var trHea0 = document.createElement("tr");
+    var trHea = document.createElement("tr");
     var thHea0 = document.createElement("th");
 
-    var thHea1= document.createElement("th");
-    var thHea2= document.createElement("th");
-    var thHea3= document.createElement("th");
-    var thHea4= document.createElement("th");
-    var thHea5= document.createElement("th");
-    var thHea6= document.createElement("th");
+    var thHea1 = document.createElement("th");
+    var thHea2 = document.createElement("th");
+    var thHea3 = document.createElement("th");
+    var thHea4 = document.createElement("th");
+    var thHea5 = document.createElement("th");
+    var thHea6 = document.createElement("th");
     thHea0.innerHTML = "Historial de Citas del Paciente: " + datosJSON.nombre + " " + datosJSON.apellido;
     thHea1.innerHTML = "Dia";
     thHea2.innerHTML = "Hora";
@@ -155,29 +164,31 @@ function muestraDatosPacientes(datosJSON){
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
 
-        if(citasList[i].cedulaMedico===parseInt(document.getElementById("cedulaMedico").value)){
-            var tr =  document.createElement("tr");
-            var td1= document.createElement("td");
-            var td2= document.createElement("td");
-            var td3= document.createElement("td");
-            var td4= document.createElement("td");
-            var td5= document.createElement("td");
-            var td6= document.createElement("td");
+        if (citasList[i].cedulaMedico === parseInt(document.getElementById("cedulaMedico").value)) {
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4 = document.createElement("td");
+            var td5 = document.createElement("td");
+            var td6 = document.createElement("td");
 
             var a = document.createElement("a");
             a.setAttribute("href", "#");
-            a.innerHTML =  "Completar";
+            a.innerHTML = "Completar";
             a.value = i;
-            a.onclick = function() { cambiarEstado(this.value, datosJSON);};
+            a.onclick = function () {
+                cambiarEstado(this.value, datosJSON);
+            };
             // event.preventDefault();
             td6.appendChild(a);
 
             td1.innerHTML = citasList[i].fecha;
             td2.innerHTML = citasList[i].hora;
-            td3.innerHTML = datosJSON.nombre  +" "+ datosJSON.apellido;
+            td3.innerHTML = datosJSON.nombre + " " + datosJSON.apellido;
             td4.innerHTML = citasList[i].lugarDeCita;
             td5.innerHTML = citasList[i].disponibilidad;
-            tr.append(td1,td2,td3,td4, td5, td6);
+            tr.append(td1, td2, td3, td4, td5, td6);
             tabla.appendChild(tr);
         }
     }
@@ -187,7 +198,7 @@ function muestraDatosPacientes(datosJSON){
 }
 
 
-function cambiarEstado( ini ,datosJSON){
+function cambiarEstado(ini, datosJSON) {
 
     console.log(datosJSON)
     // console.log(disponibilidad)
@@ -197,7 +208,7 @@ function cambiarEstado( ini ,datosJSON){
 
     var disp = datosJSON.citas[ini].disponibilidad;
     console.log(disp)
-    if(datosJSON.citas[ini].disponibilidad === "Disponible"){
+    if (datosJSON.citas[ini].disponibilidad === "Disponible") {
 
         datosJSON.citas[ini].disponibilidad = "Completada";
         console.log(datosJSON);
@@ -208,12 +219,12 @@ function cambiarEstado( ini ,datosJSON){
 }
 
 
-function citas(paciID, pacientesList ){
+function citas(paciID, pacientesList) {
 
     // let pacientesList = datosJSON['lista-pacientes']['paciente'];
-    pacientesList.forEach( p => {
-        if(paciID == p.cedula){
-            var lista =  document.getElementById("cldiv");
+    pacientesList.forEach(p => {
+        if (paciID == p.cedula) {
+            var lista = document.getElementById("cldiv");
 
             cldiv = document.createElement("div");
             clp = document.createElement("li");

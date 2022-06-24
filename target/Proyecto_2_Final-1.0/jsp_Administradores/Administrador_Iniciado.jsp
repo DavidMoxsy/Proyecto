@@ -10,7 +10,7 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/scriptsFormularios.js" type="text/javascript"></script>
-        <script src="../js/js_Administradores/scripts_Administradores.js" type="text/javascript"></script>
+        <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
     </head>
 

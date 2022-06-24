@@ -26,7 +26,7 @@ function crearUsuario(url, datos) {
             'Content-Type': 'application/json'
         }
     })
-            
+
 }
 
 function buscarDatoPorId(id, callback, url) {
@@ -49,10 +49,16 @@ function buscarDatoPorId(id, callback, url) {
 function eliminarDato(url, id) {
 
     fetch(url, {
-        method: 'DELETE',
-        body: id
+        method: 'PUT',
+        body: JSON.stringify(id),
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
-            .then(r => r.json())
+            .then(location.reload())
+            .catch(function (e) {
+                console.log(e);
+            });
 }
 
 function editarDato(dato, url) {

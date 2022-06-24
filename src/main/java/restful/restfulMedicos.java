@@ -15,7 +15,7 @@ import modelo.DAO.Medicos.Gestor_Medicos;
 @Path("restfulMedicos")
 @RequestScoped
 public class restfulMedicos {
-
+    
     public restfulMedicos() {
     }
     
@@ -26,7 +26,7 @@ public class restfulMedicos {
                 .ok(g.datosJSON())
                 .build();
     }
-
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void crearMedico(String medico) {
@@ -34,34 +34,34 @@ public class restfulMedicos {
         Gestor_Medicos g = new Gestor_Medicos();
         g.crearMedico(medico);
     }
-
+    
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public void edit(String medico) {
         Gestor_Medicos g = new Gestor_Medicos();
         g.editarMedico(medico);
     }
-
+    
     @PUT
     @Path("/getPorID")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPorID(String id) {
-
+        
         Gestor_Medicos g = new Gestor_Medicos();
-
+        
         return Response
                 .ok(g.datosJSON(id))
                 .build();
     }
-
-    @DELETE
+    
+    @PUT
+    @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public void delete(String cedula) {
-
+    public void delete(String id) {
+        
         Gestor_Medicos g = new Gestor_Medicos();
-        System.out.print(cedula);
-        //g.eliminarMedico(cedula);
+        g.eliminarMedico(id);
+        
     }
 }
