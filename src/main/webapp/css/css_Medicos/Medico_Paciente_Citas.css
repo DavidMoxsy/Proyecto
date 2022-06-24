@@ -1,19 +1,98 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
-*/
-/* 
-    Created on : 13 jun. 2022, 23:14:01
-    Author     : Alfredo
-*/
-
-#div_tabla {
+body{
+    background: linear-gradient(to right,mediumpurple,lightcoral);
+}
+.title{
+    text-align: center;
+    color: window;
+}
+.calendar{
+    background: #d9b3f5;
+    margin:1em auto;
+    padding: .5em 0;
+    height: 90%;
+    width: 90%;
+    color:black;
+    
+}
+/*.div_tabla {
     display: grid;
     justify-content: center;
     align-content: center;
     margin-top: 10px;
     margin-left: 10px;
     text-align: center;
-     
+}*/
+
+
+.calendar_info{
+    display:flex;
+    align-items: center;
+    padding: 0 2em;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+.next--month, #prev-month{
+  color: #DBE5ED;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+.next--month{
+    margin-left: auto;
+}
+.prev-month{
+    margin-right: auto;
+}
+
+.calendar__week, .calendar_dates{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap:10px;
+}
+.calendar_day{
+    text-align: center;
+    line-height:2;
+}
+.calendar__month,calendar__year{
+    padding: .5em 1em;
+}
+.calendar__dateCalendar__item{
+    text-align:center;
+    line-height:2;
+    border:1px solid black;
+    padding: 0px;
+    margin: 0;
+    height: 180px;
+    width: 180px;
     
+}
+.calendar__dateCalendar__item_today{
+    background: lightcoral;
+    color: white;
+    width: 50%;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.calendar__dateCalendar__item calendar__last-days{
+    opacity:.3;
+}
+
+
+.seccion-perfil-usuario, .perfil-usuario-footer{
+    height: 100%;
+   width: 100%;
+}
+
+.divCita{
+    max-width: 120px;
+    max-height: 50px;
+    overflow: auto;
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 100%;
+    position: relative;
+    max-width: 1144px;
 }

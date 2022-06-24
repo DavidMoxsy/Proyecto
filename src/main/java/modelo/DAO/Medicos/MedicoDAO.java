@@ -12,7 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -149,6 +152,12 @@ public class MedicoDAO {
                     }.getType();
 
                     ArrayList<Citas> list2 = gson.fromJson(rs.getString(9), typeMyType);
+                    //Borrar String fecha, String hora, String lugarDeCita, String disponibilidad
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+                    SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");  
+                    Date date = new Date();  
+                    Citas c = new Citas(formatter.format(date), formatter2.format(date), "San Jose", "No Disponible");
+                    list2.add(c);
 
                     medico.setCitas(list2);
 
@@ -162,7 +171,7 @@ public class MedicoDAO {
                 medico.setEstado(rs.getString(12));
 
             }
-
+            
             cnx.close();
             System.out.println("Se encontró a el medico");
             return medico;
