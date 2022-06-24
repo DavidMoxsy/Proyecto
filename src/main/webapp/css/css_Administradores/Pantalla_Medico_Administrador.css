@@ -401,6 +401,14 @@ tbody tr{
     }
 }
 
+#Encabezado th i{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#Encabezado th i:hover{
+    color:rgb(230, 155, 220);
+}
 
 #particles-js{
     height: 100vh;
