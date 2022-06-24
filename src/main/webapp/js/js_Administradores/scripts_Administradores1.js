@@ -179,8 +179,11 @@ function cambiarEstado(datosJSON) {
 function conseguirMedicos(datosJSON) {
 
     let medicosList = datosJSON['lista-medicos']['medico'];
-    let thead = document.getElementById('thead');
-    let tbody = document.getElementById('tbody');
+    let table = document.getElementById('Table_Medicos');
+    let thead = document.createElement("thead");
+    thead.setAttribute('id', 'thead');
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('id', 'tbody');
     let tr = document.createElement("tr");
     tr.setAttribute('id', 'Encabezado');
 
@@ -190,16 +193,40 @@ function conseguirMedicos(datosJSON) {
     let email = document.createElement("th");
     let estado = document.createElement("th");
     let acciones = document.createElement("th");
+    let iconoOrdenarNombre = document.createElement("i");
+    iconoOrdenarNombre.setAttribute("class", "fa fa-sort");
+    iconoOrdenarNombre.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorNombre)");
+
+    let iconoOrdenarApellido = document.createElement("i");
+    iconoOrdenarApellido.setAttribute("class", "fa fa-sort");
+    iconoOrdenarApellido.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorApellido)");
+
+    let iconoOrdenarCedula = document.createElement("i");
+    iconoOrdenarCedula.setAttribute("class", "fa fa-sort");
+    iconoOrdenarCedula.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorCedula)");
+
+    let iconoOrdenarEmail = document.createElement("i");
+    iconoOrdenarEmail.setAttribute("class", "fa fa-sort");
+    iconoOrdenarEmail.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorEmail)");
+
+    let iconoOrdenarEstado = document.createElement("i");
+    iconoOrdenarEstado.setAttribute("class", "fa fa-sort");
+    iconoOrdenarEstado.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorEstado)");
 
     nombre.innerHTML = "Nombre";
+    nombre.appendChild(iconoOrdenarNombre);
     nombre.setAttribute("class", "column1");
     apellido.innerHTML = "Apellido";
+    apellido.appendChild(iconoOrdenarApellido);
     apellido.setAttribute("class", "column2");
     cedula.innerHTML = "Cedula";
+    cedula.appendChild(iconoOrdenarCedula);
     cedula.setAttribute("class", "column3");
     email.innerHTML = "Email";
+    email.appendChild(iconoOrdenarEmail);
     email.setAttribute("class", "column4");
     estado.innerHTML = "Estado";
+    estado.appendChild(iconoOrdenarEstado);
     estado.setAttribute("class", "column5");
     acciones.innerHTML = "Acciones";
     acciones.setAttribute("class", "column6");
@@ -212,7 +239,7 @@ function conseguirMedicos(datosJSON) {
     tr.appendChild(acciones);
 
     thead.appendChild(tr);
-
+    table.replaceChild(thead, document.getElementById('thead'));
 
     for (var i = 0; i < medicosList.length; i++) {
         let trMedico = document.createElement("tr");
@@ -222,6 +249,7 @@ function conseguirMedicos(datosJSON) {
         let tdEmail = document.createElement("td");
         let tdEstado = document.createElement("td");
         let btnAceptar = document.createElement("a");
+
         let btnBorrar = document.createElement("a");
 
         tdNombre.innerHTML = Object.getOwnPropertyDescriptors(medicosList[i]).nombre.value;
@@ -249,6 +277,8 @@ function conseguirMedicos(datosJSON) {
         btnBorrar.innerHTML = "Borrar Medico";
         btnBorrar.setAttribute("class", "column6");
 
+
+
         trMedico.appendChild(tdNombre);
         trMedico.appendChild(tdApellido);
         trMedico.appendChild(tdCedula);
@@ -258,9 +288,48 @@ function conseguirMedicos(datosJSON) {
         trMedico.appendChild(btnBorrar);
         tr.setAttribute("class", "table100-head");
         tbody.appendChild(trMedico);
-
+        table.replaceChild(tbody, document.getElementById('tbody'));
     }
-
-    //console.log(medicosList[0].estado)
-
 }
+
+function ordenarPorNombre(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.nombre.localeCompare(y.nombre);
+    }
+    datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorApellido(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.apellido.localeCompare(y.apellido);
+    }
+    datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorCedula(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.cedula.toString().localeCompare(y.cedula.toString());
+    }
+    datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorEmail(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.email.localeCompare(y.email);
+    }
+    datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorEstado(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.estado.localeCompare(y.estado);
+    }
+    datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+

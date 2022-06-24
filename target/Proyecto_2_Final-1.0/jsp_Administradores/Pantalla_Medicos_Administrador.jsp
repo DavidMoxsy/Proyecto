@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Medicos_Administrador</title>
         <link href="../css/css_Administradores/Pantalla_Medico_Administrador.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
