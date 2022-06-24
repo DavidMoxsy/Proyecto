@@ -1,0 +1,582 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.4;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    background-size: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    height: -110px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#B873FF, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: 67%;
+    right: -40px;
+    z-index: 10;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+    bottom: -3px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+    color:white;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: rgb(153, 117, 212);
+    border-radius: 15px;
+    width: 100%;
+    color: white;
+    margin-top: -100px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-top: -75px;
+    margin-bottom: 1.15rem;
+    text-align: center;
+    text-align:center;
+    z-index: 2;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio ul{
+    margin: 0 auto;
+    display:inline;
+    padding-left:3px;
+    padding-right:3px;
+}
+
+.checkbox {
+    display: none;
+}
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.header-container {
+    transition-duration: 1s;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(153, 117, 212);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+header .header-container p{
+    color: white;
+    margin: 0 auto;
+    font-size: 40px;
+}
+
+.btn-label {
+    width: 2rem;
+    height: 1.4rem;
+}
+
+.header-button {
+    width: 2rem;
+    height: 0.2rem;
+    background: white;
+    position: absolute;
+    top: 1.9rem;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin-top: 10px;
+    right: calc(100% - 60px);
+}
+
+.header-button:hover{
+    background-color: #6464f8;
+}
+
+.header-button::before,
+.header-button::after {
+    content: "";
+    width: 2rem;
+    height: 0.2rem;
+    background: white;
+    position: absolute;
+    top: -0.6rem;
+    transition: all 0.2s;
+}
+
+.header-button::after {
+    top: 0.6rem;
+}
+
+.menu {
+    background: #d1d1d1;
+    width: 100%;
+    height: 19%;
+    position: fixed;
+    z-index: 9;
+    top: -12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    padding-top: 2rem;
+    transition: all 1s;
+}
+
+ul {
+    list-style: none;
+}
+li {
+    margin: 0.5rem;
+}
+.menu a {
+    margin: 0 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(230, 155, 220);
+}
+
+.checkbox:checked ~ .menu {
+    transition-duration: 1s;
+    background: rgb(153, 117, 212);
+    top: 0rem;
+    color: white;
+}
+.checkbox:checked + header .header-container label .header-button {
+    background: none;
+}
+.checkbox:checked + header .header-container label .header-button::before {
+    transform: rotate(35deg);
+    top: 0;
+}
+.checkbox:checked + header .header-container label .header-button::after {
+    transform: rotate(-35deg);
+    top: 0;
+}
+
+.checkbox:checked + header .header-container {
+    transition-duration: 1s;
+    background: none;
+    height: 1px;
+}
+
+.checkbox:checked + header .header-container p{
+    display: none;
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:absolute;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: rgb(162, 161, 241);
+    z-index: 2;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+h1{
+    position: relative;
+    top: -20px;
+    text-align: center;
+    color: green;
+}
+
+table{
+    top: 50px;
+    border-spacing:1;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    width:30%;
+    position:relative;
+    margin:0 auto;
+    box-shadow: 7px 13px 37px #000;
+}
+
+table thead tr{
+    height:60px;
+    background:rgb(153, 117, 212);
+}
+table tbody tr{
+    height:50px
+}
+table tbody tr:last-child{
+    border:0
+}
+table td,table th{
+    text-align:left
+}
+table td.l,table th.l{
+    text-align:right
+}
+table td.c,table th.c{
+    text-align:center
+}
+table td.r,table th.r{
+    text-align:center
+}
+.table100-head th{
+    font-family:OpenSans-Regular;
+    font-size:18px;
+    color:#fff;
+    line-height:1.2;
+    font-weight:unset
+}
+tbody tr{
+    font-family:OpenSans-Regular;
+    font-size:15px;
+    color:black;
+    line-height:1.2;
+    font-weight:unset
+}
+.column1{
+    width:250px;
+    padding-left:40px
+}
+.column2{
+    text-align: center;
+}
+
+#tbody a{
+    position: relative;
+    width: 10px;
+    padding-right:62px;
+    top: 17px;
+    left: 50px;
+    text-decoration: none;
+    color: green;
+    cursor: pointer;
+    text-align: center;
+}
+
+#tbody a:hover{
+    color: #6464f8;
+}
+
+@media screen and (max-width:992px){
+    table{
+        display:block
+    }
+    table>*,table tr,table td,table th{
+        display:block
+    }
+    table thead{
+        display:none
+    }
+    table tbody tr{
+        height:auto;
+        padding:37px 0
+    }
+    table tbody tr td{
+        padding-left:40%!important;
+        margin-bottom:24px
+    }
+    table tbody tr td:last-child{
+        margin-bottom:0
+    }
+    table tbody tr td:nth-child(1):before{
+        content:"Nombre"
+    }
+    table tbody tr td:nth-child(2):before{
+        content:"Apellido"
+    }
+    table tbody tr td:nth-child(3):before{
+        content:"Cedula"
+    }
+    table tbody tr td:nth-child(4):before{
+        content:"Email"
+    }
+    table tbody tr td:nth-child(5):before{
+        content:"Estado"
+    }
+    table tbody tr td:nth-child(6):before{
+        content:"Acciones"
+    }
+    .column4,.column5,.column6{
+        text-align:left
+    }
+    .column4,.column5,.column6,.column1,.column2,.column3{
+        width:100%
+    }
+    tbody tr{
+        font-size:14px
+    }
+}
+@media(max-width:576px){
+    .container-table100{
+        padding-left:15px;
+        padding-right:15px
+    }
+}
+
+#Encabezado th i{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#Encabezado th i:hover{
+    color:rgb(230, 155, 220);
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modalCrear{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+.modal_container{
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90%;
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+}
+
+.modal button{
+    width: 50px;
+    height: 50px;
+    color: red;
+    margin-left:340px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modalCrear button{
+    width: 50px;
+    height: 50px;
+    color: red;
+    margin-left:340px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#Table_Localidades button{
+    margin: 20px;
+    width: 160px;
+    padding: 10px;
+    background: rgb(162, 161, 241);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#Table_Localidades button:hover{
+    background: #6464f8;
+    color: white;
+}
+.modal button:hover{
+    color: #6464f8;
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.formulario_Editar_Paciente h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.formulario_Editar_Paciente{
+    margin-top: -20px;
+    width: 400px;
+    height: 290px;
+    background: rgb(187, 159, 233);
+    text-align: center;
+    box-shadow: 7px 13px 37px #000;
+    border-radius: 8px;
+    z-index: 2;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.formulario_Editar_Paciente h2{
+    margin-bottom: 50px;
+}
+
+.formulario_Editar_Paciente::-webkit-scrollbar {
+    display: none;
+}
+
+.formulario_Editar_Paciente input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+
+.formulario_Editar_Paciente input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.formulario .especialidades{
+    border-color: #6464f8;
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px;
+}
+
+.formulario_Editar_Paciente .formulario label{
+    display: block;
+
+}
+
+.formulario_Editar_Paciente .formulario div input{
+    display: inline;
+}
+
+.formulario_Editar_Paciente .formulario div label{
+    display: inline;
+}
+
+.formulario_Editar_Paciente .formulario input{
+    display: inline;
+}
+
+.formulario_Editar_Paciente input[type=number]::-webkit-inner-spin-button,
+.formulario_Editar_Paciente input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.formulario_Editar_Paciente input[type="submit"]:hover {
+    background: rgb(230, 155, 220);
+    color: white;
+}
+
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}

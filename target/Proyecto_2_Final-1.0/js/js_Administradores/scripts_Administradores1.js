@@ -28,6 +28,10 @@ function solicitarDatos5(url, fn, callback, evt) {
     fn(document.getElementById("ced").value, callback, url, fn);
 }
 
+function solicitarDatos6(url, fn, callback, id) {
+    fn(id, callback, url);
+}
+
 function iniciarSesion(datosJSON) {
     if (datosJSON.cedula === parseInt(document.getElementById("cedula").value)) {
         if (datosJSON.clave === document.getElementById("clave").value) {
@@ -46,14 +50,6 @@ function iniciarSesion(datosJSON) {
     }
 }
 
-function editarEspecialidades(datosJSON) {
-    datosJSON.nombre = document.getElementById("nombre_Editar").value;
-    swal("Especialidad actualizada correctamente", "La especialidad fue actualizada correctamente", "success")
-            .then(() => {
-                editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/resfulEspecialidades');
-            });
-}
-
 function administradorIniciado(datosJSON) {
     var bienvenida = document.getElementById("bienvenida");
     bienvenida.innerHTML = "Bienvenido(a) " + datosJSON.nombre + " " + datosJSON.apellido;
@@ -69,20 +65,6 @@ function administradorIniciado(datosJSON) {
         const imagenPrevisualizacion = document.querySelector("#foto");
         imagenPrevisualizacion.src = URL.createObjectURL(blob);
     }
-}
-
-function crearEspecialidad(datosJSON) {
-    let especialidad = datosJSON['lista-especialidades']['especialidad'];
-    var dat = {};
-    dat = {"id": especialidad.length + 1,
-        "nombre": document.getElementById("nombre_Crear").value
-    };
-
-    crearUsuario('http://localhost:8080/Proyecto/resources/resfulEspecialidades', dat);
-    swal("Especialidad ingresada correctamente", "La especialidad fue ingresada correctamente", "success")
-            .then(() => {
-                location.reload();
-            });
 }
 
 function crearAdministrador(url, evt) {
@@ -295,7 +277,7 @@ function conseguirMedicos(datosJSON) {
         btnAceptar.setAttribute('href', "#");
         btnAceptar.setAttribute('id', "btn");
         btnAceptar.setAttribute('class', "btn");
-        btnAceptar.setAttribute('onclick', "solicitarDatos4('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cambiarEstado," + Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value + ")");
+        btnAceptar.setAttribute('onclick', "solicitarDatos6('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cambiarEstado," + Object.getOwnPropertyDescriptors(medicosList[i]).cedula.value + ")");
         btnAceptar.innerHTML = "Aceptar Medico";
         btnAceptar.setAttribute("class", "column6");
 
@@ -359,6 +341,28 @@ function ordenarPorEstado(datosJSON) {
     }
     datosJSON['lista-medicos']['medico'] = datosJSON['lista-medicos']['medico'].sort(SortArray);
     conseguirMedicos(datosJSON);
+}
+
+function editarEspecialidades(datosJSON) {
+    datosJSON.nombre = document.getElementById("nombre_Editar").value;
+    swal("Especialidad actualizada correctamente", "La especialidad fue actualizada correctamente", "success")
+            .then(() => {
+                editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/resfulEspecialidades');
+            });
+}
+
+function crearEspecialidad(datosJSON) {
+    let especialidad = datosJSON['lista-especialidades']['especialidad'];
+    var dat = {};
+    dat = {"id": especialidad.length + 1,
+        "nombre": document.getElementById("nombre_Crear").value
+    };
+
+    crearUsuario('http://localhost:8080/Proyecto/resources/resfulEspecialidades', dat);
+    swal("Especialidad ingresada correctamente", "La especialidad fue ingresada correctamente", "success")
+            .then(() => {
+                location.reload();
+            });
 }
 
 function conseguirEspecialidades(datosJSON) {
@@ -443,4 +447,109 @@ function ordenarPorNombreEspecialidad(datosJSON) {
     }
     datosJSON['lista-especialidades']['especialidad'] = datosJSON['lista-especialidades']['especialidad'].sort(SortArray);
     conseguirEspecialidades(datosJSON);
+}
+
+function editarLocalidades(datosJSON) {
+    datosJSON.ubicacion = document.getElementById("nombre_Editar").value;
+    swal("Localidad actualizada correctamente", "La localidad fue actualizada correctamente", "success")
+            .then(() => {
+                editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulLocalidades');
+            });
+}
+
+function crearLocalidad(datosJSON) {
+    let localidad = datosJSON['lista-localidades']['localidad'];
+    var dat = {};
+    dat = {"id": localidad.length + 1,
+        "ubicacion": document.getElementById("nombre_Crear").value
+    };
+    
+    crearUsuario('http://localhost:8080/Proyecto/resources/restfulLocalidades', dat);
+    swal("Localidad ingresada correctamente", "La localidad fue ingresada correctamente", "success")
+            .then(() => {
+                location.reload();
+            });
+}
+
+function conseguirLocalidades(datosJSON) {
+
+    let localidadList = datosJSON['lista-localidades']['localidad'];
+    let table = document.getElementById('Table_Localidades');
+    let thead = document.createElement("thead");
+    thead.setAttribute('id', 'thead');
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('id', 'tbody');
+    let tr = document.createElement("tr");
+    tr.setAttribute('id', 'Encabezado');
+    let crear = document.createElement("button");
+    crear.innerHTML = "Agregar Localidad"
+    crear.setAttribute('id', "Agregar");
+    crear.setAttribute('onclick', "openModalCrear()");
+
+
+    let nombre = document.createElement("th");
+    let acciones = document.createElement("th");
+    let iconoOrdenarNombre = document.createElement("i");
+    iconoOrdenarNombre.setAttribute("class", "fa fa-sort");
+    iconoOrdenarNombre.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulLocalidades', cargarDatos, ordenarPorNombreLocalidad)");
+
+    nombre.innerHTML = "Nombre";
+    nombre.appendChild(iconoOrdenarNombre);
+    nombre.setAttribute("class", "column1");
+    acciones.innerHTML = "Acciones";
+    acciones.setAttribute("class", "column2");
+
+    tr.appendChild(nombre);
+    tr.appendChild(acciones);
+
+    thead.appendChild(tr);
+    table.replaceChild(thead, document.getElementById('thead'));
+
+    for (var i = 0; i < localidadList.length; i++) {
+        let trMedico = document.createElement("tr");
+        let tdNombre = document.createElement("td");
+        let btnAceptar = document.createElement("a");
+        let btnBorrar = document.createElement("a");
+
+        tdNombre.innerHTML = Object.getOwnPropertyDescriptors(localidadList[i]).ubicacion.value;
+        tdNombre.setAttribute("class", "column1");
+
+        btnAceptar.setAttribute('href', "#");
+        btnAceptar.setAttribute('id', "btn");
+        btnAceptar.setAttribute('class', "btn");
+        btnAceptar.setAttribute('onclick', "openModal(), document.getElementById('ced').setAttribute('value', " + Object.getOwnPropertyDescriptors(localidadList[i]).id.value + "), document.getElementById('nombre_Editar').value = " + JSON.stringify(Object.getOwnPropertyDescriptors(localidadList[i]).ubicacion.value));
+        btnAceptar.innerHTML = "Editar Localidad";
+        btnAceptar.setAttribute("class", "column2");
+
+        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/restfulLocalidades/delete', " + Object.getOwnPropertyDescriptors(localidadList[i]).id.value + ")")
+        btnBorrar.setAttribute('id', "btn");
+        btnBorrar.setAttribute('class', "btn");
+        btnBorrar.innerHTML = "Borrar Localidad";
+        btnBorrar.setAttribute("class", "column2");
+
+
+
+        trMedico.appendChild(tdNombre);
+
+        trMedico.appendChild(btnAceptar);
+        trMedico.appendChild(btnBorrar);
+        tr.setAttribute("class", "table100-head");
+        tbody.appendChild(trMedico);
+        table.replaceChild(tbody, document.getElementById('tbody'));
+    }
+    if (document.getElementById('Agregar') === null) {
+        table.appendChild(crear);
+    }else{
+        table.replaceChild(crear, document.getElementById('Agregar'));
+    }
+
+}
+
+function ordenarPorNombreLocalidad(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.ubicacion.localeCompare(y.ubicacion);
+    }
+    datosJSON['lista-localidades']['localidad'] = datosJSON['lista-localidades']['localidad'].sort(SortArray);
+    conseguirLocalidades(datosJSON);
 }

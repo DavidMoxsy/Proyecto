@@ -63,7 +63,6 @@ public class Gestor_Especialidades {
             System.out.printf("Excepción: '%s'%n", ex.getMessage());
             Especialidad dato = new Especialidad();
             return dato;
-
         }
 
     }

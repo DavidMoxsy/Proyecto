@@ -20,10 +20,9 @@ public class resfulEspecialidades {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void crearAdministrador(String administrador) {
-        System.out.print(administrador);
+    public void crearEspecialidad(String especialidad) {
         Gestor_Especialidades g = new Gestor_Especialidades();
-        g.crearEspecialidad(administrador);
+        g.crearEspecialidad(especialidad);
     }
 
     @GET

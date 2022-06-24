@@ -39,7 +39,7 @@
                 <li><a href="Administrador_Iniciado.jsp?cedula=<%=id%>">Perfil</a></li>
                 <li><a href="Pantalla_Medicos_Administrador.jsp?cedula=<%=id%>">Medicos</a></li>
                 <li><a href="Pantalla_Especialidades_Administrador.jsp?cedula=<%=id%>">Especialidades</a></li>
-                <li><a href="#">Localidades</a></li>
+                <li><a href="Pantalla_Localidades_Administrador.jsp?cedula=<%=id%>">Localidades</a></li>
 
             </ul>           
         </nav>

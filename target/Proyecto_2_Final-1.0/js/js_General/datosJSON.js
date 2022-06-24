@@ -62,7 +62,6 @@ function eliminarDato(url, id) {
 }
 
 function editarDato(dato, url) {
-
     fetch(url, {
         method: 'PUT',
         body: JSON.stringify(dato),

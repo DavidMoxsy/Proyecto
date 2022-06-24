@@ -3,8 +3,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Especialidades_Administrador</title>
-        <link href="../css/css_Administradores/Pantalla_Especialidad_Administrador.css" rel="stylesheet" type="text/css"/>
+        <title>Localidades_Administrador</title>
+        <link href="../css/css_Administradores/Pantalla_Localidad_Administrador.css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
@@ -14,7 +14,7 @@
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
-    <body onload="solicitarDatos('http://localhost:8080/Proyecto/resources/resfulEspecialidades', cargarDatos, conseguirEspecialidades), solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, cargarFoto)">
+    <body onload="solicitarDatos('http://localhost:8080/Proyecto/resources/restfulLocalidades', cargarDatos, conseguirLocalidades), solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, cargarFoto)">
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
         <div id="particles-js" style="z-index: -10"></div>
 
@@ -48,9 +48,9 @@
             </div>
         </section>
 
-        <h1>Lista de especialidades disponibles</h1>
+        <h1>Lista de localidades disponibles</h1>
 
-        <table id="Table_Especialidades">
+        <table id="Table_Localidades">
             <thead id="thead"></thead>
             <tbody id="tbody"></tbody>
         </table>
@@ -58,9 +58,9 @@
         <div class="modal">
             <div class="modal_container">
                 <div id="formulario_Editar_Paciente" class="formulario_Editar_Paciente">
-                    <form class="formulario" id="formulario" onsubmit="solicitarDatos5('http://localhost:8080/Proyecto/resources/resfulEspecialidades/getPorID', buscarDatoPorId, editarEspecialidades, event)">
+                    <form class="formulario" id="formulario" onsubmit="solicitarDatos5('http://localhost:8080/Proyecto/resources/restfulLocalidades/getPorID', buscarDatoPorId, editarLocalidades, event)">
                         <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
-                        <h2 class="crear_cuenta">Editar Especialidad</h2>
+                        <h2 class="crear_cuenta">Editar Localidad</h2>
                         <button id="ced" value="" hidden></button>
                         <input id="nombre_Editar" type="text" placeholder="Ubicacion" required>
                         <input type="submit" value="Guardar Cambios">
@@ -72,9 +72,9 @@
         <div class="modalCrear">
             <div class="modal_container">
                 <div id="formulario_Editar_Paciente" class="formulario_Editar_Paciente">
-                    <form class="formulario" id="formulario" onsubmit="solicitarDatos4('http://localhost:8080/Proyecto/resources/resfulEspecialidades', cargarDatos, crearEspecialidad, event)">
+                    <form class="formulario" id="formulario" onsubmit="solicitarDatos4('http://localhost:8080/Proyecto/resources/restfulLocalidades', cargarDatos, crearLocalidad, event)">
                         <button type="button" class="cerrar" id="cerrar" onclick="closeModalCrear()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
-                        <h2 class="crear_cuenta">Agregar Especialidad</h2>
+                        <h2 class="crear_cuenta">Agregar Localidad</h2>
                         <button id="ced" value="" hidden></button>
                         <input id="nombre_Crear" type="text" placeholder="Ubicacion" required>
                         <input type="submit" value="Guardar Cambios">
