@@ -46,15 +46,37 @@ public class EspecialidadDAO {
         return instancia;
     }
 
+    public void crearEspecialidad(String espec) {
+
+        Gson gson = new Gson();
+        Especialidad especialidad = gson.fromJson(espec, Especialidad.class);
+
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(CREAR_ESPECIALIDAD)) {
+
+            pst.setInt(1, especialidad.getId());
+            pst.setString(2, especialidad.getNombre());
+
+            pst.executeUpdate();
+            System.out.println("Se registró la especialidad correctamente");
+            cnx.close();
+
+        } catch (Exception ex) {
+            System.out.println("Error al registrar a la especialidad");
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void borrar_Especialidad(int id) {
 
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(BORRAR_ESPECIALIDAD)) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(BORRAR_ESPECIALIDAD);) {
 
             pst.setInt(1, id);
 
             pst.executeUpdate();
 
             cnx.close();
+
+            editarEspecialidad();
 
         } catch (Exception ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
@@ -63,7 +85,7 @@ public class EspecialidadDAO {
 
     public Especialidad getEspecialidadID(String id) {
 
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(CONSULTA_ESPECIALIDADES_POR_ID);) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(CONSULTA_ESPECIALIDADES_POR_ID);) {
 
             Especialidad especialidad = new Especialidad();
 
@@ -99,14 +121,47 @@ public class EspecialidadDAO {
 
     public void editarEspecialidad(Especialidad especialidad) {
 
-        Gson gson = new Gson();
-
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(EDITAR_ESPECIALIDAD)) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(EDITAR_ESPECIALIDAD)) {
 
             pst.setInt(1, especialidad.getId());
             pst.setString(2, especialidad.getNombre());
+            pst.setInt(3, especialidad.getId());
 
             pst.executeUpdate();
+
+            cnx.close();
+
+        } catch (Exception ex) {
+            System.out.println("Error al actualizar la especialidad");
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void editarEspecialidad() {
+
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(EDITAR_ESPECIALIDAD); Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CONSULTA_ESPECIALIDADES)) {
+
+            List<Especialidad> especialidades = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Especialidad especialidad = new Especialidad();
+
+                especialidad.setId(rs.getInt(1));
+
+                especialidad.setNombre(rs.getString(2));
+
+                especialidades.add(especialidad);
+            }
+
+            for (int i = 0; i < especialidades.size(); i++) {
+
+                pst.setInt(1, i + 1);
+                pst.setString(2, especialidades.get(i).getNombre());
+                pst.setInt(3, especialidades.get(i).getId());
+
+                pst.executeUpdate();
+            }
 
             cnx.close();
 
@@ -120,7 +175,7 @@ public class EspecialidadDAO {
 
         List<Especialidad> especialidades = new ArrayList<>();
 
-        try ( Connection cnx = ds.getConnection();  Statement stm = cnx.createStatement();  ResultSet rs = stm.executeQuery(CONSULTA_ESPECIALIDADES)) {
+        try (Connection cnx = ds.getConnection(); Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CONSULTA_ESPECIALIDADES)) {
 
             while (rs.next()) {
                 Especialidad especialidad = new Especialidad();
@@ -148,6 +203,8 @@ public class EspecialidadDAO {
             = "DELETE FROM prueba.especialidades WHERE id = ?; ";
     private static final String EDITAR_ESPECIALIDAD
             = "UPDATE prueba.especialidades SET  id = ?, nombre = ? WHERE id = ?";
+    private static final String CREAR_ESPECIALIDAD
+            = "INSERT INTO prueba.especialidades(id, nombre)" + "values(?,?)";
     private static EspecialidadDAO instancia = null;
 
     private final DataSource ds;

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
-        <script src="../js/js_General/scriptsFormularios.js" type="text/javascript"></script>
+        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
         <script src="../js/js_Administradores/scripts_Administradores1.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
     </head>

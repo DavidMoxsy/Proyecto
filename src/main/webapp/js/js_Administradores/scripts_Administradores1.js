@@ -4,7 +4,7 @@ function init() {
     console.log("Aplicación inicializada..");
 }
 
-function solicitarDatos(url, fn, callback) {
+function solicitarDatos(url, fn, callback, ) {
     fn(callback, url);
 }
 
@@ -17,13 +17,18 @@ function solicitarDatos3(url, fn, callback, evt) {
     fn(document.getElementById("cedula").value, callback, url, fn);
 }
 
-function solicitarDatos4(url, fn, callback, id) {
-    fn(id, callback, url);
+function solicitarDatos4(url, fn, callback, evt) {
+    evt.preventDefault();
+    fn(callback, url);
+}
+
+
+function solicitarDatos5(url, fn, callback, evt) {
+    evt.preventDefault();
+    fn(document.getElementById("ced").value, callback, url, fn);
 }
 
 function iniciarSesion(datosJSON) {
-
-
     if (datosJSON.cedula === parseInt(document.getElementById("cedula").value)) {
         if (datosJSON.clave === document.getElementById("clave").value) {
             window.location.href = "Pantalla_Principal_Administradores.jsp?cedula=" + document.getElementById("cedula").value;
@@ -41,6 +46,14 @@ function iniciarSesion(datosJSON) {
     }
 }
 
+function editarEspecialidades(datosJSON) {
+    datosJSON.nombre = document.getElementById("nombre_Editar").value;
+    swal("Especialidad actualizada correctamente", "La especialidad fue actualizada correctamente", "success")
+            .then(() => {
+                editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/resfulEspecialidades');
+            });
+}
+
 function administradorIniciado(datosJSON) {
     var bienvenida = document.getElementById("bienvenida");
     bienvenida.innerHTML = "Bienvenido(a) " + datosJSON.nombre + " " + datosJSON.apellido;
@@ -56,6 +69,20 @@ function administradorIniciado(datosJSON) {
         const imagenPrevisualizacion = document.querySelector("#foto");
         imagenPrevisualizacion.src = URL.createObjectURL(blob);
     }
+}
+
+function crearEspecialidad(datosJSON) {
+    let especialidad = datosJSON['lista-especialidades']['especialidad'];
+    var dat = {};
+    dat = {"id": especialidad.length + 1,
+        "nombre": document.getElementById("nombre_Crear").value
+    };
+
+    crearUsuario('http://localhost:8080/Proyecto/resources/resfulEspecialidades', dat);
+    swal("Especialidad ingresada correctamente", "La especialidad fue ingresada correctamente", "success")
+            .then(() => {
+                location.reload();
+            });
 }
 
 function crearAdministrador(url, evt) {
@@ -194,6 +221,7 @@ function conseguirMedicos(datosJSON) {
     let estado = document.createElement("th");
     let acciones = document.createElement("th");
     let iconoOrdenarNombre = document.createElement("i");
+
     iconoOrdenarNombre.setAttribute("class", "fa fa-sort");
     iconoOrdenarNombre.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulMedicos', cargarDatos, ordenarPorNombre)");
 
@@ -333,3 +361,86 @@ function ordenarPorEstado(datosJSON) {
     conseguirMedicos(datosJSON);
 }
 
+function conseguirEspecialidades(datosJSON) {
+
+    let especialidadList = datosJSON['lista-especialidades']['especialidad'];
+    let table = document.getElementById('Table_Especialidades');
+    let thead = document.createElement("thead");
+    thead.setAttribute('id', 'thead');
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('id', 'tbody');
+    let tr = document.createElement("tr");
+    tr.setAttribute('id', 'Encabezado');
+    let crear = document.createElement("button");
+    crear.innerHTML = "Agregar Especialidad"
+    crear.setAttribute('id', "Agregar");
+    crear.setAttribute('onclick', "openModalCrear()");
+
+
+    let nombre = document.createElement("th");
+    let acciones = document.createElement("th");
+    let iconoOrdenarNombre = document.createElement("i");
+    iconoOrdenarNombre.setAttribute("class", "fa fa-sort");
+    iconoOrdenarNombre.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/resfulEspecialidades', cargarDatos, ordenarPorNombreEspecialidad)");
+
+    nombre.innerHTML = "Nombre";
+    nombre.appendChild(iconoOrdenarNombre);
+    nombre.setAttribute("class", "column1");
+    acciones.innerHTML = "Acciones";
+    acciones.setAttribute("class", "column2");
+
+    tr.appendChild(nombre);
+    tr.appendChild(acciones);
+
+    thead.appendChild(tr);
+    table.replaceChild(thead, document.getElementById('thead'));
+
+    for (var i = 0; i < especialidadList.length; i++) {
+        let trMedico = document.createElement("tr");
+        let tdNombre = document.createElement("td");
+        let btnAceptar = document.createElement("a");
+        let btnBorrar = document.createElement("a");
+
+        tdNombre.innerHTML = Object.getOwnPropertyDescriptors(especialidadList[i]).nombre.value;
+        tdNombre.setAttribute("class", "column1");
+
+        btnAceptar.setAttribute('href', "#");
+        btnAceptar.setAttribute('id', "btn");
+        btnAceptar.setAttribute('class', "btn");
+        btnAceptar.setAttribute('onclick', "openModal(), document.getElementById('ced').setAttribute('value', " + Object.getOwnPropertyDescriptors(especialidadList[i]).id.value + "), document.getElementById('nombre_Editar').value = " + JSON.stringify(Object.getOwnPropertyDescriptors(especialidadList[i]).nombre.value));
+        btnAceptar.innerHTML = "Editar Especialidad";
+        btnAceptar.setAttribute("class", "column2");
+        console.log(document.getElementById('nombre_Editar').value)
+
+        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/resfulEspecialidades/delete', " + Object.getOwnPropertyDescriptors(especialidadList[i]).id.value + ")")
+        btnBorrar.setAttribute('id', "btn");
+        btnBorrar.setAttribute('class', "btn");
+        btnBorrar.innerHTML = "Borrar Especialidad";
+        btnBorrar.setAttribute("class", "column2");
+
+
+
+        trMedico.appendChild(tdNombre);
+
+        trMedico.appendChild(btnAceptar);
+        trMedico.appendChild(btnBorrar);
+        tr.setAttribute("class", "table100-head");
+        tbody.appendChild(trMedico);
+        table.replaceChild(tbody, document.getElementById('tbody'));
+    }
+    if (document.getElementById('Agregar') === null) {
+        table.appendChild(crear);
+    }else{
+        table.replaceChild(crear, document.getElementById('Agregar'));
+    }
+
+}
+
+function ordenarPorNombreEspecialidad(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.nombre.localeCompare(y.nombre);
+    }
+    datosJSON['lista-especialidades']['especialidad'] = datosJSON['lista-especialidades']['especialidad'].sort(SortArray);
+    conseguirEspecialidades(datosJSON);
+}
