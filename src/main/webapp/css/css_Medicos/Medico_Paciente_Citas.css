@@ -10,9 +10,9 @@ body{
     margin:1em auto;
     padding: .5em 0;
     height: 90%;
-    width: 90%;
+    width: 1552px;
     color:black;
-    
+
 }
 /*.div_tabla {
     display: grid;
@@ -32,12 +32,12 @@ body{
     text-transform: uppercase;
 }
 
-.next--month, #prev-month{
-  color: #DBE5ED;
-  cursor: pointer;
-  font-size: 1.2em;
+.next-month, .prev-month{
+    color: #DBE5ED;
+    cursor: pointer;
+    font-size: 1.2em;
 }
-.next--month{
+.next-month{
     margin-left: auto;
 }
 .prev-month{
@@ -48,10 +48,16 @@ body{
     display: grid;
     grid-template-columns: repeat(7,1fr);
     grid-gap:10px;
+    width: 1500px;
 }
 .calendar_day{
     text-align: center;
     line-height:2;
+
+    width: 100%;
+    min-width: 217px;
+    max-width: 350px;
+    width: 150px;
 }
 .calendar__month,calendar__year{
     padding: .5em 1em;
@@ -62,9 +68,22 @@ body{
     border:1px solid black;
     padding: 0px;
     margin: 0;
-    height: 180px;
-    width: 180px;
-    
+
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+
+    width: 100%;
+    min-width: 178px;
+    max-width: 217px;
+    height: 100%;
+    min-height: 150px;
+
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0 15px;
+    padding: 8px;
+    transition: all 0.2s linear;
+
 }
 .calendar__dateCalendar__item_today{
     background: lightcoral;
@@ -74,25 +93,47 @@ body{
     margin: auto;
 }
 
-.calendar__dateCalendar__item calendar__last-days{
+.calendar__dateCalendar__item_calendar__last_days{
     opacity:.3;
 }
 
 
 .seccion-perfil-usuario, .perfil-usuario-footer{
     height: 100%;
-   width: 100%;
+    width: 100%;
 }
 
 .divCita{
-    max-width: 120px;
-    max-height: 50px;
-    overflow: auto;
 }
 
 
-.seccion-perfil-usuario .perfil-usuario-body {
+.seccion-perfil-usuario, .perfil-usuario-body {
     width: 100%;
     position: relative;
     max-width: 1144px;
 }
+.seccion-perfil-usuario, .perfil-usuario-footer, .seccion-perfil-usuario .perfil-usuario-bio {
+    width: 1700px;
+    margin-top: -40px;
+}
+.li{
+    width: 1690px;
+}
+.ul{
+    width: 1695px;
+}
+
+.divCitaCompletada {
+    background: greenyellow;
+    border-radius: 8px;
+    text-align: center;
+    margin: 4px 0px;
+}
+
+.divCitaDisponible {
+    background: whitesmoke;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0px 0px;
+}
+

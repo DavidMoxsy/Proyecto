@@ -16,7 +16,7 @@
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="../css/css_Medicos/Medico_Paciente_Citas.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/css_Pacientes/stylePacientes.css" rel="stylesheet" type="text/css"/>
 
     </head>
 
@@ -30,15 +30,6 @@
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
 
         <div id="particles-js"></div>
-
-        <input type="checkbox" id="btn-nav" class="checkbox">
-        <header>
-            <div class="header-container">
-                <p id="bienvenida"></p>
-                <label for="btn-nav" class="btn-label">
-                </label>
-            </div>
-        </header>
 
         <nav class="menu">
             <ul>
@@ -58,48 +49,25 @@
             </div>
             <div class="perfil-usuario-body">
                 <div class="perfil-usuario-bio">
-                    <ul>
-                        <%LocalDateTime hoy = LocalDateTime.now();%>
-                        <li><h3 class="fecha" style="margin: 0 auto;"> Citas disponibles </h3></li>
-
-                        <li><i class="fas fa-smile"></i><p style="text-align: center;">
-
-                            <h1 class="title">Calendario</h1><!-- comment -->
-                            <div class="calendar">
-
-                                <div class="calendar_info">
-                                    <div class="calendar__prev" id="prev-month">&#9664;</div>
-                                    <div class="calendar__month" id="month"></div>
-                                    <div class="calendar__year" id="year"></div>
-                                    <div class="calendar__next" id="next-month"> &#9654;</div>
-                                </div>
-
-                                <div class="calendar__week">
-                                    <div class="calendar_day">Lunes</div>
-                                    <div class="calendar_day">Martes</div>
-                                    <div class="calendar_day">Miercoles</div>
-                                    <div class="calendar_day">Jueves</div>
-                                    <div class="calendar_day">Viernes</div>
-                                    <div class="calendar_day">Sabado</div>
-                                    <div class="calendar_day">Domingo</div>
-
-                                </div>
-                                <div class="calendar_dates" id="dates"></div>  
-                            </div>  
-
-                    </ul>
-
+                    <form id="formulario" class="formulario" onsubmit="crearPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', event)">
+                        <h2 class="crear_cuenta">Modoficar cita</h2>           
+                        <input name="nombre" id="nombre" type="text" placeholder="Nombre" required>
+                        <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
+                        <input name="cedula" id="cedulaRegistro" type="number" placeholder="Cedula" required>
+                        <input name="email" id="email" type="email" placeholder="Email" required>
+                        <input name="claveRegistro" id="claveRegistro" type="password" placeholder="Contraseña" required>
+                        <input id="confirmarClave" type="password" placeholder="Confirmar Contraseña" required>
+                        <input id="registrarse" type="submit" value="Registrarse">
+                    </form>
                 </div>
             </div>
         </section>
-
 
         <div class="volver">
             <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>
         </div>
         <script src="../js/js_General/particles.js" type="text/javascript"></script>
         <script src="../js/js_General/app.js" type="text/javascript"></script>
-        <script src="../js/js_General/calendario.js" type="text/javascript"></script> 
     </body>
 </html>
 
