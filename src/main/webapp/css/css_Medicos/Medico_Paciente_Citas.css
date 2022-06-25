@@ -14,6 +14,16 @@ body{
     color:black;
 
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: minmax(20px, auto) ;
+    gap: 1em;  /*espaciado para todo, solo columnas seria comlum-gap o row-gap parra filas*/ 
+    padding: 10em;
+    
+}
+
 /*.div_tabla {
     display: grid;
     justify-content: center;

@@ -26,11 +26,13 @@
     <input id="cedulaMedico" value="<%=request.getParameter("cedulaMedico")%>" hidden>
     <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulPacientes/getPorID', buscarDatoPorId, muestraDatosPacientes)">
         
-         <div id = "div_tabla" >
- 
-        
-    </div>
-        
-        <h1>Hello World!</h1>
+        <div class="grid">
+           <div></div> 
+       
+       <div id = "div_tabla" ></div>
+          <div></div>
+        </div>
+
+                    
     </body>
 </html>
