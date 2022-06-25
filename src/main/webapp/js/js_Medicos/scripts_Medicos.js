@@ -63,6 +63,21 @@ function medicoIniciado(datosJSON) {
     mustraPacientes();
 }
 
+function cargarFoto(datosJSON) {
+    var foto = datosJSON.foto;
+    if (foto !== undefined) {
+        const byteCharacters = atob(foto);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: 'image/*'});
+        const imagenPrevisualizacion = document.querySelector("#foto");
+        imagenPrevisualizacion.src = URL.createObjectURL(blob);
+    }
+}
+
 function crearMedico(url, evt) {
 
     evt.preventDefault();
