@@ -46,15 +46,37 @@ public class LocalidadDAO {
         return instancia;
     }
 
+    public void crearLocalidad(String local) {
+
+        Gson gson = new Gson();
+        Localidades localidad = gson.fromJson(local, Localidades.class);
+
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(CREAR_LOCALIDAD)) {
+
+            pst.setInt(1, localidad.getId());
+            pst.setString(2, localidad.getUbicacion());
+
+            pst.executeUpdate();
+            System.out.println("Se registró la localidad correctamente");
+            cnx.close();
+
+        } catch (Exception ex) {
+            System.out.println("Error al registrar la localidad");
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void borrar_Localidad(int id) {
 
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(BORRAR_LOCALIDADES)) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(BORRAR_LOCALIDADES);) {
 
             pst.setInt(1, id);
 
             pst.executeUpdate();
 
             cnx.close();
+
+            editarLocalidad();
 
         } catch (Exception ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
@@ -63,7 +85,7 @@ public class LocalidadDAO {
 
     public Localidades getLocalidadID(String id) {
 
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(CONSULTA_LOCALIDADES_POR_ID);) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(CONSULTA_LOCALIDADES_POR_ID);) {
 
             Localidades localidad = new Localidades();
 
@@ -98,11 +120,46 @@ public class LocalidadDAO {
 
     public void editarLocalidad(Localidades localidad) {
 
-        try ( Connection cnx = ds.getConnection();  PreparedStatement pst = cnx.prepareStatement(EDITAR_LOCALIDADES)) {
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(EDITAR_LOCALIDADES)) {
 
             pst.setInt(1, localidad.getId());
             pst.setString(2, localidad.getUbicacion());
+            pst.setInt(3, localidad.getId());
             pst.executeUpdate();
+
+            cnx.close();
+
+        } catch (Exception ex) {
+            System.out.println("Error al actualizar la localidad");
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void editarLocalidad() {
+
+        try (Connection cnx = ds.getConnection(); PreparedStatement pst = cnx.prepareStatement(EDITAR_LOCALIDADES); Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CONSULTA_LOCALIDADES)) {
+
+            List<Localidades> localidades = new ArrayList<>();
+
+            while (rs.next()) {
+
+                Localidades localidad = new Localidades();
+
+                localidad.setId(rs.getInt(1));
+
+                localidad.setUbicacion(rs.getString(2));
+
+                localidades.add(localidad);
+            }
+
+            for (int i = 0; i < localidades.size(); i++) {
+
+                pst.setInt(1, i + 1);
+                pst.setString(2, localidades.get(i).getUbicacion());
+                pst.setInt(3, localidades.get(i).getId());
+
+                pst.executeUpdate();
+            }
 
             cnx.close();
 
@@ -116,7 +173,7 @@ public class LocalidadDAO {
 
         List<Localidades> localidades = new ArrayList<>();
 
-        try ( Connection cnx = ds.getConnection();  Statement stm = cnx.createStatement();  ResultSet rs = stm.executeQuery(CONSULTA_LOCALIDADES)) {
+        try (Connection cnx = ds.getConnection(); Statement stm = cnx.createStatement(); ResultSet rs = stm.executeQuery(CONSULTA_LOCALIDADES)) {
 
             while (rs.next()) {
                 Localidades localidad = new Localidades();
@@ -144,6 +201,8 @@ public class LocalidadDAO {
             = "DELETE FROM prueba.localidades WHERE id = ?; ";
     private static final String EDITAR_LOCALIDADES
             = "UPDATE prueba.localidades SET  id = ?,nombre = ? where id = ?";
+    private static final String CREAR_LOCALIDAD
+            = "INSERT INTO prueba.localidades(id, nombre)" + "values(?,?)";
     private static LocalidadDAO instancia = null;
 
     private final DataSource ds;

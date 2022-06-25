@@ -17,8 +17,22 @@ function openModal() {
     modal.classList.add('modal--show');
 }
 
+function openModalCrear() {
+    const openModal = document.querySelector('.boton-portada');
+    const modal = document.querySelector('.modalCrear');
+
+    modal.classList.add('modal--show');
+}
+
 function closeModal() {
     const modal = document.querySelector('.modal');
+    const cerrarModal = document.querySelector('.cerrar_Modal');
+
+    modal.classList.remove('modal--show');
+}
+
+function closeModalCrear() {
+    const modal = document.querySelector('.modalCrear');
     const cerrarModal = document.querySelector('.cerrar_Modal');
 
     modal.classList.remove('modal--show');

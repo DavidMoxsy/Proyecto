@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import modelo.DAO.Localidades.Gestor_Localidades;
@@ -16,7 +17,7 @@ import modelo.DAO.Localidades.Gestor_Localidades;
 @Path("restfulLocalidades")
 @RequestScoped
 public class restfulLocalidades {
-    
+
     public restfulLocalidades() {
     }
 
@@ -30,6 +31,13 @@ public class restfulLocalidades {
         return Response
                 .ok(g.datosJSON())
                 .build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void crearLocalidad(String localidad) {
+        Gestor_Localidades g = new Gestor_Localidades();
+        g.crearLocalidad(localidad);
     }
 
     @PUT
@@ -56,13 +64,13 @@ public class restfulLocalidades {
                 .build();
     }
 
-    @DELETE
+    @PUT
+    @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public void delete(String id) {
 
         Gestor_Localidades g = new Gestor_Localidades();
 
-        g.editarLocalidades(id);
+        g.eliminarMedicoLocalidades(id);
     }
 }

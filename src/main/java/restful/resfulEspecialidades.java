@@ -6,7 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import modelo.DAO.Especialidades.Gestor_Especialidades;
@@ -18,10 +18,17 @@ public class resfulEspecialidades {
     public resfulEspecialidades() {
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void crearEspecialidad(String especialidad) {
+        Gestor_Especialidades g = new Gestor_Especialidades();
+        g.crearEspecialidad(especialidad);
+    }
+
     @GET
     public Response getAll() {
         Gestor_Especialidades g = new Gestor_Especialidades();
-        
+
         return Response
                 .ok(g.datosJSON())
                 .build();
@@ -51,9 +58,9 @@ public class resfulEspecialidades {
                 .build();
     }
 
-    @DELETE
+    @PUT
+    @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public void delete(String id) {
 
         Gestor_Especialidades g = new Gestor_Especialidades();

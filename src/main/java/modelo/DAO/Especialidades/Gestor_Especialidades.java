@@ -32,6 +32,11 @@ public class Gestor_Especialidades {
         return gson.toJson(datosEspecialidadID(id));
     }
 
+    public void crearEspecialidad(String especialidad) {
+        EspecialidadDAO dao = EspecialidadDAO.obtenerInstancia();
+        dao.crearEspecialidad(especialidad);
+    }
+
     public Conjunto_Especialidades datosEspecialidades() {
         Conjunto_Especialidades r = new Conjunto_Especialidades();
         try {
@@ -58,7 +63,6 @@ public class Gestor_Especialidades {
             System.out.printf("Excepción: '%s'%n", ex.getMessage());
             Especialidad dato = new Especialidad();
             return dato;
-
         }
 
     }

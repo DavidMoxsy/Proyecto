@@ -32,6 +32,11 @@ public class Gestor_Localidades {
         return gson.toJson(datosLocalidadesID(id));
     }
 
+    public void crearLocalidad(String especialidad) {
+        LocalidadDAO dao = LocalidadDAO.obtenerInstancia();
+        dao.crearLocalidad(especialidad);
+    }
+
     public Conjunto_Localidades datosLocalidades() {
         Conjunto_Localidades r = new Conjunto_Localidades();
         try {
