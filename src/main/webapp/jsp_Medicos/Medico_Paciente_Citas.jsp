@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Medico_Paciente_Citas
-    Created on : 12 jun. 2022, 23:15:09
-    Author     : Alfredo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

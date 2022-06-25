@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
-        <script src="../js/js_General/scriptsFormularios.js" type="text/javascript"></script>
+        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
         <script src="../js/js_Pacientes/scripts_Pacientes.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
     </head>
@@ -60,6 +60,7 @@
             <div class="modal_container">
                 <div id="formulario_Editar_Paciente" class="formulario_Editar_Paciente">
                     <form class="formulario" id="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulPacientes/getPorID', buscarDatoPorId, editarPaciente, event)">
+                        <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                         <h2 class="crear_cuenta">Editar Cuenta</h2>           
                         <input id="nombre_Editar" type="text" placeholder="Nombre" required>
                         <input id="apellido_Editar" type="text" placeholder="Apellido" required>
@@ -70,7 +71,6 @@
                         <input id="descripcion_Editar" type="text" placeholder="Descripción" required>
                         <input type="submit" value="Guardar Cambios">
                     </form>
-                    <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                 </div>
             </div>
         </div>

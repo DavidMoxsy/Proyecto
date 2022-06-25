@@ -60,6 +60,7 @@
             <div class="modal_container">
                 <div id="formulario_Editar_Administrador" class="formulario_Editar_Administrador">
                     <form class="formulario" id="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulAdministradores/getPorID', buscarDatoPorId, editarAdministrador, event)">
+                        <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                         <h2 class="crear_cuenta">Editar Cuenta</h2>           
                         <input id="nombre_Editar" type="text" placeholder="Nombre" required>
                         <input id="apellido_Editar" type="text" placeholder="Apellido" required>
@@ -70,7 +71,6 @@
                         <input id="descripcion_Editar" type="text" placeholder="Descripción" required>
                         <input type="submit" value="Guardar Cambios">
                     </form>
-                    <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                 </div>
             </div>
         </div>

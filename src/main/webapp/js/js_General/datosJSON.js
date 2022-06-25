@@ -75,3 +75,17 @@ function editarDato(dato, url) {
                 console.log(e);
             });
 }
+
+function editarDato1(dato, url) {
+    fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(dato),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+            .catch(function (e) {
+                console.log(e);
+            });
+}

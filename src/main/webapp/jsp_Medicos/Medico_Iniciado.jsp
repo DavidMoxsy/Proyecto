@@ -10,13 +10,13 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
-        <script src="../js/js_General/scriptsFormularios.js" type="text/javascript"></script>
+        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
         <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
     </head>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
     <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, llenarDatos)">
-                                    
+
         <div id="particles-js"></div>
 
         <form name="mi_Formulario">
@@ -60,6 +60,7 @@
             <div class="modal_container">
                 <div id="formulario_Editar_Medico" class="formulario_Editar_Medico">
                     <form class="formulario" id="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, editarMedico, event)">
+                        <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                         <h2 class="crear_cuenta">Editar Cuenta</h2>           
                         <input id="nombre_Editar" type="text" placeholder="Nombre" required>
                         <input id="apellido_Editar" type="text" placeholder="Apellido" required>
@@ -79,7 +80,6 @@
 
                         <input type="submit" value="Guardar Cambios">
                     </form>
-                    <button type="button" class="cerrar" id="cerrar" onclick="closeModal()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
                 </div>
             </div>
         </div>

@@ -35,7 +35,6 @@ public class restfulAdministradores {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void crearAdministrador(String administrador) {
-        System.out.print(administrador);
         Gestor_Administradores g = new Gestor_Administradores();
         g.crearAdministrador(administrador);
     }

@@ -69,7 +69,7 @@
             <div class="burbuja"></div>
         </div>
 
-        <script src="../js/js_General/scriptsFormularios.js" type="text/javascript"></script>
+        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
 
     </body>
 

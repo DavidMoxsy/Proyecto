@@ -181,7 +181,6 @@ function cargarFoto(datosJSON) {
 
 function cambiarEstado(datosJSON) {
     datosJSON.estado = "Aceptado";
-    console.log(datosJSON.estado)
     editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
 }
 
@@ -414,7 +413,6 @@ function conseguirEspecialidades(datosJSON) {
         btnAceptar.setAttribute('onclick', "openModal(), document.getElementById('ced').setAttribute('value', " + Object.getOwnPropertyDescriptors(especialidadList[i]).id.value + "), document.getElementById('nombre_Editar').value = " + JSON.stringify(Object.getOwnPropertyDescriptors(especialidadList[i]).nombre.value));
         btnAceptar.innerHTML = "Editar Especialidad";
         btnAceptar.setAttribute("class", "column2");
-        console.log(document.getElementById('nombre_Editar').value)
 
         btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/resfulEspecialidades/delete', " + Object.getOwnPropertyDescriptors(especialidadList[i]).id.value + ")")
         btnBorrar.setAttribute('id', "btn");

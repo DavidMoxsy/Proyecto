@@ -8,6 +8,9 @@ public class Citas {
     private String disponibilidad;
     private int cedulaMedico;
     private int cedulaPaciente;
+    private String signos;
+    private String diagnostico;
+    private String prescripciones;
 
     public Citas() {
     }
@@ -19,6 +22,9 @@ public class Citas {
         this.disponibilidad = disponibilidad;
         this.cedulaMedico = 0;
         this.cedulaPaciente = 0;
+        this.signos = "";
+        this.diagnostico = "";
+        this.prescripciones = "";
     }
 
     public String getFecha() {
@@ -69,9 +75,27 @@ public class Citas {
         this.cedulaPaciente = cedulaPaciente;
     }
 
+    public String getSignos() {
+        return signos;
+    }
 
-    @Override
-    public String toString() {
-        return fecha + ", " + hora + ", " + lugarDeCita + ", "+ disponibilidad +", " + "Cedula del Medico{" + this.cedulaMedico + "}";
-    }    
+    public void setSignos(String signos) {
+        this.signos = signos;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getPrescripciones() {
+        return prescripciones;
+    }
+
+    public void setPrescripciones(String prescripciones) {
+        this.prescripciones = prescripciones;
+    }
 }

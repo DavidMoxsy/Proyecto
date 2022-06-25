@@ -152,14 +152,6 @@ public class MedicoDAO {
                     }.getType();
 
                     ArrayList<Citas> list2 = gson.fromJson(rs.getString(9), typeMyType);
-                    //Borrar 
-                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
-                    SimpleDateFormat formatter2 = new SimpleDateFormat("HH:mm");  
-                    Date date = new Date();  
-                    Citas c = new Citas(formatter.format(date), formatter2.format(date), "San Jose", "Disponible");
-                    Citas c2 = new Citas(formatter.format(date), formatter2.format(date), "San Jose", "Completada");
-                    list2.add(c);
-                    list2.add(c2);
                     medico.setCitas(list2);
 
                 } else {

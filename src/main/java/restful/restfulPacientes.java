@@ -30,7 +30,6 @@ public class restfulPacientes {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void crearPaciente(String paciente) {
-        System.out.print(paciente);
         Gestor_Pacientes g = new Gestor_Pacientes();
         g.crearPaciente(paciente);
     }
