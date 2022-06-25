@@ -775,11 +775,12 @@ function llenarDatos(datosJSON) {
                             inputHoraEntradaLunes.value = medico.localidades[j].horarioSemanal[k].horaInicio;
                             inputHoraSalidaLunes.value = medico.localidades[j].horarioSemanal[k].horaTermina;
                             inputFrecuenciaLunes.value = medico.localidades[j].horarioSemanal[k].frecuencia;
+
                             let horaEntrada = parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(0, 2));
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -799,42 +800,47 @@ function llenarDatos(datosJSON) {
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -843,6 +849,17 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
 
                                 var z = 0;
                                 var num = 0;
@@ -856,17 +873,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -881,7 +887,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -898,7 +904,7 @@ function llenarDatos(datosJSON) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     fechaCita = f.toDateString();
@@ -906,37 +912,42 @@ function llenarDatos(datosJSON) {
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -945,6 +956,18 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
+
                                 var z = 0;
                                 var num = 0;
 
@@ -957,17 +980,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -982,7 +994,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -999,12 +1011,12 @@ function llenarDatos(datosJSON) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     fechaCita = f.toDateString();
@@ -1012,33 +1024,37 @@ function llenarDatos(datosJSON) {
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
-                                //console.log(l)
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -1047,6 +1063,18 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
+
                                 var z = 0;
                                 var num = 0;
 
@@ -1059,17 +1087,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -1084,7 +1101,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -1101,17 +1118,17 @@ function llenarDatos(datosJSON) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     fechaCita = f.toDateString();
@@ -1119,28 +1136,32 @@ function llenarDatos(datosJSON) {
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
-                                //console.log(l)
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -1149,6 +1170,18 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
+
                                 var z = 0;
                                 var num = 0;
 
@@ -1161,17 +1194,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -1186,7 +1208,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -1203,22 +1225,22 @@ function llenarDatos(datosJSON) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     fechaCita = f.toDateString();
@@ -1226,23 +1248,28 @@ function llenarDatos(datosJSON) {
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
+                            }
+
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
                             }
 
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
-                                //console.log(l)
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -1251,6 +1278,18 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
+
                                 var z = 0;
                                 var num = 0;
 
@@ -1263,17 +1302,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -1288,7 +1316,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -1305,27 +1333,27 @@ function llenarDatos(datosJSON) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     fechaCita = f.toDateString();
@@ -1333,17 +1361,22 @@ function llenarDatos(datosJSON) {
                                 case 'Domingo':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -1352,6 +1385,18 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
+
                                 var z = 0;
                                 var num = 0;
 
@@ -1364,17 +1409,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
@@ -1389,7 +1423,7 @@ function llenarDatos(datosJSON) {
                             let minutosEntrada = (parseInt(medico.localidades[j].horarioSemanal[k].horaInicio.substring(6, 3)));
                             let horaSalida;
                             let minutosSalida;
-                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < 24) {
+                            if (horaEntrada > 12 && parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)) < horaEntrada) {
                                 horaSalida = 24 + (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(0, 2)));
                                 minutosSalida = (parseInt(medico.localidades[j].horarioSemanal[k].horaTermina.substring(6, 3)));
                             } else {
@@ -1400,51 +1434,56 @@ function llenarDatos(datosJSON) {
                             let cantidadDeCitas = (((horaSalida - horaEntrada) * 60) / frecuencia) + (minutosSalida - minutosEntrada) / frecuencia;
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
-                            var fechaCita;
+                            let fechaCita;
                             var proximo;
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 6)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 5)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 4)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 3)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 2)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
                                     proximo.setDate(proximo.getDate() + 1)
-                                    fechaCita = proximo.toLocaleDateString();
+                                    fechaCita = proximo
                                     break;
                                 case 'Domingo':
                                     fechaCita = f.toDateString();
                                     break;
                             }
 
+                            const formatDate = (date) => {
+                                let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+                                return formatted_date;
+                            }
 
                             var hor = horaEntrada;
                             var min = minutosEntrada;
-                            for (var l = 0; l < cantidadDeCitas + 1; l++) {
+                            for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"fecha": fechaCita,
+                                cita = {"id": l + 1,
+                                    "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
                                     "disponibilidad": "Disponible",
@@ -1453,6 +1492,17 @@ function llenarDatos(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": ""};
+
+                                if ((min + 15) > 59) {
+                                    if (hor + 1 <= 24) {
+                                        hor += 1;
+                                    } else {
+                                        hor = 0;
+                                    }
+                                    min = 0;
+                                } else {
+                                    min = (min + 15);
+                                }
 
                                 var z = 0;
                                 var num = 0;
@@ -1466,17 +1516,6 @@ function llenarDatos(datosJSON) {
                                 if (num === 0) {
                                     medico.citas.push(cita);
                                     actualizarCitas(medico);
-                                }
-
-                                if ((min + 15) > 59) {
-                                    if (hor + 1 <= 24) {
-                                        hor += 1;
-                                    } else {
-                                        hor = 0;
-                                    }
-                                    min = 0;
-                                } else {
-                                    min = (min + 15);
                                 }
                             }
                         }
