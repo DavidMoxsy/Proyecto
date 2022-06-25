@@ -109,6 +109,10 @@ function llenarCalendario(datosJson) {
             });
             
         } else {
+          
+            div.addEventListener('dblclick', function () {
+            document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
+            });
             div.classList.add("divCitaCompletada");
             div.setAttribute("draggable", "true");
         }
