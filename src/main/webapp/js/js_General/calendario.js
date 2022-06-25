@@ -97,9 +97,6 @@ function llenarCalendario(datosJson) {
         let date = new Date(citasList[i].fecha);
         let dayN = date.getDate();
         let divDia = document.getElementById("dia" + dayN);
-
-
-        <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
  
         var div = document.createElement("div");
         div.setAttribute("class", "divCita");
