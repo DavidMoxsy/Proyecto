@@ -139,6 +139,7 @@ function muestraDatosPacientes(datosJSON) {
     var div = document.getElementById("div_tabla");
 
     var tabla = document.createElement("table");
+    tabla.className = "tabla_citas";
     var trHea0 = document.createElement("tr");
     var trHea = document.createElement("tr");
     var thHea0 = document.createElement("th");

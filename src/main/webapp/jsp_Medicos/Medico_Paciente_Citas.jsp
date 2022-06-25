@@ -17,6 +17,7 @@
         <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
         <link href="../css/css_Medicos/Medico_Paciente_Citas.css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
+              <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
     </head>
 
