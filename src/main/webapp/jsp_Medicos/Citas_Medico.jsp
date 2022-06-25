@@ -11,7 +11,6 @@
         <title>Perfil del medico</title>
         <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="../css/css_Medicos/Pantalla_Principal_Medico .css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
@@ -25,7 +24,7 @@
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
     <input id="cedulaMedico" value="<%=request.getParameter("cedulaMedico")%>" hidden>
-    <body>
+    <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
 
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
 
@@ -34,8 +33,8 @@
         <input type="checkbox" id="btn-nav" class="checkbox">
         <header>
             <div class="header-container">
-                <p id="bienvenida"></p>
                 <label for="btn-nav" class="btn-label">
+                    <div class="header-button"></div>
                 </label>
             </div>
         </header>
@@ -55,51 +54,56 @@
                         <a href="Medico_Iniciado.jsp?cedula=<%=id%>"><img id="foto" alt="img-avatar"></a>
                     </div>     
                 </div>
-            </div>
-            <div class="perfil-usuario-body">
-                <div class="perfil-usuario-bio">
-                    <ul>
-                        <%LocalDateTime hoy = LocalDateTime.now();%>
-                        <li><h3 class="fecha" style="margin: 0 auto;"> Citas disponibles </h3></li>
+            </div>        
 
-                        <li><i class="fas fa-smile"></i><p style="text-align: center;">
 
-                            <h1 class="title">Calendario</h1><!-- comment -->
-                            <div class="calendar">
+            <section class="seccion-perfil-usuario">
 
-                                <div class="calendar_info">
-                                    <div class="calendar__prev" id="prev-month">&#9664;</div>
-                                    <div class="calendar__month" id="month"></div>
-                                    <div class="calendar__year" id="year"></div>
-                                    <div class="calendar__next" id="next-month"> &#9654;</div>
-                                </div>
+                <div class="perfil-usuario-body">
+                    <div class="perfil-usuario-bio">
+                        <ul>
+                            <%LocalDateTime hoy = LocalDateTime.now();%>
+                            <li><h3 class="fecha" style="margin: 0 auto;"> Citas disponibles </h3></li>
 
-                                <div class="calendar__week">
-                                    <div class="calendar_day">Lunes</div>
-                                    <div class="calendar_day">Martes</div>
-                                    <div class="calendar_day">Miercoles</div>
-                                    <div class="calendar_day">Jueves</div>
-                                    <div class="calendar_day">Viernes</div>
-                                    <div class="calendar_day">Sabado</div>
-                                    <div class="calendar_day">Domingo</div>
+                            <li><i class="fas fa-smile"></i><p style="text-align: center;">
 
-                                </div>
-                                <div class="calendar_dates" id="dates"></div>  
-                            </div>  
+                                <h1 class="title">Calendario</h1><!-- comment -->
+                                <div class="calendar">
 
-                    </ul>
+                                    <div class="calendar_info">
+                                        <div class="calendar__prev" id="prev-month">&#9664;</div>
+                                        <div class="calendar__month" id="month"></div>
+                                        <div class="calendar__year" id="year"></div>
+                                        <div class="calendar__next" id="next-month"> &#9654;</div>
+                                    </div>
 
+                                    <div class="calendar__week">
+                                        <div class="calendar_day">Lunes</div>
+                                        <div class="calendar_day">Martes</div>
+                                        <div class="calendar_day">Miercoles</div>
+                                        <div class="calendar_day">Jueves</div>
+                                        <div class="calendar_day">Viernes</div>
+                                        <div class="calendar_day">Sabado</div>
+                                        <div class="calendar_day">Domingo</div>
+
+                                    </div>
+                                    <div class="calendar_dates" id="dates"></div>  
+                                </div>  
+
+                        </ul>
+
+                    </div>
                 </div>
+            </section>
+
+
+            <div class="volver">
+                <button class="btn_Volver" onclick="enviarBoton('volver_Perfil_Medico')">Volver</button>
             </div>
-        </section>
 
-
-        <div class="volver">
-            <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>
-        </div>
-        <script src="../js/js_General/particles.js" type="text/javascript"></script>
-        <script src="../js/js_General/app.js" type="text/javascript"></script>
-        <script src="../js/js_General/calendario.js" type="text/javascript"></script> 
+            <script src="../js/js_General/particles.js" type="text/javascript"></script>
+            <script src="../js/js_General/app.js" type="text/javascript"></script>
+            <script src="../js/js_General/calendario.js" type="text/javascript"></script> 
     </body>
 </html>
 

@@ -2,6 +2,7 @@ package modelo.General;
 
 public class Citas {
 
+    private int id;
     private String fecha;
     private String hora;
     private String lugarDeCita;
@@ -16,6 +17,7 @@ public class Citas {
     }
 
     public Citas(String fecha, String hora, String lugarDeCita, String disponibilidad) {
+        this.id = 0;
         this.fecha = fecha;
         this.hora = hora;
         this.lugarDeCita = lugarDeCita;
