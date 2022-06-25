@@ -115,7 +115,7 @@ function llenarCalendario(datosJson) {
             div.setAttribute("draggable", "true");
 
             div.addEventListener('dblclick', function () {
-                document.location.href = "Citas_Medico_Modificar.jsp?cedula=" + document.getElementById("cedula").value;
+                document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
             });
         }
 
