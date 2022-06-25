@@ -49,15 +49,20 @@
             </div>
             <div class="perfil-usuario-body">
                 <div class="perfil-usuario-bio">
-                    <form id="formulario" class="formulario" onsubmit="crearPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', event)">
-                        <h2 class="crear_cuenta">Modoficar cita</h2>           
-                        <input name="nombre" id="nombre" type="text" placeholder="Nombre" required>
-                        <input name="apellido" id="apellido" type="text" placeholder="Apellido" required>
-                        <input name="cedula" id="cedulaRegistro" type="number" placeholder="Cedula" required>
-                        <input name="email" id="email" type="email" placeholder="Email" required>
-                        <input name="claveRegistro" id="claveRegistro" type="password" placeholder="Contraseña" required>
-                        <input id="confirmarClave" type="password" placeholder="Confirmar Contraseña" required>
-                        <input id="registrarse" type="submit" value="Registrarse">
+                    
+                    
+                   <form id="iniciar" class="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, iniciarSesion, event)">
+                        <h2 class="crear_cuenta">Registrar cita</h2>
+                        <input id="pacienteId" name="pacienteId" type="hidden" value="pacienteId">
+                        <input name="nombrePaciente" id="nombrePaciente" type="text" placeholder="Nombre paciente" required>
+                        <input id="medicoId" name="medicoId" type="hidden" value="medicoId">
+                        <input name="nombreMedico" id="nombreMedico" type="text" placeholder="Nombre medico" required>
+                        <input id="medicoId" name="medicoId" type="hidden" value="pacienteId">
+                        <input name="hora" id="hora" type="text" placeholder="hora" required>
+                        <input id="fecha" name="fecha" type="hidden" value="medicoId">
+                        <input name="tipo" id="tipo" type="text" placeholder="Tipo" required>
+                        <input name="motivo" id="motivo" type="number" placeholder="Motivo" required>
+                        <input id="registrarCita" type="submit" value="registrarCita">
                     </form>
                 </div>
             </div>
@@ -66,8 +71,10 @@
         <div class="volver">
             <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>
         </div>
-        <script src="../js/js_General/particles.js" type="text/javascript"></script>
-        <script src="../js/js_General/app.js" type="text/javascript"></script>
+                    
+        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
+        <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>      
+      
     </body>
 </html>
 

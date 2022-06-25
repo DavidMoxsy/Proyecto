@@ -148,6 +148,11 @@ body {
     margin: 0px 0px;
 }
 
+.next-month, .prev-month:hover{
+    cursor: pointer;
+    background: #e679e8;
+}
+
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;

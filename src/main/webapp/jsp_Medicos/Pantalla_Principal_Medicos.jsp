@@ -63,7 +63,7 @@
                <div class="paciente-medico">
                 <div class="paciente-medico-bio">
                     <ul id = "pacientes"> 
-                        <li><h2 class="medicoPaciente" style="margin: 0 auto;">Pacientes del Doctor</h2></li>
+                        <li><h2 class="medicoPaciente" style="margin: 0 auto;">Pacientes del doctor</h2></li>
                           
  
                     </ul>
