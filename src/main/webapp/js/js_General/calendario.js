@@ -6,7 +6,7 @@ let currentDay = currentDate.getDate();
 let monthNumber = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
 
-console.log(currentDay + '---' + monthNumber + '---' + currentYear);
+
 
 let dates = document.getElementById('dates');
 let month = document.getElementById('month');
@@ -29,7 +29,6 @@ writeMonth(monthNumber);
 getCitas();
 function writeMonth(month) {
     for (let i = startDay(); i > 0; i--) {
-        console.log(getTotalDays(monthNumber - 1) - (i - 1));
         dates.innerHTML += '<div class="calendar__dateCalendar__item_calendar__last_days">' + (getTotalDays(monthNumber - 1) - (i - 1)) + '</div>';
     }
 
@@ -86,22 +85,17 @@ function setNewDate() {
 }
 
 function getCitas() {
-    console.log("1");
     solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, llenarCalendario)
 }
 
 function llenarCalendario(datosJson) {
 
-    console.log("2");
-    console.log(datosJson);
     var citasList = datosJson.citas;
-    console.log(citasList);
+
     for (var i = 0; i < citasList.length; i++) {
 
         let date = new Date(citasList[i].fecha);
-        console.log(date);
-        let dayN = date.getDate() + 1;
-        console.log(dayN);
+        let dayN = date.getDate();
         let divDia = document.getElementById("dia" + dayN);
 
         var div = document.createElement("div");
@@ -138,8 +132,6 @@ function llenarCalendario(datosJson) {
 function eventoDragCitas() {
     listaCitas = document.querySelectorAll('.divCitaDisponible');
     listaDias = document.querySelectorAll('.divCitaCompletada');
-    console.log(listaCitas);
-    console.log(listaDias);
     for (let i = 0; i < listaDias.length; i++) {
         const item = listaDias[i];
 
@@ -175,7 +167,6 @@ function eventoDragCitas() {
 
             list.addEventListener('drop', function (e) {
                 e.preventDefault();
-                console.log('drop');
                 this.replaceWith(draggedItem);
             });
         }

@@ -839,7 +839,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -946,7 +946,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -1053,7 +1053,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -1160,7 +1160,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -1268,7 +1268,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -1375,7 +1375,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
@@ -1482,7 +1482,7 @@ function llenarDatos(datosJSON) {
                             for (var l = 0; l < cantidadDeCitas; l++) {
 
                                 var cita = {};
-                                cita = {"id": l + 1,
+                                cita = {"id": medico.citas.length + 1,
                                     "fecha": formatDate(proximo),
                                     "hora": hor + ':' + (min),
                                     "lugarDeCita": medico.localidades[j].ubicacion,
