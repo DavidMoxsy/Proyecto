@@ -109,7 +109,6 @@ function editarPaciente(datosJSON) {
         datosJSON.apellido = document.getElementById("apellido_Editar").value;
         datosJSON.clave = document.getElementById("password_Editar").value;
         datosJSON.email = document.getElementById("email_Editar").value;
-        datosJSON.resena = document.getElementById("descripcion_Editar").value;
         editarDato(datosJSON, 'http://localhost:8080/Proyecto_2_Version_Final/resources/restfulPacientes');
     } else {
         swal('Clave incorrecta', 'Verifique que escribiera correctamente su clave 2 veces', 'error');
@@ -134,8 +133,6 @@ function llenarDatos(datosJSON) {
     cedula.value = paciente.cedula;
     var email = document.getElementById("email_Editar");
     email.value = paciente.email;
-    var descripcion = document.getElementById("descripcion_Editar");
-    descripcion.value = paciente.resena;
 
     var foto = paciente.foto;
     if (foto !== undefined) {
