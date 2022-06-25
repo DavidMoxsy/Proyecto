@@ -10,8 +10,7 @@ function solicitarDatos(url, fn, callback, ) {
 
 function solicitarDatos2(url, fn, callback) {
     fn(document.getElementById("cedula").value, callback, url, fn);
-}
-
+}xc
 function solicitarDatos3(url, fn, callback, evt) {
     evt.preventDefault();
     fn(document.getElementById("cedula").value, callback, url, fn);

@@ -74,9 +74,9 @@
                 <div id="formulario_Editar_Paciente" class="formulario_Editar_Paciente">
                     <form class="formulario" id="formulario" onsubmit="solicitarDatos4('http://localhost:8080/Proyecto/resources/resfulEspecialidades', cargarDatos, crearEspecialidad, event)">
                         <button type="button" class="cerrar" id="cerrar" onclick="closeModalCrear()"><i class="fa fa-times" aria-hidden="true" style="font-size: 35px;"></i></button>
-                        <h2 class="crear_cuenta">Agregar Especialidad</h2>
+                        <h2 class="crear_cuenta">Agregar especialidad</h2>
                         <button id="ced" value="" hidden></button>
-                        <input id="nombre_Crear" type="text" placeholder="Ubicacion" required>
+                        <input id="nombre_Crear" type="text" placeholder="Especialidad" required>
                         <input type="submit" value="Guardar Cambios">
                     </form>
                 </div>

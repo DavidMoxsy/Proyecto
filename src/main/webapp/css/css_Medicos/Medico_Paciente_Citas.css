@@ -159,3 +159,7 @@ body{
     margin: 0px 0px;
 }
 
+.next-month, .prev-month:hover{
+    cursor: pointer;
+    background: #e679e8;
+}

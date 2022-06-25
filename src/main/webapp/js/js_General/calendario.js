@@ -104,19 +104,22 @@ function llenarCalendario(datosJson) {
         console.log(dayN);
         let divDia = document.getElementById("dia" + dayN);
 
+
+        <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
+ 
         var div = document.createElement("div");
         div.setAttribute("class", "divCita");
         div.innerHTML += citasList[i].hora + '&nbsp;&nbsp;&nbsp;&nbsp;';
         //div.innerHTML += citasList[i].lugarDeCita + "<br>";
         if (citasList[i].disponibilidad === "Disponible") {
             div.classList.add("divCitaDisponible");
+            div.addEventListener('dblclick', function () {
+                document.location.href = "Citas_Medico_Modificar.jsp?cedula=" + document.getElementById("cedula").value;
+            });
+            
         } else {
             div.classList.add("divCitaCompletada");
             div.setAttribute("draggable", "true");
-
-            div.addEventListener('dblclick', function () {
-                document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
-            });
         }
 
         let bor = document.createElement("i");
