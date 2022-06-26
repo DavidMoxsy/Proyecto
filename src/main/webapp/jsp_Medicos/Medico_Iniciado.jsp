@@ -36,7 +36,7 @@
                                 </form>
                             </button>                        
                         </div>
-                        <button type="button" class="boton-portada" onclick="openModal()">
+                        <button type="button" class="boton-portada" onclick="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, datosEditar),openModal()">
                             <i class="fas fa-edit">Editar el perfil</i>
                         </button>
                     </div>

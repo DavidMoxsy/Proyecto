@@ -88,6 +88,30 @@ function getCitas() {
     solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, llenarCalendario)
 }
 
+function elimCita(num) {
+
+    solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, elim)
+    function elim(datosJSON) {
+        var citasList = datosJSON.citas;
+
+        citasList.splice(num, 1);
+
+        var variable = 1;
+
+        for (var i = 0; i < citasList.length; i++) {
+            citasList[i].id = variable;
+            variable++;
+        }
+
+        datosJSON.citas = citasList;
+        swal("Cita eliminada correctamente", "La cita fue eliminada correctamente", "success")
+                .then(() => {
+                    editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
+                });
+    }
+
+}
+
 function llenarCalendario(datosJson) {
 
     var citasList = datosJson.citas;
@@ -97,9 +121,19 @@ function llenarCalendario(datosJson) {
         let date = new Date(citasList[i].fecha);
         let dayN = date.getDate();
         let divDia = document.getElementById("dia" + dayN);
- 
+
         var div = document.createElement("div");
         div.setAttribute("class", "divCita");
+
+        let bor = document.createElement("i");
+        bor.setAttribute("class", "fa fa-trash");
+        bor.setAttribute("aria-hidden", "true");
+        bor.classList.add("borrar");
+
+        bor.setAttribute('onclick', 'elimCita(' + i + ')')
+
+
+
         div.innerHTML += citasList[i].hora + '&nbsp;&nbsp;&nbsp;&nbsp;';
         //div.innerHTML += citasList[i].lugarDeCita + "<br>";
         if (citasList[i].disponibilidad === "Disponible") {
@@ -107,24 +141,15 @@ function llenarCalendario(datosJson) {
             div.addEventListener('dblclick', function () {
                 document.location.href = "Citas_Medico_Modificar.jsp?cedula=" + document.getElementById("cedula").value;
             });
-            
+
         } else {
-          
+
             div.addEventListener('dblclick', function () {
-            document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
+                document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
             });
             div.classList.add("divCitaCompletada");
             div.setAttribute("draggable", "true");
         }
-
-        let bor = document.createElement("i");
-        bor.setAttribute("class", "fa fa-trash");
-        bor.setAttribute("aria-hidden", "true");
-        bor.classList.add("borrar");
-        bor.addEventListener('click', function () {
-            swal("Cita borrada correctamente", "Cita borrada correctamente", "success");
-            this.parentNode.remove(this);
-        });
 
         div.appendChild(bor)
         divDia.appendChild(div);

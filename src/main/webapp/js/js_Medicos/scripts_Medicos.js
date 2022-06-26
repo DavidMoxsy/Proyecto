@@ -144,10 +144,10 @@ function pacientes(datosJSON) {
     }
 }
 
-function editarAntecedentes(datosJSON){
+function editarAntecedentes(datosJSON) {
     datosJSON.resena = document.getElementById("antecedentes_Editar").value;
     console.log(datosJSON.resena)
-    editarDato(datosJSON,'http://localhost:8080/Proyecto/resources/restfulPacientes');
+    editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
 }
 
 
@@ -369,6 +369,23 @@ function llenarDatos(datosJSON) {
     document.getElementById("resena").innerHTML = medico.resena;
     document.getElementById("id").innerHTML = "Cedula: " + medico.cedula;
     document.getElementById("correo").innerHTML = "Correo: " + medico.email;
+    var foto = medico.foto;
+    if (foto !== undefined) {
+        const byteCharacters = atob(foto);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: 'image/*'});
+        const imagenPrevisualizacion = document.querySelector("#foto");
+        imagenPrevisualizacion.src = URL.createObjectURL(blob);
+    }
+}
+
+function datosEditar(datosJSON) {
+    let medico = datosJSON;
+
     var nombre = document.getElementById("nombre_Editar");
     nombre.value = medico.nombre;
     var apellido = document.getElementById("apellido_Editar");
@@ -383,18 +400,6 @@ function llenarDatos(datosJSON) {
     costoConsulta.value = medico.costoConsulta;
     var descripcion = document.getElementById("descripcion_Editar");
     descripcion.value = medico.resena;
-    var foto = medico.foto;
-    if (foto !== undefined) {
-        const byteCharacters = atob(foto);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-            byteNumbers[i] = byteCharacters.charCodeAt(i);
-        }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], {type: 'image/*'});
-        const imagenPrevisualizacion = document.querySelector("#foto");
-        imagenPrevisualizacion.src = URL.createObjectURL(blob);
-    }
 
     var especialidades = document.getElementById("Especialidades");
     var localidades = document.getElementById("Localidades");
