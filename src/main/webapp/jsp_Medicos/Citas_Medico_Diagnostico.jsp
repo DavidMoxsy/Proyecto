@@ -24,6 +24,9 @@
     
     
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
+ 
+    
+    <input id="citaID" value="<%=request.getParameter("citaID")%>" hidden>
     <body>
 
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
