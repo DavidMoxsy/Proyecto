@@ -20,7 +20,7 @@
 
     <input id="cedulaPaciente" value="<%=request.getParameter("cedulaPaciente")%>" hidden>
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <body onload="solicitarDatos4('http://localhost:8080/Proyecto/resources/restfulPacientes/getPorID', buscarDatoPorId, muestraDatosPacientes)">
+    <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, muestraDatosPacientes)">
 
         <div class="grid">
             <div></div> 

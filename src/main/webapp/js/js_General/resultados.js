@@ -18,9 +18,16 @@ console.log(citaID)
         
         if(citaID===citasList[i].id){
            
-                citasList[i].signos = signos;
-                citasList[i].diagnosticos = diagnostico;
-                citasList[i].prescripciones = prescripciones;
+                 if(signos!==""){
+                     citasList[i].signos = signos;
+                 }
+                 if(diagnostico!==""){
+                     citasList[i].diagnostico = diagnostico;
+                 }
+                if(prescripciones!==""){
+                     citasList[i].prescripciones = prescripciones;
+                 }
+               
                 
             
         }

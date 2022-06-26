@@ -127,7 +127,9 @@ function pacientes(datosJSON) {
     }
     for (var j = 0; j < citasList.length; j++) {
         if (citasList[j].cedulaPaciente !== 0) {
+            if(!pacienteList.includes(citasList[j].cedulaPaciente)){
             pacienteList.push(citasList[j].cedulaPaciente);
+            }
         }
     }
 
@@ -157,6 +159,7 @@ function editarAntecedentes(datosJSON) {
 
 function muestraDatosPacientes(datosJSON) {
 
+    var pacienteID =  parseInt(document.getElementById("cedulaPaciente").value);
     var citasList = datosJSON.citas;
     //datosJSON.forEach( p => { 
     var div = document.getElementById("div_tabla");
@@ -176,22 +179,29 @@ function muestraDatosPacientes(datosJSON) {
     var thHea4 = document.createElement("th");
     var thHea5 = document.createElement("th");
     var thHea6 = document.createElement("th");
+    var thHea7 = document.createElement("th");
+    var thHea8 = document.createElement("th");
+    var thHea9 = document.createElement("th");
 
-    thHea0.innerHTML = "Historial de Citas del Paciente: " + datosJSON.nombre + " " + datosJSON.apellido;
+    //thHea0.innerHTML = "Historial de Citas del Paciente: " + datosJSON.nombre + " " + datosJSON.apellido;
+    thHea0.innerHTML = "Historial de Citas del Paciente: " + pacienteID;
     thHea1.innerHTML = "Dia";
     thHea2.innerHTML = "Hora";
-    thHea3.innerHTML = "Nombre del Paciente";
+    thHea3.innerHTML = "ID del Paciente";
     thHea4.innerHTML = "Lugar";
     thHea5.innerHTML = "Estado de la cita";
     thHea6.innerHTML = "Acciones";
+     thHea7.innerHTML = "Signos";
+      thHea8.innerHTML = "Diagnóstico";
+       thHea9.innerHTML = "Prescripciones";
     trHea0.append(thHea0);
-    trHea.append(thHea1, thHea2, thHea3, thHea4, thHea5, thHea6);
+    trHea.append(thHea1, thHea2, thHea3, thHea4 , thHea7,thHea8,thHea9,thHea5, thHea6 );
     tabla.append(trHea0, trHea);
     tabla.setAttribute("border", "2");
     thHea0.setAttribute("colspan", "6");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
-        if (citasList[i].cedulaMedico === parseInt(document.getElementById("cedula").value)) {
+        if (citasList[i].cedulaPaciente === pacienteID) {
             var tr = document.createElement("tr");
             var td1 = document.createElement("td");
             var td2 = document.createElement("td");
@@ -199,6 +209,9 @@ function muestraDatosPacientes(datosJSON) {
             var td4 = document.createElement("td");
             var td5 = document.createElement("td");
             var td6 = document.createElement("td");
+             var td7 = document.createElement("td");
+              var td8 = document.createElement("td");
+               var td9 = document.createElement("td");
 
             var a = document.createElement("a");
             a.setAttribute("href", "#");
@@ -208,14 +221,19 @@ function muestraDatosPacientes(datosJSON) {
                 cambiarEstado(this.value, datosJSON);
             };
             // event.preventDefault();
-            td6.appendChild(a);
+            td9.appendChild(a);
 
             td1.innerHTML = citasList[i].fecha;
             td2.innerHTML = citasList[i].hora;
-            td3.innerHTML = datosJSON.nombre + " " + datosJSON.apellido;
+           // td3.innerHTML = datosJSON.nombre + " " + datosJSON.apellido;
+           td3.innerHTML = citasList[i].cedulaPaciente;
             td4.innerHTML = citasList[i].lugarDeCita;
-            td5.innerHTML = citasList[i].disponibilidad;
-            tr.append(td1, td2, td3, td4, td5, td6);
+            td5.innerHTML = citasList[i].signos;
+            td6.innerHTML = citasList[i].diagnostico;
+            td7.innerHTML = citasList[i].prescripciones;
+            td8.innerHTML = citasList[i].disponibilidad;
+            
+            tr.append(td1, td2, td3, td4, td5, td6, td7, td8,td9);
             tabla.appendChild(tr);
         }
     }
@@ -227,7 +245,7 @@ function muestraDatosPacientes(datosJSON) {
 
 function cambiarEstado(ini, datosJSON) {
 
-    if (datosJSON.citas[ini].disponibilidad === "Disponible") {
+    if (datosJSON.citas[ini].disponibilidad !== "Completada") {
         datosJSON.citas[ini].disponibilidad = "Completada";
         editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
     }

@@ -53,9 +53,9 @@
                 <div class="perfil-usuario-bio">
                     <form id="formulario" class="formulario" onsubmit="guardarResultados(event)">
                         <h2 class="crear_cuenta">Resultados</h2>           
-                        <input name="Signos" id="signos" type="text" placeholder="Signos" required>
-                        <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" required>
-                        <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" required>
+                        <input name="Signos" id="signos" type="text" placeholder="Signos" >
+                        <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
+                        <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
                         <input id="Guardar" type="submit" value="Guardar">
                     </form>
                 </div>
