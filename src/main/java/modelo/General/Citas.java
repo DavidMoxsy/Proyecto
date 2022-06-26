@@ -1,5 +1,8 @@
 package modelo.General;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Citas {
 
     private int id;
@@ -12,6 +15,7 @@ public class Citas {
     private String signos;
     private String diagnostico;
     private String prescripciones;
+    private List<String> resultadosLaboratorio;
 
     public Citas() {
     }
@@ -27,6 +31,7 @@ public class Citas {
         this.signos = "";
         this.diagnostico = "";
         this.prescripciones = "";
+        this.resultadosLaboratorio = new ArrayList();
     }
 
     public String getFecha() {
@@ -100,4 +105,22 @@ public class Citas {
     public void setPrescripciones(String prescripciones) {
         this.prescripciones = prescripciones;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<String> getResultadosLaboratorio() {
+        return resultadosLaboratorio;
+    }
+
+    public void setResultadosLaboratorio(List<String> resultadosLaboratorio) {
+        this.resultadosLaboratorio = resultadosLaboratorio;
+    }
+
+
 }
