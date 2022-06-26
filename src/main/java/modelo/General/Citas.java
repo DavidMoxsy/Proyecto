@@ -16,6 +16,7 @@ public class Citas {
     private String diagnostico;
     private String prescripciones;
     private List<String> resultadosLaboratorio;
+    private String estadoCita;
 
     public Citas() {
     }
@@ -32,6 +33,7 @@ public class Citas {
         this.diagnostico = "";
         this.prescripciones = "";
         this.resultadosLaboratorio = new ArrayList();
+        this.estadoCita = "No aceptado";
     }
 
     public String getFecha() {
@@ -120,6 +122,14 @@ public class Citas {
 
     public void setResultadosLaboratorio(List<String> resultadosLaboratorio) {
         this.resultadosLaboratorio = resultadosLaboratorio;
+    }
+
+    public String getEstadoCita() {
+        return estadoCita;
+    }
+
+    public void setEstadoCita(String estadoCita) {
+        this.estadoCita = estadoCita;
     }
 
 

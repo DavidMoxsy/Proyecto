@@ -222,7 +222,7 @@ function muestraDatosPacientes(datosJSON) {
     thHea2.innerHTML = "Hora";
     thHea3.innerHTML = "ID del Paciente";
     thHea4.innerHTML = "Lugar";
-    thHea5.innerHTML = "Disponibilidad";
+    thHea5.innerHTML = "Estado";
     thHea6.innerHTML = "Acciones";
     thHea7.innerHTML = "Signos";
     thHea8.innerHTML = "Diagnóstico";
@@ -231,7 +231,7 @@ function muestraDatosPacientes(datosJSON) {
     trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9, thHea5, thHea6);
     tabla.append(trHea0, trHea);
     tabla.setAttribute("border", "2");
-    thHea0.setAttribute("colspan", "6");
+    thHea0.setAttribute("colspan", "9");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
         if (citasList[i].cedulaPaciente === pacienteID) {
@@ -273,7 +273,7 @@ function muestraDatosPacientes(datosJSON) {
             td5.innerHTML = citasList[i].signos;
             td6.innerHTML = citasList[i].diagnostico;
             td7.innerHTML = citasList[i].prescripciones;
-            td8.innerHTML = citasList[i].disponibilidad;
+            td8.innerHTML = citasList[i].estadoCita;
 
             tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
             tabla.appendChild(tr);
@@ -287,9 +287,9 @@ function muestraDatosPacientes(datosJSON) {
 
 function cambiarEstado(ini, datosJSON) {
 
-    if (datosJSON.citas[ini].disponibilidad !== "Completada") {
-        datosJSON.citas[ini].disponibilidad = "Completada";
-        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
+    if (datosJSON.citas[ini].estadoCita !== "Completada") {
+        datosJSON.citas[ini].estadoCita = "Completada";
+        editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
     }
 }
 
@@ -924,7 +924,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1032,7 +1034,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1140,7 +1144,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1248,7 +1254,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1357,7 +1365,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1465,7 +1475,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1573,7 +1585,9 @@ function datosEditar(datosJSON) {
                                     "signos": "",
                                     "diagnostico": "",
                                     "prescripciones": "",
-                                    "resultadosLaboratorio": []};
+                                    "resultadosLaboratorio": [],
+                                    "estadoCita": "No completado"
+                                };
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
