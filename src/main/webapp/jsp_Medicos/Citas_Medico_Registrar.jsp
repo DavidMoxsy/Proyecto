@@ -26,7 +26,7 @@
     <%int idCita = Integer.parseInt(request.getParameter("idCita"));%>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <body  onload="cargarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes)">
+    <body  onload="cargarDatosPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes)">
         <div id="particles-js"></div>
 
         <nav class="menu">
@@ -69,7 +69,7 @@
         </section>
 
         <div class="volver">
-            <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>
+            <button class="btn_Volver" onclick="enviarBoton('volver_citas_medico')">Volver</button>
         </div>
                     
         <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>

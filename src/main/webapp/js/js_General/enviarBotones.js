@@ -20,5 +20,7 @@ function enviarBoton(dato) {
         document.location.href = "Pacientes.jsp";
     }else if (dato === "salir_Perfil_Administrador") {
         document.location.href = "Administradores.jsp";
+    }else if (dato === "volver_citas_medico") {
+        document.location.href = "Citas_Medico.jsp?cedula=" + document.getElementById("cedula").value;
     }
 }

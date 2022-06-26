@@ -120,6 +120,9 @@ function llenarCalendario(datosJson) {
 
     for (var i = 0; i < citasList.length; i++) {
         let date = new Date(citasList[i].fecha);
+        let month = date.getMonth();
+        if(month != monthNumber)
+            continue;
         let dayN = date.getDate();
         let divDia = document.getElementById("dia" + dayN);
 

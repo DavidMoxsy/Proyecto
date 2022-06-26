@@ -1572,9 +1572,22 @@ function registrarCitaMedico() {
 }
 
 function llenarPacientes(datosJson){
-    var listaPacientes = datosJson;
+    
+    var listaPacientes  = datosJson['lista-pacientes']['paciente'];
     var select = document.getElementById("pacientes");
     for (var i = 0; i < listaPacientes.length;i++){
         select.innerHTML += '<option value="'+ listaPacientes[i].cedula +'">'+ listaPacientes[i].nombre +' '+ listaPacientes[i].apellido +'</option>';
     }
+}
+
+function cargarDatosPaciente(url, callback) {
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(resultados => resultados.json())
+    .then(datosJSON => callback(datosJSON));
 }
