@@ -26,7 +26,7 @@
     <%int idCita = Integer.parseInt(request.getParameter("idCita"));%>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <body  onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
+    <body  onload="cargarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes)">
         <div id="particles-js"></div>
 
         <nav class="menu">
@@ -51,7 +51,11 @@
                     
                    <form id="iniciar" class="formulario" onsubmit="registrarCitaMedico()">
                         <h2 class="crear_cuenta">Registrar cita</h2>
-                        <input name="idPaciente" id="idPaciente" type="text" placeholder="ID del paciente" required>
+                        <label for="pacientes">Seleccione un paciente:</label>
+
+                        <select id="pacientes">
+                          <option value="">Seleccione un paciente</option>
+                        </select>
                         <input id="medicoId" name="medicoId" type="hidden" value="<%=id%>">
                         <input id="idCita" name="idCita" type="hidden" value="<%=idCita%>">
                         <input name="hora" id="hora" type="text" value="<%=hora%>" required>

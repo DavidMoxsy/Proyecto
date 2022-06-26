@@ -1544,7 +1544,7 @@ function datosEditar(datosJSON) {
 
 function registrarCitaMedico() {
 
-    var idPaciente = document.getElementById("idPaciente").value;
+    var idPaciente = document.getElementById("pacientes").value;
     var medicoId = document.getElementById("medicoId").value;
     var idCita = document.getElementById("idCita").value;
     var hora = document.getElementById("hora").value;
@@ -1569,4 +1569,12 @@ function registrarCitaMedico() {
     }
     buscarDatoPorId(medicoId, registrarCitaMedico1, 'http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID');
     swal("Cita registrada correctamente", "Cita registrada correctamente", "success");
+}
+
+function llenarPacientes(datosJson){
+    var listaPacientes = datosJson;
+    var select = document.getElementById("pacientes");
+    for (var i = 0; i < listaPacientes.length;i++){
+        select.innerHTML += '<option value="'+ listaPacientes[i].cedula +'">'+ listaPacientes[i].nombre +' '+ listaPacientes[i].apellido +'</option>';
+    }
 }

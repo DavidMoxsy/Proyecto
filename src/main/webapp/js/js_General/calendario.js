@@ -131,7 +131,8 @@ function llenarCalendario(datosJson) {
         bor.setAttribute("aria-hidden", "true");
         bor.classList.add("borrar");
 
-        bor.setAttribute('onclick', 'elimCita(' + i + ')')
+        bor.setAttribute('onclick', 'elimCita(' + i + ')');
+        div.appendChild(bor);
 
 
 
@@ -164,21 +165,7 @@ function llenarCalendario(datosJson) {
         input.setAttribute("value", params);
         input.setAttribute("id", "diaH" + dayN);
  
-        div.appendChild(input);      
- 
-        div.appendChild(input);
-        
-        let bor2 = document.createElement("i");
-        bor2.setAttribute("class", "fa fa-trash");
-        bor2.setAttribute("aria-hidden", "true");
-        bor2.classList.add("borrar");
-        bor2.addEventListener('click', function () {
-            swal("Cita borrada correctamente", "Cita borrada correctamente", "success");
-            this.parentNode.remove(this);
-        });
- 
-
-        div.appendChild(bor2);
+        div.appendChild(input);  
         divDia.appendChild(div);
 
     }
