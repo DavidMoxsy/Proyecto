@@ -46,7 +46,8 @@
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
                 <h3 id="titulo" class="titulo"></h3>
-                <p id="resena" class="texto"></p>
+                <pre><h4 style="text-align: left;">Antecedentes Medicos:</h4>
+                <p id="resena" class="texto"></p></pre>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
@@ -68,7 +69,6 @@
                         <input id="email_Editar" type="email" placeholder="Email" required>
                         <input id="password_Editar" type="password" placeholder="Contraseña" required>
                         <input id="confirmar_Password_Editar" type="password" placeholder="Confirmar Contraseña" required>
-                        <input id="descripcion_Editar" type="text" placeholder="Descripción" required>
                         <input type="submit" value="Guardar Cambios">
                     </form>
                 </div>

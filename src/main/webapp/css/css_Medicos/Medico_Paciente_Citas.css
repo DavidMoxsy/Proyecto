@@ -33,12 +33,21 @@ body {
 }
 
 #div_tabla {
-    background: greenyellow;
+    background: rgb(187, 159, 233);
     border-radius: 12px;
     text-align: center;
     margin: 4px 0px;
     text-transform: uppercase;
     font-size: 1.2em;
+    width: 900px;
+    
+}
+
+a{
+    margin-left: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 
 .th {
@@ -185,15 +194,16 @@ body {
     background-color: #DFE5F2;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    position: absolute;
-    bottom: 67%;
-    right: -40px;
+    position: fixed;
+    bottom: 92%;
+    right: 10px;
     z-index: 10;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+    width: 120%;
     position: relative;
+    left: -17px;
     border-radius: 50%;
     bottom: -3px;
 }
@@ -397,6 +407,192 @@ a:hover {
     border: none;
     background-color: rgb(162, 161, 241);
     z-index: 2;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal_container{
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90%;
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1em;
+    place-items: center;
+    grid-auto-columns: 100%;
+}
+
+.modal button{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    color: red;
+    margin-left:140px;
+    margin-top: -20px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal button:hover{
+    color: #6464f8;
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+}
+
+.formulario_Editar_Paciente h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.formulario_Editar_Paciente{
+    margin-top: -20px;
+    width: 400px;
+    height: 390px;
+    background: rgb(187, 159, 233);
+    text-align: center;
+    box-shadow: 7px 13px 37px #000;
+    border-radius: 8px;
+    z-index: 2;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.formulario_Editar_Paciente textArea{
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    height: 250px;
+    padding: 20px;
+    resize: none;
+}
+
+.formulario_Editar_Paciente textArea::placeholder{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -60px;
+}
+
+.formulario_Editar_Paciente::-webkit-scrollbar {
+    display: none;
+}
+
+.formulario_Editar_Paciente input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+
+.formulario_Editar_Paciente input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.formulario .especialidades{
+    border-color: #6464f8;
+    border-style: solid;
+    border-width: 1px;
+    margin: 20px;
+}
+
+.formulario_Editar_Paciente .formulario label{
+    display: block;
+
+}
+
+.formulario_Editar_Paciente .formulario div input{
+    display: inline;
+}
+
+.formulario_Editar_Paciente .formulario div label{
+    display: inline;
+}
+
+.formulario_Editar_Paciente .formulario input{
+    display: inline;
+}
+
+.formulario_Editar_Paciente input[type=number]::-webkit-inner-spin-button,
+.formulario_Editar_Paciente input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.formulario_Editar_Paciente input[type="submit"]:hover {
+    background: rgb(230, 155, 220);
+    color: white;
+}
+.edit .btn_Edit{
+    display: block;
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    position:fixed;
+    top:20px;
+    right:30px;
+    border: none;
+    background-color: white;
+}
+
+.edit .btn_Edit:hover{
+    background-color: #6464f8;
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:fixed;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: white;
 }
 
 .volver .btn_Volver:hover{

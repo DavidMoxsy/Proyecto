@@ -114,13 +114,11 @@ function pacientes(datosJSON) {
     let medicosList = datosJSON['lista-medicos']['medico'];
     var medicoId = parseInt(document.getElementById("cedula").value);
 
-
     var pacienteList = [];
 
     for (var i = 0; i < medicosList.length; i++) {
         if (medicoId === medicosList[i].cedula) {
             var citasList = medicosList[i].citas;
-
         }
     }
     for (var j = 0; j < citasList.length; j++) {
@@ -146,6 +144,11 @@ function pacientes(datosJSON) {
     }
 }
 
+function editarAntecedentes(datosJSON) {
+    datosJSON.resena = document.getElementById("antecedentes_Editar").value;
+    console.log(datosJSON.resena)
+    editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
+}
 
 
 function muestraDatosPacientes(datosJSON) {
@@ -153,6 +156,9 @@ function muestraDatosPacientes(datosJSON) {
     var citasList = datosJSON.citas;
     //datosJSON.forEach( p => { 
     var div = document.getElementById("div_tabla");
+
+    let antecedentes = document.getElementById("antecedentes_Editar");
+    antecedentes.innerHTML = datosJSON.resena;
 
     var tabla = document.createElement("table");
     tabla.className = "tabla_citas";
@@ -166,6 +172,7 @@ function muestraDatosPacientes(datosJSON) {
     var thHea4 = document.createElement("th");
     var thHea5 = document.createElement("th");
     var thHea6 = document.createElement("th");
+
     thHea0.innerHTML = "Historial de Citas del Paciente: " + datosJSON.nombre + " " + datosJSON.apellido;
     thHea1.innerHTML = "Dia";
     thHea2.innerHTML = "Hora";
@@ -177,10 +184,9 @@ function muestraDatosPacientes(datosJSON) {
     trHea.append(thHea1, thHea2, thHea3, thHea4, thHea5, thHea6);
     tabla.append(trHea0, trHea);
     tabla.setAttribute("border", "2");
-    thHea0.setAttribute("colspan", "5");
+    thHea0.setAttribute("colspan", "6");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
-
         if (citasList[i].cedulaMedico === parseInt(document.getElementById("cedulaMedico").value)) {
             var tr = document.createElement("tr");
             var td1 = document.createElement("td");
@@ -363,6 +369,23 @@ function llenarDatos(datosJSON) {
     document.getElementById("resena").innerHTML = medico.resena;
     document.getElementById("id").innerHTML = "Cedula: " + medico.cedula;
     document.getElementById("correo").innerHTML = "Correo: " + medico.email;
+    var foto = medico.foto;
+    if (foto !== undefined) {
+        const byteCharacters = atob(foto);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type: 'image/*'});
+        const imagenPrevisualizacion = document.querySelector("#foto");
+        imagenPrevisualizacion.src = URL.createObjectURL(blob);
+    }
+}
+
+function datosEditar(datosJSON) {
+    let medico = datosJSON;
+
     var nombre = document.getElementById("nombre_Editar");
     nombre.value = medico.nombre;
     var apellido = document.getElementById("apellido_Editar");
@@ -377,18 +400,6 @@ function llenarDatos(datosJSON) {
     costoConsulta.value = medico.costoConsulta;
     var descripcion = document.getElementById("descripcion_Editar");
     descripcion.value = medico.resena;
-    var foto = medico.foto;
-    if (foto !== undefined) {
-        const byteCharacters = atob(foto);
-        const byteNumbers = new Array(byteCharacters.length);
-        for (let i = 0; i < byteCharacters.length; i++) {
-            byteNumbers[i] = byteCharacters.charCodeAt(i);
-        }
-        const byteArray = new Uint8Array(byteNumbers);
-        const blob = new Blob([byteArray], {type: 'image/*'});
-        const imagenPrevisualizacion = document.querySelector("#foto");
-        imagenPrevisualizacion.src = URL.createObjectURL(blob);
-    }
 
     var especialidades = document.getElementById("Especialidades");
     var localidades = document.getElementById("Localidades");
