@@ -29,9 +29,7 @@ function guardarResultados(event) {
             var numCit = document.getElementById('citaID');
 
             //Read File
-            var selectedFile = document.getElementById("file-input").files;
-
-            var dt = {};
+            var selectedFile = document.getElementById("file").files;
 
             //Check File is not Empty
             if (selectedFile.length > 0) {
