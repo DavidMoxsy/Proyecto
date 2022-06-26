@@ -189,7 +189,7 @@ function muestraDatosPacientes(datosJSON) {
     thHea2.innerHTML = "Hora";
     thHea3.innerHTML = "ID del Paciente";
     thHea4.innerHTML = "Lugar";
-    thHea5.innerHTML = "Estado de la cita";
+    thHea5.innerHTML = "Disponibilidad";
     thHea6.innerHTML = "Acciones";
      thHea7.innerHTML = "Signos";
       thHea8.innerHTML = "Diagnóstico";
