@@ -21,14 +21,12 @@
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
-
+    <%String hora = request.getParameter("hora");%>
+    <%String fecha = request.getParameter("fecha");%>
+    <%int idCita = Integer.parseInt(request.getParameter("idCita"));%>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <input id="cedulaMedico" value="<%=request.getParameter("cedulaMedico")%>" hidden>
-    <body>
-
-        <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-
+    <body  onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
         <div id="particles-js"></div>
 
         <nav class="menu">
@@ -51,15 +49,13 @@
                 <div class="perfil-usuario-bio">
                     
                     
-                   <form id="iniciar" class="formulario" onsubmit="solicitarDatos3('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, iniciarSesion, event)">
+                   <form id="iniciar" class="formulario" onsubmit="registrarCitaMedico()">
                         <h2 class="crear_cuenta">Registrar cita</h2>
-                        <input id="pacienteId" name="pacienteId" type="hidden" value="pacienteId">
-                        <input name="nombrePaciente" id="nombrePaciente" type="text" placeholder="Nombre paciente" required>
-                        <input id="medicoId" name="medicoId" type="hidden" value="medicoId">
-                        <input name="nombreMedico" id="nombreMedico" type="text" placeholder="Nombre medico" required>
-                        <input id="medicoId" name="medicoId" type="hidden" value="pacienteId">
-                        <input name="hora" id="hora" type="text" placeholder="hora" required>
-                        <input id="fecha" name="fecha" type="hidden" value="medicoId">
+                        <input name="idPaciente" id="idPaciente" type="text" placeholder="ID del paciente" required>
+                        <input id="medicoId" name="medicoId" type="hidden" value="<%=id%>">
+                        <input id="idCita" name="idCita" type="hidden" value="<%=idCita%>">
+                        <input name="hora" id="hora" type="text" value="<%=hora%>" required>
+                        <input id="fecha" name="fecha" type="text" value="<%=fecha%>">
                         <input name="tipo" id="tipo" type="text" placeholder="Tipo" required>
                         <input name="motivo" id="motivo" type="number" placeholder="Motivo" required>
                         <input id="registrarCita" type="submit" value="registrarCita">

@@ -1526,3 +1526,32 @@ function llenarDatos(datosJSON) {
         }
     }
 }
+
+function registrarCitaMedico() {
+
+    var idPaciente = document.getElementById("idPaciente").value;
+    var medicoId = document.getElementById("medicoId").value;
+    var idCita = document.getElementById("idCita").value;
+    var hora = document.getElementById("hora").value;
+    var fecha = document.getElementById("fecha").value;
+    var tipo = document.getElementById("tipo").value;
+    var motivo = document.getElementById("motivo").value;
+
+    function registrarCitaMedico1(datosJson) {
+
+        for (var i = 0; i < datosJson.citas.length; i++) {
+            if(datosJson.citas[i].hora === hora && datosJson.citas[i].fecha === fecha){
+                datosJson.citas[i].cedulaPaciente = idPaciente;
+                datosJson.citas[i].cedulaMedico = medicoId;
+                datosJson.citas[i].fecha = fecha;
+                datosJson.citas[i].hora = hora;
+                datosJson.citas[i].disponibilidad = "Completada";
+                datosJson.citas[i].id = idCita;
+                break;
+            }
+        }
+        editarDato(datosJson, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
+    }
+    buscarDatoPorId(medicoId, registrarCitaMedico1, 'http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID');
+    swal("Cita registrada correctamente", "Cita registrada correctamente", "success");
+}
