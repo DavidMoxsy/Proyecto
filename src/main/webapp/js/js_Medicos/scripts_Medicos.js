@@ -17,6 +17,10 @@ function solicitarDatos3(url, fn, callback, evt) {
     fn(document.getElementById("cedula").value, callback, url, fn);
 }
 
+function solicitarDatos4(url, fn, callback) {
+    fn(document.getElementById("cedulaPaciente").value, callback, url, fn);
+}
+
 function iniciarSesion(datosJSON) {
 
 
@@ -134,7 +138,7 @@ function pacientes(datosJSON) {
 
         clp = document.createElement("li");
         clp2 = document.createElement("a");
-        clp2.href = "Medico_Paciente_Citas.jsp?cedula=" + pacienteList[k] + "&cedulaMedico=" + medicoId;
+        clp2.href = "Medico_Paciente_Citas.jsp?cedula=" + medicoId + "&cedulaPaciente=" + pacienteList[k];
         //muestraDatosPacientes(pacienteList[k]);
         clp2.className = "cita-paciente";
 
@@ -187,7 +191,7 @@ function muestraDatosPacientes(datosJSON) {
     thHea0.setAttribute("colspan", "6");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
-        if (citasList[i].cedulaMedico === parseInt(document.getElementById("cedulaMedico").value)) {
+        if (citasList[i].cedulaMedico === parseInt(document.getElementById("cedula").value)) {
             var tr = document.createElement("tr");
             var td1 = document.createElement("td");
             var td2 = document.createElement("td");
