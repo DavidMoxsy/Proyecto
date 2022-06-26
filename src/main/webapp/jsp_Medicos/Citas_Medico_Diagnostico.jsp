@@ -19,7 +19,7 @@
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link href="../css/css_Pacientes/stylePacientes.css" rel="stylesheet" type="text/css"/>
-
+        <script src="../js/js_General/resultados.js" type="text/javascript"></script>
     </head><!-- comment -->
     
     
@@ -48,11 +48,11 @@
             </div>
             <div class="perfil-usuario-body">
                 <div class="perfil-usuario-bio">
-                    <form id="formulario" class="formulario" onsubmit="crearPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', event)">
+                    <form id="formulario" class="formulario" onsubmit="guardarResultados(event)">
                         <h2 class="crear_cuenta">Resultados</h2>           
                         <input name="Signos" id="signos" type="text" placeholder="Signos" required>
                         <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" required>
-                        <input name="prescripciones" id="prescripciones" type="number" placeholder="prescripciones" required>
+                        <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" required>
                         <input id="Guardar" type="submit" value="Guardar">
                     </form>
                 </div>

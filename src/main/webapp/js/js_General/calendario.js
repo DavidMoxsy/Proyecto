@@ -147,8 +147,10 @@ function llenarCalendario(datosJson) {
 
         } else {
 
+            let idCita = citasList[i].id;
             div.addEventListener('dblclick', function () {
-                document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value;
+                
+                document.location.href = "Citas_Medico_Diagnostico.jsp?cedula=" + document.getElementById("cedula").value + "&idCita=" + idCita ;
             });
             div.classList.add("divCitaCompletada");
             div.setAttribute("draggable", "true");
@@ -161,14 +163,32 @@ function llenarCalendario(datosJson) {
         params += "&" + "idCita=" + citasList[i].id;
         input.setAttribute("value", params);
         input.setAttribute("id", "diaH" + dayN);
+<<<<<<< Updated upstream
         div.appendChild(input);      
+=======
+        div.appendChild(input);
+        
+        let bor2 = document.createElement("i");
+        bor2.setAttribute("class", "fa fa-trash");
+        bor2.setAttribute("aria-hidden", "true");
+        bor2.classList.add("borrar");
+        bor2.addEventListener('click', function () {
+            swal("Cita borrada correctamente", "Cita borrada correctamente", "success");
+            this.parentNode.remove(this);
+        });
+>>>>>>> Stashed changes
 
-        div.appendChild(bor);
+        div.appendChild(bor2);
         divDia.appendChild(div);
 
     }
     eventoDragCitas();
 }
+
+
+
+
+
 
 function eventoDragCitas() {
     listaCitas = document.querySelectorAll('.divCitaDisponible');
