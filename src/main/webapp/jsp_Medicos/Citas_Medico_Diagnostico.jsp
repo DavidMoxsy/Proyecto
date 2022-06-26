@@ -50,11 +50,8 @@
                         <input name="Signos" id="signos" type="text" placeholder="Signos" >
                         <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
                         <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
-                        <div class="document-upload">
-                            <label for="file-input">
-                                <i class="far fa-image"></i>
-                            </label>                               
-                            <input id="file-input" name="imagen" type="file" accept="application/pdf" multiple/>                                     
+                        <div class="document-upload">                           
+                            <input name="file" id="file" class="custom-file-input" type="file" accept="application/pdf" required/>
                         </div>
                         <input id="Guardar" type="submit" value="Guardar">
                     </form>
