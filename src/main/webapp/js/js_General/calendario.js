@@ -135,7 +135,6 @@ function llenarCalendario(datosJson) {
         bor.classList.add("borrar");
 
         bor.setAttribute('onclick', 'elimCita(' + i + ')');
-        div.appendChild(bor);
 
 
 

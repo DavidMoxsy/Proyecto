@@ -15,8 +15,7 @@
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="../css/css_Medicos/Medico_Paciente_Citas.css" rel="stylesheet" type="text/css"/>
-
+        <link href="../css/css_Medicos/Citas_Medico10.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
@@ -62,12 +61,10 @@
                 <div class="perfil-usuario-body">
                     <div class="perfil-usuario-bio">
                         <ul>
-                            <%LocalDateTime hoy = LocalDateTime.now();%>
                             <li><h3 class="fecha" style="margin: 0 auto;"> Citas disponibles </h3></li>
-
                             <li><i class="fas fa-smile"></i><p style="text-align: center;">
-
-                                <h1 class="title">Calendario</h1><!-- comment -->
+                            <li>
+                                <h1 class="title">Calendario</h1>
                                 <div class="calendar">
 
                                     <div class="calendar_info">
@@ -89,6 +86,7 @@
                                     </div>
                                     <div class="calendar_dates" id="dates"></div>  
                                 </div>  
+                            </li>
 
                         </ul>
 

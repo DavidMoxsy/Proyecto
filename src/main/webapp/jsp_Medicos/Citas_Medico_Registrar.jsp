@@ -11,13 +11,9 @@
         <title>Perfil del medico</title>
         <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="../css/css_Medicos/Pantalla_Principal_Medico .css" rel="stylesheet" type="text/css"/>
-        <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
-        <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="../css/css_Pacientes/stylePacientes.css" rel="stylesheet" type="text/css"/>
-
+        <link href="../css/css_Medicos/Citas_Medico_Registrar.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
@@ -27,7 +23,18 @@
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
     <body  onload="cargarDatosPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes)">
-        <div id="particles-js"></div>
+
+        <div id="particles-js" style="z-index: -10;"></div>
+
+
+        <input type="checkbox" id="btn-nav" class="checkbox">
+        <header>
+            <div class="header-container">
+                <label for="btn-nav" class="btn-label">
+                    <div class="header-button"></div>
+                </label>
+            </div>
+        </header>
 
         <nav class="menu">
             <ul>
@@ -44,37 +51,45 @@
                         <a href="Medico_Iniciado.jsp?cedula=<%=id%>"><img id="foto" alt="img-avatar"></a>
                     </div>     
                 </div>
-            </div>
-            <div class="perfil-usuario-body">
-                <div class="perfil-usuario-bio">
-                    
-                    
-                   <form id="iniciar" class="formulario" onsubmit="registrarCitaMedico()">
-                        <h2 class="crear_cuenta">Registrar cita</h2>
-                        <label for="pacientes">Seleccione un paciente:</label>
+            </div>        
 
-                        <select id="pacientes">
-                          <option value="">Seleccione un paciente</option>
-                        </select>
-                        <input id="medicoId" name="medicoId" type="hidden" value="<%=id%>">
-                        <input id="idCita" name="idCita" type="hidden" value="<%=idCita%>">
-                        <input name="hora" id="hora" type="text" value="<%=hora%>" required>
-                        <input id="fecha" name="fecha" type="text" value="<%=fecha%>">
-                        <input name="tipo" id="tipo" type="text" placeholder="Tipo" required>
-                        <input name="motivo" id="motivo" type="number" placeholder="Motivo" required>
-                        <input id="registrarCita" type="submit" value="registrarCita">
-                    </form>
-                </div>
-            </div>
-        </section>
+            <div>
+                <form id="iniciar" class="formulario" onsubmit="registrarCitaMedico(event);">
+                    <h2 class="crear_cuenta">Registrar cita</h2>
+                    <label for="pacientes">Seleccione un paciente:</label>
+                    <select id="pacientes" required>
+                        <option value="">Seleccione un paciente</option>
+                    </select>
 
-        <div class="volver">
-            <button class="btn_Volver" onclick="enviarBoton('volver_citas_medico')">Volver</button>
-        </div>
+                    <input id="cedula" name="cedula" type="hidden" value="<%=id%>">
+                    <input id="idCita" name="idCita" type="hidden" value="<%=idCita%>">
                     
-        <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
-        <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>      
-      
+                    <label for="hora">Hora de la cita:</label>
+                    <input name="hora" id="hora" type="text" value="<%=hora%>" required>
+                    
+                    <label for="fecha">Fecha de la cita</label>
+                    <input id="fecha" name="fecha" type="text" value="<%=fecha%>" required>
+                    
+                    <label for="tipo">Tipo de la cita:</label>
+                    <input name="tipo" id="tipo" type="text" placeholder="Tipo" required>
+                    
+                    <label for="motivo">Motivo de la cita</label>
+                    <input name="motivo" id="motivo" type="text" placeholder="Motivo" required>
+
+                    <input id="registrarCita" type="submit" value="Registrar la Cita">
+                </form>
+            </div>
+
+            <div class="volver">
+                <button class="btn_Volver" onclick="enviarBoton('volver_citas_medico')">Volver</button>
+            </div>
+
+            <script src="../js/js_General/particles.js" type="text/javascript"></script>
+            <script src="../js/js_General/app.js" type="text/javascript"></script>
+            <script src="../js/js_General/scriptsFormularios1.js" type="text/javascript"></script>
+            <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>      
+            <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
+
     </body>
 </html>
 

@@ -867,10 +867,10 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Martes':
                                     proximo = new Date(f)
@@ -977,7 +977,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -985,7 +985,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Martes':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Miercoles':
                                     proximo = new Date(f)
@@ -1087,7 +1087,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -1100,7 +1100,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Miercoles':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Jueves':
                                     proximo = new Date(f)
@@ -1197,7 +1197,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -1215,7 +1215,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Jueves':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Viernes':
                                     proximo = new Date(f)
@@ -1307,7 +1307,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -1330,7 +1330,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Viernes':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Sábado':
                                     proximo = new Date(f)
@@ -1418,7 +1418,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -1446,7 +1446,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Sábado':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                                 case 'Domingo':
                                     proximo = new Date(f)
@@ -1528,7 +1528,7 @@ function datosEditar(datosJSON) {
                             var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
                             var f = new Date();
                             let fechaCita;
-                            var proximo;
+                            var proximo = new Date(f);
                             switch (diasSemana[f.getDay()]) {
                                 case 'Lunes':
                                     proximo = new Date(f)
@@ -1561,7 +1561,7 @@ function datosEditar(datosJSON) {
                                     fechaCita = proximo
                                     break;
                                 case 'Domingo':
-                                    fechaCita = f.toDateString();
+                                    fechaCita = proximo;
                                     break;
                             }
 
@@ -1623,10 +1623,11 @@ function datosEditar(datosJSON) {
     }
 }
 
-function registrarCitaMedico() {
+function registrarCitaMedico(event) {
+    event.preventDefault();
 
     var idPaciente = document.getElementById("pacientes").value;
-    var medicoId = document.getElementById("medicoId").value;
+    var cedula = document.getElementById("cedula").value;
     var idCita = document.getElementById("idCita").value;
     var hora = document.getElementById("hora").value;
     var fecha = document.getElementById("fecha").value;
@@ -1638,18 +1639,20 @@ function registrarCitaMedico() {
         for (var i = 0; i < datosJson.citas.length; i++) {
             if (datosJson.citas[i].hora === hora && datosJson.citas[i].fecha === fecha) {
                 datosJson.citas[i].cedulaPaciente = idPaciente;
-                datosJson.citas[i].cedulaMedico = medicoId;
+                datosJson.citas[i].cedulaMedico = cedula;
                 datosJson.citas[i].fecha = fecha;
                 datosJson.citas[i].hora = hora;
                 datosJson.citas[i].disponibilidad = "Completada";
                 datosJson.citas[i].id = idCita;
-                break;
             }
         }
         editarDato(datosJson, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
+        location.href = "Citas_Medico.jsp?cedula=" + cedula;
     }
-    buscarDatoPorId(medicoId, registrarCitaMedico1, 'http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID');
-    swal("Cita registrada correctamente", "Cita registrada correctamente", "success");
+    swal("Cita registrada correctamente", "Cita registrada correctamente", "success")
+            .then(() => {
+                buscarDatoPorId(cedula, registrarCitaMedico1, 'http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID');
+            });
 }
 
 function llenarPacientes(datosJson) {

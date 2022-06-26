@@ -1,0 +1,662 @@
+body {
+    background: linear-gradient(150deg, rgb(162, 161, 241), rgb(225, 156, 223));
+    background-size: 400% 300%;
+}
+
+@media (min-width:801px)  {
+    .calendar{
+        background: #d9b3f5;
+        height: 1000px;
+        width: 100%;
+        color:black;
+        margin: 0 auto;
+        margin-left: 37px;
+    }
+
+    .calendar_info{
+        display:flex;
+        align-items: center;
+        padding: 0 2em;
+        font-size: 1.2em;
+        text-transform: uppercase;
+    }
+
+    .calendar__next, .calendar__prev{
+        color: white;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+
+    .calendar__next:hover, .calendar__prev:hover{
+        color: #6464f8;
+    }
+
+    .calendar__next{
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .calendar__prev{
+        margin-right: auto;
+        cursor: pointer;
+    }
+
+    .calendar__week, .calendar_dates{
+        display: grid;
+        grid-template-columns: repeat(7,1fr);
+        grid-gap:10px;
+        width: 96%;
+    }
+
+    .menu ul{
+        list-style: none;
+    }
+
+    .calendar_day{
+        text-align: center;
+        line-height:2;
+        width: 100%;
+        min-width: 50px;
+    }
+
+    .calendar__month,calendar__year{
+        padding: .5em 1em;
+    }
+
+    .calendar__dateCalendar__item{
+        text-align:center;
+        line-height:2;
+        border:1px solid black;
+        padding: 0px;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        flex: 1;
+        width: 94%;
+        max-width: 217px;
+        height: 155px;
+        min-height: 150px;
+        background-color: rgba(0, 0, 0, 0.1);
+        margin: 0 15px;
+        padding: 8px;
+        transition: all 0.2s linear;
+        overflow: scroll;
+    }
+
+    .calendar__dateCalendar__item::-webkit-scrollbar {
+        display: none;
+    }
+
+    .calendar__dateCalendar__item div{
+        margin-bottom: 10px;
+    }
+
+    .calendar__dateCalendar__item_today{
+        background: lightcoral;
+        color: white;
+        width: 50%;
+        border-radius: 50%;
+        margin: auto;
+    }
+
+    .calendar__dateCalendar__item_calendar__last_days{
+        opacity:.3;
+    }
+
+    .divCitaCompletada {
+        background: greenyellow;
+        border-radius: 8px;
+        text-align: center;
+        margin: 4px 0px;
+        cursor: pointer;
+    }
+
+    .divCitaDisponible {
+        background: whitesmoke;
+        border-radius: 8px;
+        text-align: center;
+        margin: 0px 0px;
+        cursor: pointer;
+    }
+
+    .divCitaCompletada:hover {
+        background: rgb(225, 156, 223);
+    }
+
+    .divCitaDisponible:hover {
+        background: rgb(225, 156, 223);
+    }
+
+    .next-month, .prev-month:hover{
+        cursor: pointer;
+        background: #e679e8;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-body,
+    .seccion-perfil-usuario {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 97%;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-portada {
+        display: block;
+        position: relative;
+        width: 90%;
+        height: 17rem;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-avatar {
+        display: fixed;
+        width: 80px;
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        background-color: #DFE5F2;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-avatar img {
+        width: 80px;
+        position: relative;
+        left: -1px;
+        border-radius: 50%;
+        bottom: -2px;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-footer,
+    .seccion-perfil-usuario .perfil-usuario-bio {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        background-color: rgb(153, 117, 212);
+        border-radius: 15px;
+        width: 1730px;
+        color: white;
+        margin-top: -100px;
+        margin-left: -30px;
+    }
+
+    .perfil-usuario-bio ul{
+        width: 100%;
+
+        list-style: none;
+    }
+
+    .perfil-usuario-bio ul li{
+        width: 97%;
+        margin-left: -40px;
+        list-style: none;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-bio {
+        margin-bottom: 1.25rem;
+        text-align: center;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+    }
+
+    .checkbox {
+        display: none;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .header-container {
+        transition-duration: 1s;
+        width: 100%;
+        height: 100px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(153, 117, 212);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .btn-label {
+        width: 2rem;
+        height: 1.4rem;
+    }
+
+    .header-button {
+        width: 2rem;
+        height: 0.2rem;
+        background: white;
+        position: absolute;
+        top: 1.9rem;
+        transition: all 0.2s;
+        cursor: pointer;
+        margin-top: 10px;
+        right: calc(100% - 60px);
+    }
+
+    .header-button:hover{
+        background-color: #6464f8;
+    }
+
+    .header-button::before,
+    .header-button::after {
+        content: "";
+        width: 2rem;
+        height: 0.2rem;
+        background: white;
+        position: absolute;
+        top: -0.6rem;
+        transition: all 0.2s;
+    }
+
+    .header-button::after {
+        top: 0.6rem;
+    }
+
+    .menu {
+        background: #d1d1d1;
+        width: 100%;
+        height: 90px;
+        position: fixed;
+        z-index: 9;
+        top: -12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        padding-top: 2rem;
+        transition: all 1s;
+    }
+
+    .menu a {
+        margin: 0 1rem;
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgb(230, 155, 220);
+    }
+
+    .checkbox:checked ~ .menu {
+        transition-duration: 1s;
+        background: rgb(153, 117, 212);
+        top: 0rem;
+        color: white;
+    }
+    .checkbox:checked + header .header-container label .header-button {
+        background: none;
+    }
+    .checkbox:checked + header .header-container label .header-button::before {
+        transform: rotate(35deg);
+        top: 0;
+    }
+    .checkbox:checked + header .header-container label .header-button::after {
+        transform: rotate(-35deg);
+        top: 0;
+    }
+
+    .checkbox:checked + header .header-container {
+        transition-duration: 1s;
+        background: none;
+        height: 1px;
+    }
+
+    .checkbox:checked + header .header-container p{
+        display: none;
+    }
+}
+
+
+@media (min-width:2081px)  {
+    .calendar{
+        background: #d9b3f5;
+        margin:1em auto;
+        padding: .5em 0;
+        height: 1000px;
+        width: 1700px;
+        color:black;
+
+    }
+
+    .calendar_info{
+        display:flex;
+        align-items: center;
+        padding: 0 2em;
+        font-size: 1.2em;
+        text-transform: uppercase;
+    }
+
+    .calendar__next, .calendar__prev{
+        color: white;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+
+    .calendar__next:hover, .calendar__prev:hover{
+        color: #6464f8;
+    }
+
+    .calendar__next{
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .calendar__prev{
+        margin-right: auto;
+        cursor: pointer;
+    }
+
+    .calendar__week, .calendar_dates{
+        display: grid;
+        grid-template-columns: repeat(7,1fr);
+        grid-gap:10px;
+        width: 1500px;
+    }
+
+    .calendar_day{
+        text-align: center;
+        line-height:2;
+        width: 100%;
+        min-width: 228px;
+        max-width: 2900px;
+    }
+
+    .calendar__month,calendar__year{
+        padding: .5em 1em;
+    }
+
+    .calendar__dateCalendar__item{
+        text-align:center;
+        line-height:2;
+        border:1px solid black;
+        padding: 0px;
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        flex: 1;
+        width: 100%;
+        min-width: 178px;
+        max-width: 217px;
+        height: 155px;
+        min-height: 150px;
+        background-color: rgba(0, 0, 0, 0.1);
+        margin: 0 15px;
+        padding: 8px;
+        transition: all 0.2s linear;
+        overflow: scroll;
+    }
+
+    .calendar__dateCalendar__item::-webkit-scrollbar {
+        display: none;
+    }
+
+    .calendar__dateCalendar__item div{
+        margin-bottom: 10px;
+    }
+
+    .calendar__dateCalendar__item_today{
+        background: lightcoral;
+        color: white;
+        width: 50%;
+        border-radius: 50%;
+        margin: auto;
+    }
+
+    .calendar__dateCalendar__item_calendar__last_days{
+        opacity:.3;
+    }
+
+    .divCitaCompletada {
+        background: greenyellow;
+        border-radius: 8px;
+        text-align: center;
+        margin: 4px 0px;
+    }
+
+    .divCitaDisponible {
+        background: whitesmoke;
+        border-radius: 8px;
+        text-align: center;
+        margin: 0px 0px;
+    }
+
+    .next-month, .prev-month:hover{
+        cursor: pointer;
+        background: #e679e8;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-body,
+    .seccion-perfil-usuario {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-portada {
+        display: block;
+        position: relative;
+        width: 90%;
+        height: 17rem;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-avatar {
+        display: fixed;
+        width: 80px;
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        background-color: #DFE5F2;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-avatar img {
+        width: 80px;
+        position: relative;
+        left: -1px;
+        border-radius: 50%;
+        bottom: -2px;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-footer,
+    .seccion-perfil-usuario .perfil-usuario-bio {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+        border-radius: 15px;
+        color: white;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-bio {
+        margin-bottom: 1.25rem;
+        text-align: center;
+        text-align:center;
+        z-index: 2;
+        width: 1900px;
+        height: 100%;
+        margin: 0 auto;
+        margin-top: -100px;
+    }
+
+    .perfil-usuario-bio ul li{
+        margin-left: 10px;
+    }
+
+    .checkbox {
+        display: none;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+    }
+
+    .header-container {
+        transition-duration: 1s;
+        width: 100%;
+        height: 100px;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(153, 117, 212);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .btn-label {
+        width: 2rem;
+        height: 1.4rem;
+    }
+
+    .header-button {
+        width: 2rem;
+        height: 0.2rem;
+        background: white;
+        position: absolute;
+        top: 1.9rem;
+        transition: all 0.2s;
+        cursor: pointer;
+        margin-top: 10px;
+        right: calc(100% - 60px);
+    }
+
+    .header-button:hover{
+        background-color: #6464f8;
+    }
+
+    .header-button::before,
+    .header-button::after {
+        content: "";
+        width: 2rem;
+        height: 0.2rem;
+        background: white;
+        position: absolute;
+        top: -0.6rem;
+        transition: all 0.2s;
+    }
+
+    .header-button::after {
+        top: 0.6rem;
+    }
+
+    .menu {
+        background: #d1d1d1;
+        width: 100%;
+        height: 90px;
+        position: fixed;
+        z-index: 9;
+        top: -12rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        padding-top: 2rem;
+        transition: all 1s;
+    }
+
+    ul {
+        list-style: none;
+    }
+    li {
+        margin: 0.5rem;
+    }
+    .menu a {
+        margin: 0 1rem;
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgb(230, 155, 220);
+    }
+
+    .checkbox:checked ~ .menu {
+        transition-duration: 1s;
+        background: rgb(153, 117, 212);
+        top: 0rem;
+        color: white;
+    }
+    .checkbox:checked + header .header-container label .header-button {
+        background: none;
+    }
+    .checkbox:checked + header .header-container label .header-button::before {
+        transform: rotate(35deg);
+        top: 0;
+    }
+    .checkbox:checked + header .header-container label .header-button::after {
+        transform: rotate(-35deg);
+        top: 0;
+    }
+
+    .checkbox:checked + header .header-container {
+        transition-duration: 1s;
+        background: none;
+        height: 1px;
+    }
+
+    .checkbox:checked + header .header-container p{
+        display: none;
+    }
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:fixed;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: rgb(162, 161, 241);
+    z-index: 2;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+.volver .btn_Volver{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    position:fixed;
+    bottom:20px;
+    left:30px;
+    border: none;
+    background-color: white;
+}
+
+.volver .btn_Volver:hover{
+    background-color: #6464f8;
+}
+
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
