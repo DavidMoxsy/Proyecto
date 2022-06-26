@@ -161,16 +161,7 @@ function llenarCalendario(datosJson) {
         params += "&" + "idCita=" + citasList[i].id;
         input.setAttribute("value", params);
         input.setAttribute("id", "diaH" + dayN);
-        div.appendChild(input);
-        
-        let bor = document.createElement("i");
-        bor.setAttribute("class", "fa fa-trash");
-        bor.setAttribute("aria-hidden", "true");
-        bor.classList.add("borrar");
-        bor.addEventListener('click', function () {
-            swal("Cita borrada correctamente", "Cita borrada correctamente", "success");
-            this.parentNode.remove(this);
-        });
+        div.appendChild(input);      
 
         div.appendChild(bor);
         divDia.appendChild(div);
