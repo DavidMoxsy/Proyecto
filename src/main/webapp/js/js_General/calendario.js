@@ -24,6 +24,7 @@ nextMonthDOM.addEventListener('click', () => nextMonth());
 let listaCitas = document.querySelectorAll('.divCita');
 let listaDias = document.querySelectorAll('.calendar__dateCalendar__item');
 let draggedItem = null;
+let citasList;
 
 writeMonth(monthNumber);
 getCitas();
@@ -82,6 +83,7 @@ function setNewDate() {
     year.textContent = currentYear.toString();
     dates.textContent = '';
     writeMonth(monthNumber);
+    getCitas();
 }
 
 function getCitas() {
@@ -114,10 +116,9 @@ function elimCita(num) {
 
 function llenarCalendario(datosJson) {
 
-    var citasList = datosJson.citas;
+    citasList = datosJson.citas;
 
     for (var i = 0; i < citasList.length; i++) {
-
         let date = new Date(citasList[i].fecha);
         let dayN = date.getDate();
         let divDia = document.getElementById("dia" + dayN);
@@ -139,7 +140,9 @@ function llenarCalendario(datosJson) {
         if (citasList[i].disponibilidad === "Disponible") {
             div.classList.add("divCitaDisponible");
             div.addEventListener('dblclick', function () {
-                document.location.href = "Citas_Medico_Modificar.jsp?cedula=" + document.getElementById("cedula").value;
+                var inputList = this.getElementsByTagName('INPUT');
+                var params = inputList[0].value;
+                document.location.href = "Citas_Medico_Registrar.jsp?" + params;
             });
 
         } else {
@@ -150,8 +153,26 @@ function llenarCalendario(datosJson) {
             div.classList.add("divCitaCompletada");
             div.setAttribute("draggable", "true");
         }
+        var input = document.createElement("input");
+        input.setAttribute("type", "hidden");
+        var params = "cedula=" + document.getElementById("cedula").value;
+        params += "&" + "hora=" + citasList[i].hora;
+        params += "&" + "fecha=" + citasList[i].fecha;
+        params += "&" + "idCita=" + citasList[i].id;
+        input.setAttribute("value", params);
+        input.setAttribute("id", "diaH" + dayN);
+        div.appendChild(input);
+        
+        let bor = document.createElement("i");
+        bor.setAttribute("class", "fa fa-trash");
+        bor.setAttribute("aria-hidden", "true");
+        bor.classList.add("borrar");
+        bor.addEventListener('click', function () {
+            swal("Cita borrada correctamente", "Cita borrada correctamente", "success");
+            this.parentNode.remove(this);
+        });
 
-        div.appendChild(bor)
+        div.appendChild(bor);
         divDia.appendChild(div);
 
     }

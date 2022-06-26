@@ -152,7 +152,6 @@ public class MedicoDAO {
                     }.getType();
 
                     ArrayList<Citas> list2 = gson.fromJson(rs.getString(9), typeMyType);
-                     
                     medico.setCitas(list2);
 
                 } else {
