@@ -167,8 +167,10 @@ function llenarCalendario(datosJson) {
         params += "&" + "idCita=" + citasList[i].id;
         input.setAttribute("value", params);
         input.setAttribute("id", "diaH" + dayN);
- 
-        div.appendChild(input);  
+        div.appendChild(input);      
+        div.appendChild(input);
+
+        div.appendChild(bor);
         divDia.appendChild(div);
 
     }

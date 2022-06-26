@@ -21,6 +21,10 @@ function solicitarDatos4(url, fn, callback) {
     fn(document.getElementById("cedulaPaciente").value, callback, url, fn);
 }
 
+function solicitarDatos5(url, fn, callback, id) {
+    fn(id, callback, url, fn);
+}
+
 function iniciarSesion(datosJSON) {
 
 
@@ -127,8 +131,8 @@ function pacientes(datosJSON) {
     }
     for (var j = 0; j < citasList.length; j++) {
         if (citasList[j].cedulaPaciente !== 0) {
-            if(!pacienteList.includes(citasList[j].cedulaPaciente)){
-            pacienteList.push(citasList[j].cedulaPaciente);
+            if (!pacienteList.includes(citasList[j].cedulaPaciente)) {
+                pacienteList.push(citasList[j].cedulaPaciente);
             }
         }
     }
@@ -156,10 +160,39 @@ function editarAntecedentes(datosJSON) {
     editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulPacientes');
 }
 
+function verResLab(num, id) {
+
+    solicitarDatos5('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, ver, id);
+
+    function ver(datosJSON) {
+
+        let medico = datosJSON;
+
+        function _base64ToArrayBuffer(base64) {
+            var binary_string = window.atob(base64);
+            var len = binary_string.length;
+            var bytes = new Uint8Array(len);
+            for (var i = 0; i < len; i++) {
+                bytes[i] = binary_string.charCodeAt(i);
+            }
+            return bytes.buffer;
+        }
+
+        var bytes = _base64ToArrayBuffer(medico.citas[num].resultadosLaboratorio[0]);
+
+
+        var blob = new Blob([bytes], {type: 'application/pdf'});
+        var blobURL = URL.createObjectURL(blob);
+        window.open(blobURL);
+
+        console.log(medico.citas[num].resultadosLaboratorio[0])
+    }
+}
+
 
 function muestraDatosPacientes(datosJSON) {
 
-    var pacienteID =  parseInt(document.getElementById("cedulaPaciente").value);
+    var pacienteID = parseInt(document.getElementById("cedulaPaciente").value);
     var citasList = datosJSON.citas;
     //datosJSON.forEach( p => { 
     var div = document.getElementById("div_tabla");
@@ -191,11 +224,11 @@ function muestraDatosPacientes(datosJSON) {
     thHea4.innerHTML = "Lugar";
     thHea5.innerHTML = "Disponibilidad";
     thHea6.innerHTML = "Acciones";
-     thHea7.innerHTML = "Signos";
-      thHea8.innerHTML = "Diagnóstico";
-       thHea9.innerHTML = "Prescripciones";
+    thHea7.innerHTML = "Signos";
+    thHea8.innerHTML = "Diagnóstico";
+    thHea9.innerHTML = "Prescripciones";
     trHea0.append(thHea0);
-    trHea.append(thHea1, thHea2, thHea3, thHea4 , thHea7,thHea8,thHea9,thHea5, thHea6 );
+    trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9, thHea5, thHea6);
     tabla.append(trHea0, trHea);
     tabla.setAttribute("border", "2");
     thHea0.setAttribute("colspan", "6");
@@ -209,9 +242,9 @@ function muestraDatosPacientes(datosJSON) {
             var td4 = document.createElement("td");
             var td5 = document.createElement("td");
             var td6 = document.createElement("td");
-             var td7 = document.createElement("td");
-              var td8 = document.createElement("td");
-               var td9 = document.createElement("td");
+            var td7 = document.createElement("td");
+            var td8 = document.createElement("td");
+            var td9 = document.createElement("td");
 
             var a = document.createElement("a");
             a.setAttribute("href", "#");
@@ -220,20 +253,29 @@ function muestraDatosPacientes(datosJSON) {
             a.onclick = function () {
                 cambiarEstado(this.value, datosJSON);
             };
+
+            var a2 = document.createElement("a");
+            a2.setAttribute("href", "#");
+            a2.innerHTML = "Resultados de Laboratorio";
+            a2.value = i;
+            a2.setAttribute('onclick', 'verResLab(' + i + ', ' + datosJSON.cedula + ')');
             // event.preventDefault();
+
             td9.appendChild(a);
+            td9.appendChild(a2);
+
 
             td1.innerHTML = citasList[i].fecha;
             td2.innerHTML = citasList[i].hora;
-           // td3.innerHTML = datosJSON.nombre + " " + datosJSON.apellido;
-           td3.innerHTML = citasList[i].cedulaPaciente;
+            // td3.innerHTML = datosJSON.nombre + " " + datosJSON.apellido;
+            td3.innerHTML = citasList[i].cedulaPaciente;
             td4.innerHTML = citasList[i].lugarDeCita;
             td5.innerHTML = citasList[i].signos;
             td6.innerHTML = citasList[i].diagnostico;
             td7.innerHTML = citasList[i].prescripciones;
             td8.innerHTML = citasList[i].disponibilidad;
-            
-            tr.append(td1, td2, td3, td4, td5, td6, td7, td8,td9);
+
+            tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
             tabla.appendChild(tr);
         }
     }
@@ -881,7 +923,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -988,7 +1031,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1095,7 +1139,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1202,7 +1247,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1310,7 +1356,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1417,7 +1464,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1524,7 +1572,8 @@ function datosEditar(datosJSON) {
                                     "cedulaPaciente": null,
                                     "signos": "",
                                     "diagnostico": "",
-                                    "prescripciones": ""};
+                                    "prescripciones": "",
+                                    "resultadosLaboratorio": []};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1573,7 +1622,7 @@ function registrarCitaMedico() {
     function registrarCitaMedico1(datosJson) {
 
         for (var i = 0; i < datosJson.citas.length; i++) {
-            if(datosJson.citas[i].hora === hora && datosJson.citas[i].fecha === fecha){
+            if (datosJson.citas[i].hora === hora && datosJson.citas[i].fecha === fecha) {
                 datosJson.citas[i].cedulaPaciente = idPaciente;
                 datosJson.citas[i].cedulaMedico = medicoId;
                 datosJson.citas[i].fecha = fecha;
@@ -1589,12 +1638,12 @@ function registrarCitaMedico() {
     swal("Cita registrada correctamente", "Cita registrada correctamente", "success");
 }
 
-function llenarPacientes(datosJson){
-    
-    var listaPacientes  = datosJson['lista-pacientes']['paciente'];
+function llenarPacientes(datosJson) {
+
+    var listaPacientes = datosJson['lista-pacientes']['paciente'];
     var select = document.getElementById("pacientes");
-    for (var i = 0; i < listaPacientes.length;i++){
-        select.innerHTML += '<option value="'+ listaPacientes[i].cedula +'">'+ listaPacientes[i].nombre +' '+ listaPacientes[i].apellido +'</option>';
+    for (var i = 0; i < listaPacientes.length; i++) {
+        select.innerHTML += '<option value="' + listaPacientes[i].cedula + '">' + listaPacientes[i].nombre + ' ' + listaPacientes[i].apellido + '</option>';
     }
 }
 
@@ -1606,6 +1655,6 @@ function cargarDatosPaciente(url, callback) {
             'Content-Type': 'application/json'
         }
     })
-    .then(resultados => resultados.json())
-    .then(datosJSON => callback(datosJSON));
+            .then(resultados => resultados.json())
+            .then(datosJSON => callback(datosJSON));
 }

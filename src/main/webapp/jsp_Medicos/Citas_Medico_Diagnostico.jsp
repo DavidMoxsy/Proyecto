@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Citas_Medico_Diagnostico
-    Created on : 25 jun. 2022, 01:21:01
-    Author     : Alfredo
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,16 +14,15 @@
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <link href="../css/css_Pacientes/stylePacientes.css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_General/resultados.js" type="text/javascript"></script>
-    </head><!-- comment -->
-    
-    
+    </head>
+
+
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
- 
-    
-    <input id="citaID" value="<%=request.getParameter("citaID")%>" hidden>
+
     <body>
 
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
+        <input id="citaID" value="<%=request.getParameter("citaID")%>" hidden>
 
         <div id="particles-js"></div>
 
@@ -51,11 +44,18 @@
             </div>
             <div class="perfil-usuario-body">
                 <div class="perfil-usuario-bio">
+
                     <form id="formulario" class="formulario" onsubmit="guardarResultados(event)">
                         <h2 class="crear_cuenta">Resultados</h2>           
                         <input name="Signos" id="signos" type="text" placeholder="Signos" >
                         <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
                         <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
+                        <div class="document-upload">
+                            <label for="file-input">
+                                <i class="far fa-image"></i>
+                            </label>                               
+                            <input id="file-input" name="imagen" type="file" accept="application/pdf" multiple/>                                     
+                        </div>
                         <input id="Guardar" type="submit" value="Guardar">
                     </form>
                 </div>
