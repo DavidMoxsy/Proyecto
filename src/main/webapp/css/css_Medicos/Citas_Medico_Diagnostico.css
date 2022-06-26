@@ -1,49 +1,26 @@
-html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    line-height: 1.4;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 body {
-    background: white;
-    background-size: 100%;
+    background: linear-gradient(150deg, rgb(162, 161, 241), rgb(225, 156, 223));
+    background-size: 400% 300%;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
-    height: -110px;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-}
-
-.seccion-perfil-usuario .perfil-usuario-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(#B873FF, transparent);
-    margin-bottom: 1.25rem;
+    margin: 0 auto;
+    width: 97%;
 }
 
 .seccion-perfil-usuario .perfil-usuario-portada {
     display: block;
     position: relative;
     width: 90%;
-    height: 17rem;
+    height: 9rem;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar {
-    display: flex;
+    display: fixed;
     width: 80px;
     height: 80px;
     align-items: center;
@@ -51,36 +28,18 @@ body {
     background-color: #DFE5F2;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    position: absolute;
-    bottom: 67%;
-    right: -40px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
     z-index: 10;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+    width: 80px;
     position: relative;
+    left: -1px;
     border-radius: 50%;
-    bottom: -3px;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body {
-    width: 70%;
-    position: relative;
-    max-width: 750px;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body .titulo {
-    display: block;
-    width: 100%;
-    font-size: 1.75em;
-    margin-bottom: 0.5rem;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body .texto {
-    color: #848484;
-    font-size: 0.95em;
-    color:white;
+    bottom: -2px;
 }
 
 .seccion-perfil-usuario .perfil-usuario-footer,
@@ -91,52 +50,42 @@ body {
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: rgb(153, 117, 212);
     border-radius: 15px;
-    width: 100%;
+    width: 1730px;
     color: white;
-    margin-top: -100px;
+    margin-top: -10px;
+    margin-left: -30px;
+}
+
+.perfil-usuario-bio ul{
+    width: 100%;
+
+    list-style: none;
+}
+
+.perfil-usuario-bio ul li{
+    width: 97%;
+    margin-left: -40px;
+    list-style: none;
 }
 
 .seccion-perfil-usuario .perfil-usuario-bio {
     margin-bottom: 1.25rem;
     text-align: center;
-    text-align:center;
     z-index: 2;
-}
-
-.seccion-perfil-usuario .perfil-usuario-bio ul{
-    margin: 0 auto;
-    display:inline;
-    padding-left:3px;
-    padding-right:3px;
-}
-
-.paciente-medico{
-
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-}
-.paciente-medico-bio{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    background: rgb(187, 159, 233);
-    border-radius: 15px;
     width: 100%;
-    color: black;
-    z-index: 2;
+    height: 100%;
 }
 
 .checkbox {
     display: none;
 }
+
 header {
     position: fixed;
     width: 100%;
     z-index: 10;
 }
+
 .header-container {
     transition-duration: 1s;
     width: 100%;
@@ -148,12 +97,6 @@ header {
     background-color: rgb(153, 117, 212);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-}
-
-header .header-container p{
-    color: white;
-    margin: 0 auto;
-    font-size: 40px;
 }
 
 .btn-label {
@@ -195,7 +138,7 @@ header .header-container p{
 .menu {
     background: #d1d1d1;
     width: 100%;
-    height: 10rem;
+    height: 90px;
     position: fixed;
     z-index: 9;
     top: -12rem;
@@ -207,12 +150,10 @@ header .header-container p{
     transition: all 1s;
 }
 
-ul {
+.menu ul{
     list-style: none;
 }
-li {
-    margin: 0.5rem;
-}
+
 .menu a {
     margin: 0 1rem;
     color: white;
@@ -251,18 +192,93 @@ a:hover {
     display: none;
 }
 
+.formulario {
+    width: 400px;
+    height: 550px;
+    background: rgb(187, 159, 233);
+    text-align: center;
+    box-shadow: 7px 13px 37px #000;
+    border-radius: 8px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.formulario input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    margin-top: 10px;
+}
+
+.formulario select {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    border: none;
+    background-color: transparent;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.formulario select:hover {
+    background: rgb(225 156 223);
+}
+
+.formulario input::placeholder{
+    color: #3a3737;
+}
+
+.formulario input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: white;
+    font-weight: 600;
+    margin-top: 1rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.formulario input[type=number]::-webkit-inner-spin-button,
+.formulario input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.formulario input[type="submit"]:hover {
+    background: rgb(230, 155, 220);
+    color: white;
+}
+
 .volver .btn_Volver{
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    position:absolute;
+    position:fixed;
     bottom:20px;
     left:30px;
     border: none;
-    background-color: rgb(162, 161, 241);
-    z-index: 2;
+    background-color: white;
 }
 
 .volver .btn_Volver:hover{

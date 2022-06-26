@@ -7,24 +7,31 @@
         <title>Perfil del medico</title>
         <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-        <link href="../css/css_Medicos/Pantalla_Principal_Medico .css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_Medicos/scripts_Medicos.js" type="text/javascript"></script>
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="../css/css_Pacientes/stylePacientes.css" rel="stylesheet" type="text/css"/>
         <script src="../js/js_General/resultados.js" type="text/javascript"></script>
+        <link href="../css/css_Medicos/Citas_Medico_Diagnostico.css" rel="stylesheet" type="text/css"/>
     </head>
 
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
+    <%int idCita = Integer.parseInt(request.getParameter("citaID"));%>
 
-    <body>
 
-        <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
+    <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
         <input id="citaID" value="<%=request.getParameter("citaID")%>" hidden>
+        <input id="cedula" value="<%=id%>" hidden>
 
-        <div id="particles-js"></div>
+        <input type="checkbox" id="btn-nav" class="checkbox">
+        <header>
+            <div class="header-container">
+                <label for="btn-nav" class="btn-label">
+                    <div class="header-button"></div>
+                </label>
+            </div>
+        </header>
 
         <nav class="menu">
             <ul>
@@ -41,28 +48,33 @@
                         <a href="Medico_Iniciado.jsp?cedula=<%=id%>"><img id="foto" alt="img-avatar"></a>
                     </div>     
                 </div>
-            </div>
-            <div class="perfil-usuario-body">
-                <div class="perfil-usuario-bio">
+            </div>        
 
-                    <form id="formulario" class="formulario" onsubmit="guardarResultados(event)">
-                        <h2 class="crear_cuenta">Resultados</h2>           
-                        <input name="Signos" id="signos" type="text" placeholder="Signos" >
-                        <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
-                        <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
-                        <div class="document-upload">                           
-                            <input name="file" id="file" class="custom-file-input" type="file" accept="application/pdf" required/>
-                        </div>
-                        <input id="Guardar" type="submit" value="Guardar">
-                    </form>
-                </div>
-            </div>
-        </section>
+            <div>
+                <form id="formulario" class="formulario" onsubmit="guardarResultados(event)">
+                    <h2 class="crear_cuenta">Resultados</h2>           
 
-        <div class="volver">
-            <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>
-        </div>
-        <script src="../js/js_General/particles.js" type="text/javascript"></script>
-        <script src="../js/js_General/app.js" type="text/javascript"></script>
+                    <label for="Signos">Signos</label>
+                    <input name="Signos" id="signos" type="text" placeholder="Signos">
+
+                    <label for="diagnostico">Diagnostico</label>
+                    <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
+
+                    <label for="prescripciones">Prescripciones</label>
+                    <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
+
+                    <label for="file">Resultados laboratorio (PDF)</label>                       
+                    <input name="file" id="file" class="custom-file-input" type="file" accept="application/pdf" required/>
+
+                    <input id="Guardar" type="submit" value="Guardar">
+                </form>
+            </div>
+
+            <div class="volver">
+                <button class="btn_Volver" onclick="enviarBoton('volver_citas_medico')">Volver</button>
+            </div>
+
+            <script src="../js/js_General/particles.js" type="text/javascript"></script>
+            <script src="../js/js_General/app.js" type="text/javascript"></script>
     </body>
 </html>

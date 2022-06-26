@@ -15,7 +15,7 @@
         <script src="../js/js_General/datosJSON.js" type="text/javascript"></script>
         <script src="../js/js_General/enviarBotones.js" type="text/javascript"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <link href="../css/css_Medicos/Citas_Medico10.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/css_Medicos/Citas_Medico.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>

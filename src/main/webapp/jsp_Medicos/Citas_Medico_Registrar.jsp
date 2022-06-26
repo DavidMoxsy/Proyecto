@@ -22,7 +22,7 @@
     <%int idCita = Integer.parseInt(request.getParameter("idCita"));%>
 
     <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-    <body  onload="cargarDatosPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes)">
+    <body  onload="cargarDatosPaciente('http://localhost:8080/Proyecto/resources/restfulPacientes', llenarPacientes), solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
 
         <div id="particles-js" style="z-index: -10;"></div>
 
