@@ -230,7 +230,7 @@ function muestraDatosPacientes(datosJSON) {
     trHea0.append(thHea0);
     trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9, thHea5, thHea6);
     tabla.append(trHea0, trHea);
-    tabla.setAttribute("border", "2");
+   // tabla.setAttribute("border-button", "2");
     thHea0.setAttribute("colspan", "9");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
