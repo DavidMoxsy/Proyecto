@@ -41,6 +41,7 @@
                 <li><a href="Pantalla_Principal_Medicos.jsp?cedula=<%=id%>">Inicio</a></li>
                 <li><a href="Medico_Iniciado.jsp?cedula=<%=id%>">Perfil</a></li>
                 <li><a href="Citas_Medico.jsp?cedula=<%=id%>">Citas</a></li>
+                <li><a href="Registro_Pacientes_Medico.jsp?cedula=<%=id%>">Registro de Pacientes</a></li>
             </ul>           
         </nav>
 
@@ -63,16 +64,16 @@
 
                     <input id="cedula" name="cedula" type="hidden" value="<%=id%>">
                     <input id="idCita" name="idCita" type="hidden" value="<%=idCita%>">
-                    
+
                     <label for="hora">Hora de la cita:</label>
                     <input name="hora" id="hora" type="text" value="<%=hora%>" required>
-                    
+
                     <label for="fecha">Fecha de la cita</label>
                     <input id="fecha" name="fecha" type="text" value="<%=fecha%>" required>
-                    
+
                     <label for="tipo">Tipo de la cita:</label>
                     <input name="tipo" id="tipo" type="text" placeholder="Tipo" required>
-                    
+
                     <label for="motivo">Motivo de la cita</label>
                     <input name="motivo" id="motivo" type="text" placeholder="Motivo" required>
 

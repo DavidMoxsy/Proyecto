@@ -38,6 +38,7 @@
                 <li><a href="Pantalla_Principal_Medicos.jsp?cedula=<%=id%>">Inicio</a></li>
                 <li><a href="Medico_Iniciado.jsp?cedula=<%=id%>">Perfil</a></li>
                 <li><a href="Citas_Medico.jsp?cedula=<%=id%>">Citas</a></li>
+                <li><a href="Registro_Pacientes_Medico.jsp?cedula=<%=id%>">Registro de Pacientes</a></li>
             </ul>           
         </nav>
 
@@ -59,17 +60,17 @@
                     </ul>
                 </div>
             </div>
-                        
-               <div class="paciente-medico">
+
+            <div class="paciente-medico">
                 <div class="paciente-medico-bio">
                     <ul id = "pacientes"> 
                         <li><h2 class="medicoPaciente" style="margin: 0 auto;">Pacientes del doctor</h2></li>
-                          
- 
+
+
                     </ul>
                 </div>
             </div>           
-                        
+
         </section>
         <div class="volver">
             <button class="btn_Volver" onclick="enviarBoton('salir_Perfil_Medico')">Salir</button>

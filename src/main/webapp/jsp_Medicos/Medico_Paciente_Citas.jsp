@@ -22,7 +22,7 @@
 
         <input id="cedulaPaciente" value="<%=request.getParameter("cedulaPaciente")%>" hidden>
         <input id="cedula" value="<%=request.getParameter("cedula")%>" hidden>
-        
+
         <input type="checkbox" id="btn-nav" class="checkbox">
         <header>
             <div class="header-container">
@@ -37,6 +37,7 @@
                 <li><a href="Pantalla_Principal_Medicos.jsp?cedula=<%=id%>">Inicio</a></li>
                 <li><a href="Medico_Iniciado.jsp?cedula=<%=id%>">Perfil</a></li>
                 <li><a href="Citas_Medico.jsp?cedula=<%=id%>">Citas</a></li>
+                <li><a href="Registro_Pacientes_Medico.jsp?cedula=<%=id%>">Registro de Pacientes</a></li>
             </ul>           
         </nav>
 

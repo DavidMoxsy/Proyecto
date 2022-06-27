@@ -43,6 +43,7 @@
                 <li><a href="Pantalla_Principal_Medicos.jsp?cedula=<%=id%>">Inicio</a></li>
                 <li><a href="Medico_Iniciado.jsp?cedula=<%=id%>">Perfil</a></li>
                 <li><a href="Citas_Medico.jsp?cedula=<%=id%>">Citas</a></li>
+                <li><a href="Registro_Pacientes_Medico.jsp?cedula=<%=id%>">Registro de Pacientes</a></li>
             </ul>           
         </nav>
 
