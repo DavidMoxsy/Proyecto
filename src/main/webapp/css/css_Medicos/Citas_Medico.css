@@ -6,7 +6,7 @@ body {
 @media (min-width:801px)  {
     .calendar{
         background: #d9b3f5;
-        height: 1000px;
+        height: 900px;
         width: 100%;
         color:black;
         margin: 0 auto;
@@ -74,8 +74,8 @@ body {
         flex: 1;
         width: 94%;
         max-width: 217px;
-        height: 155px;
-        min-height: 150px;
+        height: 130px;
+        min-height: 100px;
         background-color: rgba(0, 0, 0, 0.1);
         margin: 0 15px;
         padding: 8px;

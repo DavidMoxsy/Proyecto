@@ -1,14 +1,18 @@
 function guardarResultados(event) {
     event.preventDefault();
-    solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, guardar)
-    //console.log("pruebaaaa")
+
+    swal("Cita registrada correctamente", "Cita registrada correctamente", "success")
+            .then(() => {
+                solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, guardar)
+            });
+
     function guardar(datosJSON) {
         let signos = document.getElementById("signos").value;
         let diagnostico = document.getElementById("diagnostico").value;
         let prescripciones = document.getElementById("prescripciones").value;
         var citasList = datosJSON.citas;
         var citaID = parseInt(document.getElementById("citaID").value);
-        console.log(citaID)
+
         for (var i = 0; i < citasList.length; i++) {
 
             if (citaID === citasList[i].id) {
@@ -46,19 +50,14 @@ function guardarResultados(event) {
 
                     datosJSON.citas[parseInt(numCit.value) - 1].resultadosLaboratorio.push(base64Converted);
                     editarDato(datosJSON, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
+                    location.href = "Citas_Medico.jsp?cedula=" + datosJSON.cedula;
                 };
                 // Convert data to base64
                 fileReader.readAsDataURL(fileToLoad);
             }
 
-            swal({
-                title: "Se ha guardado!",
-                text: "Informacion guardada.",
-                timer: 6000
-
-            });
-
         }
+
 
     }
 

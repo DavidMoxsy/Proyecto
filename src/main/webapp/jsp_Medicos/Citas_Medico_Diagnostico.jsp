@@ -17,7 +17,6 @@
 
 
     <%int id = Integer.parseInt(request.getParameter("cedula"));%>
-    <%int idCita = Integer.parseInt(request.getParameter("citaID"));%>
 
 
     <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
