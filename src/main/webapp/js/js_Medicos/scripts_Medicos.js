@@ -215,7 +215,9 @@ function muestraDatosPacientes(datosJSON) {
     var thHea7 = document.createElement("th");
     var thHea8 = document.createElement("th");
     var thHea9 = document.createElement("th");
-
+    var thHea10 = document.createElement("th"); 
+    var thHea11 = document.createElement("th");
+    var thHea12 = document.createElement("th");
     //thHea0.innerHTML = "Historial de Citas del Paciente: " + datosJSON.nombre + " " + datosJSON.apellido;
     thHea0.innerHTML = "Historial de Citas del Paciente: " + pacienteID;
     thHea1.innerHTML = "Dia";
@@ -227,11 +229,14 @@ function muestraDatosPacientes(datosJSON) {
     thHea7.innerHTML = "Signos";
     thHea8.innerHTML = "Diagnóstico";
     thHea9.innerHTML = "Prescripciones";
+    thHea10.innerHTML = "Tipo";
+    thHea11.innerHTML = "Motivo";
+    thHea12.innerHTML = "Resultados";
     trHea0.append(thHea0);
-    trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9, thHea5, thHea6);
+    trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9,thHea10,thHea11,thHea12, thHea5, thHea6);
     tabla.append(trHea0, trHea);
     // tabla.setAttribute("border-button", "2");
-    thHea0.setAttribute("colspan", "9");
+    thHea0.setAttribute("colspan", "11");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
         if (citasList[i].cedulaPaciente === pacienteID) {
@@ -245,7 +250,9 @@ function muestraDatosPacientes(datosJSON) {
             var td7 = document.createElement("td");
             var td8 = document.createElement("td");
             var td9 = document.createElement("td");
-
+            var td10 = document.createElement("td");
+            var td11 = document.createElement("td");
+            var td12 = document.createElement("td");
             var a = document.createElement("a");
             a.setAttribute("href", "#");
             a.innerHTML = "Completar";
@@ -261,8 +268,8 @@ function muestraDatosPacientes(datosJSON) {
             a2.setAttribute('onclick', 'verResLab(' + i + ', ' + datosJSON.cedula + ')');
             // event.preventDefault();
 
-            td9.appendChild(a);
-            td9.appendChild(a2);
+            td11.appendChild(a);
+            td12.appendChild(a2);
 
 
             td1.innerHTML = citasList[i].fecha;
@@ -273,9 +280,11 @@ function muestraDatosPacientes(datosJSON) {
             td5.innerHTML = citasList[i].signos;
             td6.innerHTML = citasList[i].diagnostico;
             td7.innerHTML = citasList[i].prescripciones;
-            td8.innerHTML = citasList[i].estadoCita;
+            td8.innerHTML = citasList[i].tipo;
+            td9.innerHTML = citasList[i].motivo;
+            td10.innerHTML = citasList[i].estadoCita;
 
-            tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9);
+            tr.append(td1, td2, td3, td4, td5, td6, td7, td8, td9,td12, td10, td11);
             tabla.appendChild(tr);
         }
     }
