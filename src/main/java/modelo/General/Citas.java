@@ -17,6 +17,8 @@ public class Citas {
     private String prescripciones;
     private List<String> resultadosLaboratorio;
     private String estadoCita;
+    private String tipo;
+    private String motivo;
 
     public Citas() {
     }
@@ -34,6 +36,8 @@ public class Citas {
         this.prescripciones = "";
         this.resultadosLaboratorio = new ArrayList();
         this.estadoCita = "No aceptado";
+        this.tipo = "";
+        this.motivo = "";
     }
 
     public String getFecha() {
@@ -132,5 +136,20 @@ public class Citas {
         this.estadoCita = estadoCita;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
 
 }
