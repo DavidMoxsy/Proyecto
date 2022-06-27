@@ -921,9 +921,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1031,9 +1031,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1141,9 +1141,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1251,9 +1251,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1362,9 +1362,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1472,9 +1472,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };
@@ -1582,9 +1582,9 @@ function datosEditar(datosJSON) {
                                     "disponibilidad": "Disponible",
                                     "cedulaMedico": medico.cedula,
                                     "cedulaPaciente": null,
-                                    "signos": "",
-                                    "diagnostico": "",
-                                    "prescripciones": "",
+                                    "signos": "n/a",
+                                    "diagnostico": "n/a",
+                                    "prescripciones": "n/a",
                                     "resultadosLaboratorio": [],
                                     "estadoCita": "No completado"
                                 };

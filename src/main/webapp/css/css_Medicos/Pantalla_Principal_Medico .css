@@ -125,10 +125,25 @@ body {
     background: rgb(187, 159, 233);
     border-radius: 15px;
     width: 100%;
-    color: black;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    
     z-index: 2;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
 }
 
+.paciente-medico-bio{
+    color:#fff;
+     }
+     
+ .paciente-medico-bio a {
+    color:#fff;
+     
+     }
+      .paciente-medico-bio a:hover {
+   color: #6464f8;
+     
+     }
 .checkbox {
     display: none;
 }
