@@ -57,10 +57,10 @@
                     <input name="Signos" id="signos" type="text" placeholder="Signos">
 
                     <label for="diagnostico">Diagnostico</label>
-                    <input name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" >
+                    <textarea name="diagnostico" id="diagnostico" type="text" placeholder="Diagnóstico" ></textarea>
 
                     <label for="prescripciones">Prescripciones</label>
-                    <input name="prescripciones" id="prescripciones" type="text" placeholder="prescripciones" >
+                    <textarea name="prescripciones" id="prescripciones" type="text" placeholder="Prescripciones" ></textarea>
 
                     <label for="file">Resultados laboratorio (PDF)</label>                       
                     <input name="file" id="file" class="custom-file-input" type="file" accept="application/pdf" required/>
