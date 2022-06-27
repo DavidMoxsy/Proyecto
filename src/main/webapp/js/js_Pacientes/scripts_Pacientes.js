@@ -161,7 +161,7 @@ function conseguirPacientes(datosJSON) {
     let tr = document.createElement("tr");
     tr.setAttribute('id', 'Encabezado');
     let crear = document.createElement("button");
-    crear.innerHTML = "Agregar Localidad";
+    crear.innerHTML = "Agregar Paciente";
     crear.setAttribute('id', "Agregar");
     crear.setAttribute('onclick', "openModalCrear()");
 
@@ -204,9 +204,6 @@ function conseguirPacientes(datosJSON) {
     email.innerHTML = "Email";
     email.appendChild(iconoOrdenarEmail);
     email.setAttribute("class", "column4");
-    estado.innerHTML = "Estado";
-    estado.appendChild(iconoOrdenarEstado);
-    estado.setAttribute("class", "column5");
     acciones.innerHTML = "Acciones";
     acciones.setAttribute("class", "column6");
 
@@ -214,7 +211,6 @@ function conseguirPacientes(datosJSON) {
     tr.appendChild(apellido);
     tr.appendChild(cedula);
     tr.appendChild(email);
-    tr.appendChild(estado);
     tr.appendChild(acciones);
 
     thead.appendChild(tr);
@@ -226,7 +222,6 @@ function conseguirPacientes(datosJSON) {
         let tdApellido = document.createElement("td");
         let tdCedula = document.createElement("td");
         let tdEmail = document.createElement("td");
-        let tdEstado = document.createElement("td");
         let btnAceptar = document.createElement("a");
 
         let btnBorrar = document.createElement("a");
@@ -239,8 +234,6 @@ function conseguirPacientes(datosJSON) {
         tdCedula.setAttribute("class", "column3");
         tdEmail.innerHTML = Object.getOwnPropertyDescriptors(pacientesList[i]).email.value;
         tdEmail.setAttribute("class", "column4");
-        tdEstado.innerHTML = "hola";
-        tdEstado.setAttribute("class", "column5");
 
 
         btnAceptar.setAttribute('href', "#");
@@ -262,7 +255,6 @@ function conseguirPacientes(datosJSON) {
         trPaciente.appendChild(tdApellido);
         trPaciente.appendChild(tdCedula);
         trPaciente.appendChild(tdEmail);
-        trPaciente.appendChild(tdEstado);
         trPaciente.appendChild(btnAceptar);
         trPaciente.appendChild(btnBorrar);
         tr.setAttribute("class", "table100-head");
