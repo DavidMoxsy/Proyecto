@@ -4,8 +4,8 @@ function init() {
     console.log("Aplicación inicializada..");
 }
 
-function solicitarDatos(url, tabla, fn, callback) {
-    fn(callback, url, tabla);
+function solicitarDatos(url, fn, callback) {
+    fn(callback, url);
 }
 
 function solicitarDatos2(url, fn, callback, evt) {
@@ -148,4 +148,163 @@ function llenarDatos(datosJSON) {
 
         imagenPrevisualizacion.src = URL.createObjectURL(blob);
     }
+}
+
+function conseguirPacientes(datosJSON) {
+
+    let pacientesList = datosJSON['lista-pacientes']['paciente'];
+    let table = document.getElementById('Table_Pacientes');
+    let thead = document.createElement("thead");
+    thead.setAttribute('id', 'thead');
+    let tbody = document.createElement('tbody');
+    tbody.setAttribute('id', 'tbody');
+    let tr = document.createElement("tr");
+    tr.setAttribute('id', 'Encabezado');
+    let crear = document.createElement("button");
+    crear.innerHTML = "Agregar Localidad";
+    crear.setAttribute('id', "Agregar");
+    crear.setAttribute('onclick', "openModalCrear()");
+
+    let nombre = document.createElement("th");
+    let apellido = document.createElement("th");
+    let cedula = document.createElement("th");
+    let email = document.createElement("th");
+    let estado = document.createElement("th");
+    let acciones = document.createElement("th");
+    let iconoOrdenarNombre = document.createElement("i");
+
+    iconoOrdenarNombre.setAttribute("class", "fa fa-sort");
+    iconoOrdenarNombre.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', cargarDatos, ordenarPorNombre)");
+
+    let iconoOrdenarApellido = document.createElement("i");
+    iconoOrdenarApellido.setAttribute("class", "fa fa-sort");
+    iconoOrdenarApellido.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', cargarDatos, ordenarPorApellido)");
+
+    let iconoOrdenarCedula = document.createElement("i");
+    iconoOrdenarCedula.setAttribute("class", "fa fa-sort");
+    iconoOrdenarCedula.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', cargarDatos, ordenarPorCedula)");
+
+    let iconoOrdenarEmail = document.createElement("i");
+    iconoOrdenarEmail.setAttribute("class", "fa fa-sort");
+    iconoOrdenarEmail.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', cargarDatos, ordenarPorEmail)");
+
+    let iconoOrdenarEstado = document.createElement("i");
+    iconoOrdenarEstado.setAttribute("class", "fa fa-sort");
+    iconoOrdenarEstado.setAttribute('onclick', "solicitarDatos('http://localhost:8080/Proyecto/resources/restfulPacientes', cargarDatos, ordenarPorEstado)");
+
+    nombre.innerHTML = "Nombre";
+    nombre.appendChild(iconoOrdenarNombre);
+    nombre.setAttribute("class", "column1");
+    apellido.innerHTML = "Apellido";
+    apellido.appendChild(iconoOrdenarApellido);
+    apellido.setAttribute("class", "column2");
+    cedula.innerHTML = "Cedula";
+    cedula.appendChild(iconoOrdenarCedula);
+    cedula.setAttribute("class", "column3");
+    email.innerHTML = "Email";
+    email.appendChild(iconoOrdenarEmail);
+    email.setAttribute("class", "column4");
+    estado.innerHTML = "Estado";
+    estado.appendChild(iconoOrdenarEstado);
+    estado.setAttribute("class", "column5");
+    acciones.innerHTML = "Acciones";
+    acciones.setAttribute("class", "column6");
+
+    tr.appendChild(nombre);
+    tr.appendChild(apellido);
+    tr.appendChild(cedula);
+    tr.appendChild(email);
+    tr.appendChild(estado);
+    tr.appendChild(acciones);
+
+    thead.appendChild(tr);
+    table.replaceChild(thead, document.getElementById('thead'));
+
+    for (var i = 0; i < pacientesList.length; i++) {
+        let trPaciente = document.createElement("tr");
+        let tdNombre = document.createElement("td");
+        let tdApellido = document.createElement("td");
+        let tdCedula = document.createElement("td");
+        let tdEmail = document.createElement("td");
+        let tdEstado = document.createElement("td");
+        let btnAceptar = document.createElement("a");
+
+        let btnBorrar = document.createElement("a");
+
+        tdNombre.innerHTML = Object.getOwnPropertyDescriptors(pacientesList[i]).nombre.value;
+        tdNombre.setAttribute("class", "column1");
+        tdApellido.innerHTML = Object.getOwnPropertyDescriptors(pacientesList[i]).apellido.value;
+        tdApellido.setAttribute("class", "column2");
+        tdCedula.innerHTML = Object.getOwnPropertyDescriptors(pacientesList[i]).cedula.value;
+        tdCedula.setAttribute("class", "column3");
+        tdEmail.innerHTML = Object.getOwnPropertyDescriptors(pacientesList[i]).email.value;
+        tdEmail.setAttribute("class", "column4");
+        tdEstado.innerHTML = "hola";
+        tdEstado.setAttribute("class", "column5");
+
+
+        btnAceptar.setAttribute('href', "#");
+        btnAceptar.setAttribute('id', "btn");
+        btnAceptar.setAttribute('class', "btn");
+        btnAceptar.setAttribute('onclick', "openModal()");
+        btnAceptar.innerHTML = "Editar Paciente";
+        btnAceptar.setAttribute("class", "column6");
+
+        btnBorrar.setAttribute('onclick', "eliminarDato('http://localhost:8080/Proyecto/resources/restfulPacientes/delete', " + Object.getOwnPropertyDescriptors(pacientesList[i]).cedula.value + ")")
+        btnBorrar.setAttribute('id', "btn");
+        btnBorrar.setAttribute('class', "btn");
+        btnBorrar.innerHTML = "Borrar Paciente";
+        btnBorrar.setAttribute("class", "column6");
+
+
+
+        trPaciente.appendChild(tdNombre);
+        trPaciente.appendChild(tdApellido);
+        trPaciente.appendChild(tdCedula);
+        trPaciente.appendChild(tdEmail);
+        trPaciente.appendChild(tdEstado);
+        trPaciente.appendChild(btnAceptar);
+        trPaciente.appendChild(btnBorrar);
+        tr.setAttribute("class", "table100-head");
+        tbody.appendChild(trPaciente);
+        table.replaceChild(tbody, document.getElementById('tbody'));
+    }
+    if (document.getElementById('Agregar') === null) {
+        table.appendChild(crear);
+    } else {
+        table.replaceChild(crear, document.getElementById('Agregar'));
+    }
+}
+
+function ordenarPorNombre(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.nombre.localeCompare(y.nombre);
+    }
+    datosJSON['lista-pacientes']['paciente'] = datosJSON['lista-pacientes']['paciente'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorApellido(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.apellido.localeCompare(y.apellido);
+    }
+    datosJSON['lista-pacientes']['paciente'] = datosJSON['lista-pacientes']['paciente'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorCedula(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.cedula.toString().localeCompare(y.cedula.toString());
+    }
+    datosJSON['lista-pacientes']['paciente'] = datosJSON['lista-pacientes']['paciente'].sort(SortArray);
+    conseguirMedicos(datosJSON);
+}
+function ordenarPorEmail(datosJSON) {
+
+    function SortArray(x, y) {
+        return x.email.localeCompare(y.email);
+    }
+    datosJSON['lista-pacientes']['paciente'] = datosJSON['lista-pacientes']['paciente'].sort(SortArray);
+    conseguirMedicos(datosJSON);
 }

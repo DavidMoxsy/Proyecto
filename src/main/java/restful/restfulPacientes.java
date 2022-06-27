@@ -54,13 +54,13 @@ public class restfulPacientes {
                 .build();
     }
 
-    @DELETE
+    @PUT
+    @Path("/delete")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public void delete(String cedula) {
+    public void delete(String id) {
 
         Gestor_Pacientes g = new Gestor_Pacientes();
+        g.eliminarPaciente(id);
 
-        g.eliminarPaciente(cedula);
     }
 }

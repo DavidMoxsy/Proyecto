@@ -46,7 +46,7 @@
             </div>
         </section>
 
-        <h1>Lista de medicos disponibles</h1>
+        <h1>Lista de pacientes disponibles</h1>
 
         <table id="Table_Medicos">
             <thead id="thead"></thead>

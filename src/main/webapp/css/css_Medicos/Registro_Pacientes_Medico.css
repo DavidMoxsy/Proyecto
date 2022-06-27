@@ -1,45 +1,22 @@
-html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    line-height: 1.4;
-}
-
-*{
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 body {
-    background: white;
-    background-size: 100%;
+    background: linear-gradient(150deg, rgb(162, 161, 241), rgb(225, 156, 223));
+    background-size: 400% 300%;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
     display: flex;
-    height: -110px;
     flex-wrap: wrap;
     flex-direction: column;
-    align-items: center;
-}
-
-.seccion-perfil-usuario .perfil-usuario-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(#B873FF, transparent);
-    margin-bottom: 1.25rem;
+    margin: 0 auto;
+    width: 97%;
 }
 
 .seccion-perfil-usuario .perfil-usuario-portada {
     display: block;
     position: relative;
     width: 90%;
-    height: 10rem;
+    height: 12rem;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar {
@@ -51,36 +28,18 @@ body {
     background-color: #DFE5F2;
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    position: absolute;
-    bottom: 73px;
-    right: -40px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
     z-index: 10;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar img {
-    width: 100%;
+    width: 80px;
     position: relative;
+    left: -1px;
     border-radius: 50%;
-    bottom: -3px;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body {
-    width: 70%;
-    position: relative;
-    max-width: 750px;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body .titulo {
-    display: block;
-    width: 100%;
-    font-size: 1.75em;
-    margin-bottom: 0.5rem;
-}
-
-.seccion-perfil-usuario .perfil-usuario-body .texto {
-    color: #848484;
-    font-size: 0.95em;
-    color:white;
+    bottom: -2px;
 }
 
 .seccion-perfil-usuario .perfil-usuario-footer,
@@ -91,34 +50,42 @@ body {
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background-color: rgb(153, 117, 212);
     border-radius: 15px;
-    width: 100%;
+    width: 1730px;
     color: white;
-    margin-top: -100px;
+    margin-top: -10px;
+    margin-left: -30px;
+}
+
+.perfil-usuario-bio ul{
+    width: 100%;
+
+    list-style: none;
+}
+
+.perfil-usuario-bio ul li{
+    width: 97%;
+    margin-left: -40px;
+    list-style: none;
 }
 
 .seccion-perfil-usuario .perfil-usuario-bio {
-    margin-top: -75px;
-    margin-bottom: 1.15rem;
+    margin-bottom: 1.25rem;
     text-align: center;
-    text-align:center;
     z-index: 2;
-}
-
-.seccion-perfil-usuario .perfil-usuario-bio ul{
-    margin: 0 auto;
-    display:inline;
-    padding-left:3px;
-    padding-right:3px;
+    width: 100%;
+    height: 100%;
 }
 
 .checkbox {
     display: none;
 }
+
 header {
     position: fixed;
     width: 100%;
     z-index: 10;
 }
+
 .header-container {
     transition-duration: 1s;
     width: 100%;
@@ -130,12 +97,6 @@ header {
     background-color: rgb(153, 117, 212);
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-}
-
-header .header-container p{
-    color: white;
-    margin: 0 auto;
-    font-size: 40px;
 }
 
 .btn-label {
@@ -188,16 +149,18 @@ header .header-container p{
     transition: all 1s;
 }
 
-ul {
+.menu ul{
     list-style: none;
 }
-li {
-    margin: 0.5rem;
-}
+
 .menu a {
     margin: 0 1rem;
     color: white;
     text-decoration: none;
+}
+
+.menu li {
+    margin: 0.5rem;
 }
 
 a:hover {
@@ -232,18 +195,18 @@ a:hover {
     display: none;
 }
 
+
 .volver .btn_Volver{
     display: block;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    position:absolute;
+    position:fixed;
     bottom:20px;
     left:30px;
     border: none;
-    background-color: rgb(162, 161, 241);
-    z-index: 2;
+    background-color: white;
 }
 
 .volver .btn_Volver:hover{
@@ -252,21 +215,21 @@ a:hover {
 
 h1{
     position: relative;
-    top: -20px;
+    top: -100px;
     text-align: center;
     color: green;
 }
 
 table{
-    top: 5px;
+    top: -70px;
     border-spacing:1;
     border-collapse:collapse;
     background:#fff;
     border-radius:10px;
     overflow:hidden;
-    width:600px;
-    position:relative;
+    width:90%;
     margin:0 auto;
+    position:relative;
     box-shadow: 7px 13px 37px #000;
 }
 
@@ -307,11 +270,36 @@ tbody tr{
     font-weight:unset
 }
 .column1{
-    width:50px;
-    padding-left:40px
+    width:240px;
+    padding-left:40px;
+    padding-right:40px;
 }
 .column2{
-    text-align: center;
+    width:200px;
+    padding-right:40px;
+
+}
+.column3{
+    width:200px;
+    padding-right:40px;
+
+}
+.column4{
+    width:200px;
+    padding-right:40px;
+
+    text-align:center;
+}
+.column5{
+    width:200px;
+    text-align:center;
+    padding-right:40px;
+
+}
+.column6{
+    width:900px;
+    text-align:center;
+    padding-right:62px;
 }
 
 #tbody a{
@@ -330,82 +318,14 @@ tbody tr{
     color: #6464f8;
 }
 
-@media screen and (max-width:992px){
-    table{
-        display:block
-    }
-    table>*,table tr,table td,table th{
-        display:block
-    }
-    table thead{
-        display:none
-    }
-    table tbody tr{
-        height:auto;
-        padding:37px 0
-    }
-    table tbody tr td{
-        padding-left:40%!important;
-        margin-bottom:24px
-    }
-    table tbody tr td:last-child{
-        margin-bottom:0
-    }
-    table tbody tr td:nth-child(1):before{
-        content:"Nombre"
-    }
-    table tbody tr td:nth-child(2):before{
-        content:"Apellido"
-    }
-    table tbody tr td:nth-child(3):before{
-        content:"Cedula"
-    }
-    table tbody tr td:nth-child(4):before{
-        content:"Email"
-    }
-    table tbody tr td:nth-child(5):before{
-        content:"Estado"
-    }
-    table tbody tr td:nth-child(6):before{
-        content:"Acciones"
-    }
-    .column4,.column5,.column6{
-        text-align:left
-    }
-    .column4,.column5,.column6,.column1,.column2,.column3{
-        width:100%
-    }
-    tbody tr{
-        font-size:14px
-    }
-}
-@media(max-width:576px){
-    .container-table100{
-        padding-left:15px;
-        padding-right:15px
-    }
-}
-
-#Encabezado th i{
-    margin-left: 20px;
+#Table_Pacientes button{
+    margin: 20px;
+    width: 160px;
+    padding: 10px;
+    background: rgb(162, 161, 241);
+    border: none;
+    color: white;
     cursor: pointer;
-}
-
-#Encabezado th i:hover{
-    color:rgb(230, 155, 220);
-}
-
-.modal{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #111111bd;
-    display: flex;
-    z-index: 99;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .modalCrear{
@@ -436,15 +356,9 @@ tbody tr{
     grid-auto-columns: 100%;
 }
 
-.modal button{
-    width: 50px;
-    height: 50px;
-    color: red;
-    margin-left:340px;
-    border-radius: 50%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
 }
 
 .modalCrear button{
@@ -458,27 +372,30 @@ tbody tr{
     cursor: pointer;
 }
 
-#Table_Especialidades button{
-    margin: 20px;
-    width: 160px;
-    padding: 10px;
-    background: rgb(162, 161, 241);
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal button{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    color: red;
+    margin-left:140px;
+    margin-top: -20px;
+    border-radius: 50%;
     border: none;
-    color: white;
+    background-color: transparent;
     cursor: pointer;
-}
-
-#Table_Especialidades button:hover{
-    background: #6464f8;
-    color: white;
-}
-.modal button:hover{
-    color: #6464f8;
-}
-
-.modal--show{
-    opacity: 1;
-    pointer-events: unset;
 }
 
 .formulario_Editar_Paciente h2{
@@ -490,7 +407,7 @@ tbody tr{
 .formulario_Editar_Paciente{
     margin-top: -20px;
     width: 400px;
-    height: 290px;
+    height: 500px;
     background: rgb(187, 159, 233);
     text-align: center;
     box-shadow: 7px 13px 37px #000;
@@ -571,6 +488,71 @@ tbody tr{
 .formulario_Editar_Paciente input[type="submit"]:hover {
     background: rgb(230, 155, 220);
     color: white;
+}
+
+@media screen and (max-width:992px){
+    table{
+        display:block
+    }
+    table>*,table tr,table td,table th{
+        display:block
+    }
+    table thead{
+        display:none
+    }
+    table tbody tr{
+        height:auto;
+        padding:37px 0
+    }
+    table tbody tr td{
+        padding-left:40%!important;
+        margin-bottom:24px
+    }
+    table tbody tr td:last-child{
+        margin-bottom:0
+    }
+    table tbody tr td:nth-child(1):before{
+        content:"Nombre"
+    }
+    table tbody tr td:nth-child(2):before{
+        content:"Apellido"
+    }
+    table tbody tr td:nth-child(3):before{
+        content:"Cedula"
+    }
+    table tbody tr td:nth-child(4):before{
+        content:"Email"
+    }
+    table tbody tr td:nth-child(5):before{
+        content:"Estado"
+    }
+    table tbody tr td:nth-child(6):before{
+        content:"Acciones"
+    }
+    .column4,.column5,.column6{
+        text-align:left
+    }
+    .column4,.column5,.column6,.column1,.column2,.column3{
+        width:100%
+    }
+    tbody tr{
+        font-size:14px
+    }
+}
+@media(max-width:576px){
+    .container-table100{
+        padding-left:15px;
+        padding-right:15px
+    }
+}
+
+#Encabezado th i{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+#Encabezado th i:hover{
+    color:rgb(230, 155, 220);
 }
 
 #particles-js{

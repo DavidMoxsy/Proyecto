@@ -39,7 +39,7 @@ body {
     display: block;
     position: relative;
     width: 90%;
-    height: 17rem;
+    height: 10rem;
 }
 
 .seccion-perfil-usuario .perfil-usuario-avatar {
@@ -52,7 +52,7 @@ body {
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     position: absolute;
-    bottom: 67%;
+    bottom: 73px;
     right: -40px;
     z-index: 10;
 }
@@ -259,13 +259,13 @@ h1{
 }
 
 table{
-    top: 50px;
+    top: 5px;
     border-spacing:1;
     border-collapse:collapse;
     background:#fff;
     border-radius:10px;
     overflow:hidden;
-    width:30%;
+    width:600px;
     position:relative;
     margin:0 auto;
     box-shadow: 7px 13px 37px #000;

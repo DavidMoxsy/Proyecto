@@ -20,6 +20,8 @@
 
 
     <body onload="solicitarDatos2('http://localhost:8080/Proyecto/resources/restfulMedicos/getPorID', buscarDatoPorId, cargarFoto)">
+        <div id="particles-js" style="z-index: -1;"></div>
+
         <input id="citaID" value="<%=request.getParameter("citaID")%>" hidden>
         <input id="cedula" value="<%=id%>" hidden>
 
