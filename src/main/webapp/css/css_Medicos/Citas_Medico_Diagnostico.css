@@ -194,7 +194,6 @@ a:hover {
 
 .formulario {
     width: 400px;
-    height: 480px;
     background: rgb(187, 159, 233);
     text-align: center;
     box-shadow: 7px 13px 37px #000;
@@ -202,6 +201,19 @@ a:hover {
     margin: 0 auto;
     padding: 20px;
     margin-bottom: 40px;
+}
+
+.formulario textArea{
+    display: block;
+    margin: 0 auto;
+    width: 270px;
+    height: 80px;
+    resize: none;
+    border-bottom: solid 5px white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 8px;
 }
 
 .formulario input {
