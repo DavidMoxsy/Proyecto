@@ -230,7 +230,7 @@ function muestraDatosPacientes(datosJSON) {
     trHea0.append(thHea0);
     trHea.append(thHea1, thHea2, thHea3, thHea4, thHea7, thHea8, thHea9, thHea5, thHea6);
     tabla.append(trHea0, trHea);
-   // tabla.setAttribute("border-button", "2");
+    // tabla.setAttribute("border-button", "2");
     thHea0.setAttribute("colspan", "9");
     div.appendChild(tabla);
     for (var i = 0; i < citasList.length; i++) {
@@ -925,8 +925,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1035,8 +1036,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1145,8 +1147,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1255,8 +1258,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1366,8 +1370,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1476,8 +1481,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1586,8 +1592,9 @@ function datosEditar(datosJSON) {
                                     "diagnostico": "",
                                     "prescripciones": "",
                                     "resultadosLaboratorio": [],
-                                    "estadoCita": "No completado"
-                                };
+                                    "estadoCita": "No completado",
+                                    "tipo": "",
+                                    "Motivo": ""};
 
                                 if ((min + 15) > 59) {
                                     if (hor + 1 <= 24) {
@@ -1644,6 +1651,8 @@ function registrarCitaMedico(event) {
                 datosJson.citas[i].hora = hora;
                 datosJson.citas[i].disponibilidad = "Completada";
                 datosJson.citas[i].id = idCita;
+                datosJson.citas[i].tipo = tipo;
+                datosJson.citas[i].motivo = motivo;
             }
         }
         editarDato(datosJson, 'http://localhost:8080/Proyecto/resources/restfulMedicos');
